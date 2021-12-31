@@ -1,0 +1,81 @@
+{
+    "_id": {
+      "$oid": "61cf27c13db3e7f51cb3d882"
+    },
+    "user_id": "user name here",
+    "date_created": {
+        "$date": {
+          "$numberLong": "1640966280000"
+        }
+      },
+    "name": "Pasta with tomato sauce and panceta",
+    "serves": {
+      "$numberInt": "4"
+    },
+    "cook_time": {
+      "$numberInt": "20"
+    },
+    "ingredients": [
+      {
+        "quantity": {
+          "$numberInt": "500"
+        },
+        "unit": "g",
+        "name": "tinned tomatoes"
+      },
+      {
+        "quantity": {
+          "$numberInt": "1"
+        },
+        "unit": "pack",
+        "name": "panceta"
+      },
+      {
+        "quantity": {
+          "$numberInt": "1"
+        },
+        "unit": "",
+        "name": "onion"
+      },
+      {
+        "quantity": {
+          "$numberInt": "2"
+        },
+        "unit": "",
+        "name": "garlic cloves"
+      },
+      {
+        "quantity": {
+          "$numberInt": "200"
+        },
+        "unit": "g",
+        "name": "spaghetti"
+      },
+      {
+        "quantity": {
+          "$numberInt": "0"
+        },
+        "unit": "",
+        "name": "Bunch of basil"
+      }
+    ],
+    "steps": [
+      "Cut onion and garlic finely. Fry with italian mixed herbs and some olive oil.",
+      "Once onions soft, add panceta and fry until crisp.",
+      "Add tomatotes, bring to boil, season, and simmer for 20 minutes.",
+      "When sauce almost finished, cook pasta in boiling water for ~10 minutes.",
+      "Add basil to pasta sauce.",
+      "Drain pasta water, keeping some left behind. Then add sauce to the pasta."
+    ],
+    "photos": [
+      "https://someurl.com/example1",
+      "https://someurl.com/example2"
+    ],
+    "notes": "You can write notes here.",
+    "tags": [
+      "italian",
+      "easy",
+      "quick",
+      "pasta"
+    ]
+}
