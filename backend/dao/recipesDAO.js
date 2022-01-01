@@ -117,7 +117,7 @@ export default class RecipesDAO {
                     "tags": tags
                 }}
             )
-
+            
             return updateResponse
         } catch (e) {
             console.log('Unable to update the recipe: ' + e)

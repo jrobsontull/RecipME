@@ -88,12 +88,14 @@ export default class RecipesController {
             if (error) {
                 res.status(400).json({ error: error.message })
             }
-            
+
             if (recipeResponse.modifiedCount === 0) {
                 /* Recipe not updated */
                 throw new Error(
                     "Unable to update the recipe. User may not be the original poster."
                 )
+            } else {
+                res.json({ status: "success" })
             }
         } catch (e) {
             res.status(500).json({ error: e.message })
