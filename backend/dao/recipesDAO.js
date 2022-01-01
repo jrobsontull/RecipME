@@ -141,4 +141,15 @@ export default class RecipesDAO {
             return { error: e }
         }
     }
+
+    static async getTags() {
+        let tags = []
+        try {
+            tags = await recipes.distinct("tags")
+            return tags
+        } catch (e) {
+            console.log('Unable to get tags: ' + e)
+            return tags
+        }
+    }
 }
