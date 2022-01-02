@@ -1,2 +1,100 @@
+/* Imports */
+.intro-text {
+  margin-top: 50px; }
+  .intro-text p {
+    text-align: center;
+    margin-bottom: 10px; }
+  .intro-text p a {
+    font-weight: bold; }
+
+.how-to {
+  margin: 5px 0; }
+  .how-to h3 {
+    font-weight: bold;
+    margin-bottom: 20px; }
+
+img.pie-logo {
+  height: auto;
+  width: 60px;
+  margin: 20px 0; }
+
+@font-face {
+  font-family: 'Raleway Flex';
+  src: url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2 supports variations"), url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2-variations");
+  font-weight: 100 900;
+  font-stretch: 25% 151%; }
+
+@font-face {
+  font-family: 'Raleway Italic Flex';
+  src: url("../fonts/Raleway-Italic-VariableFont_wght.ttf") format("woff2 supports variations"), url("../fonts/Raleway-Italic-VariableFont_wght.ttf") format("woff2-variations");
+  font-weight: 100 900;
+  font-stretch: 25% 151%; }
+
+/* Global reset */
+* {
+  vertical-align: baseline;
+  font-weight: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  border: 0 none;
+  outline: 0;
+  margin: 0;
+  text-decoration: none; }
+
+/* Variables */
+/* Styling */
 body {
-  background-color: #F4F1DE; }
+  background-color: #F4F1DE;
+  font-family: 'Raleway Flex', 'sans-serif';
+  font-size: 20px; }
+
+.content {
+  padding: 0 50px; }
+
+.navbar {
+  background-color: #E07A5F; }
+  .navbar .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px; }
+  .navbar .nav {
+    display: none; }
+  .navbar p, .navbar a {
+    color: #F4F1DE; }
+  .navbar div.brand a {
+    font-weight: bold;
+    font-size: 24px; }
+  .navbar div.nav-ham {
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid #F4F1DE;
+    border-radius: 8px;
+    padding: 0 6px; }
+    .navbar div.nav-ham .ham1, .navbar div.nav-ham .ham2, .navbar div.nav-ham .ham3 {
+      width: 30px;
+      height: 2px;
+      background-color: #F4F1DE;
+      margin: 6px 0;
+      transition: 0.4s; }
+  .navbar .change-state .ham1 {
+    transform: rotate(-45deg) translate(-6.5px, 5.5px) scale(0.8, 1); }
+  .navbar .change-state .ham2 {
+    opacity: 0; }
+  .navbar .change-state .ham3 {
+    transform: rotate(45deg) translate(-5.5px, -5.5px) scale(0.8, 1); }
+  .navbar ul.nav li {
+    list-style-type: none;
+    font-size: 24px; }
+
+.line-br {
+  background-color: #D2CEB0;
+  height: 1px;
+  width: 85%;
+  margin: 20px 0; }
+
+.react-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center; }
