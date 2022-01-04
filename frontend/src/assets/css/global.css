@@ -50,7 +50,9 @@ body {
   font-size: 20px; }
 
 .content {
-  padding: 0 50px; }
+  padding: 0 50px;
+  max-width: 1000px;
+  margin: 0 auto; }
 
 .navbar {
   background-color: #E07A5F; }
@@ -60,6 +62,8 @@ body {
     padding: 15px; }
   .navbar .nav {
     display: none; }
+  .navbar .nav.clicked {
+    display: block; }
   .navbar p, .navbar a {
     color: #F4F1DE; }
   .navbar div.brand a {
@@ -70,22 +74,28 @@ body {
     cursor: pointer;
     border: 2px solid #F4F1DE;
     border-radius: 8px;
-    padding: 0 6px; }
+    padding: 0 6px;
+    transition: background-color 0.4s ease; }
     .navbar div.nav-ham .ham1, .navbar div.nav-ham .ham2, .navbar div.nav-ham .ham3 {
       width: 30px;
       height: 2px;
       background-color: #F4F1DE;
       margin: 6px 0;
       transition: 0.4s; }
+  .navbar .change-state.nav-ham {
+    background-color: #F1AD9B; }
   .navbar .change-state .ham1 {
     transform: rotate(-45deg) translate(-6.5px, 5.5px) scale(0.8, 1); }
   .navbar .change-state .ham2 {
     opacity: 0; }
   .navbar .change-state .ham3 {
     transform: rotate(45deg) translate(-5.5px, -5.5px) scale(0.8, 1); }
+  .navbar ul {
+    padding: 0 0 10px 15px; }
   .navbar ul.nav li {
     list-style-type: none;
-    font-size: 24px; }
+    font-size: 24px;
+    padding-bottom: 8px; }
 
 .line-br {
   background-color: #D2CEB0;

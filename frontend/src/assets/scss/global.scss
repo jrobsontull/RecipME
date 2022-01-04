@@ -48,6 +48,8 @@ body {
 
 .content {
     padding: 0 50px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .navbar {
@@ -60,6 +62,10 @@ body {
 
     .nav {
         display: none;
+    }
+
+    .nav.clicked {
+        display: block;
     }
 
     p, a {
@@ -76,6 +82,7 @@ body {
         border: 2px solid $light-orang;
         border-radius: 8px;
         padding: 0 6px;
+        transition: background-color 0.4s ease;
         .ham1, .ham2, .ham3 {
             width: 30px;
             height: 2px;
@@ -83,6 +90,10 @@ body {
             margin: 6px 0;
             transition: 0.4s;
         }
+    }
+
+    .change-state.nav-ham {
+        background-color: $lighter-dark;
     }
 
     .change-state .ham1 {
@@ -95,9 +106,14 @@ body {
         transform: rotate(45deg) translate(-5.5px, -5.5px) scale(0.8, 1);
     }
 
+    ul {
+        padding: 0 0 10px 15px;
+    }
+
     ul.nav li {
         list-style-type: none;
         font-size: 24px;
+        padding-bottom: 8px;
     }
 }
 
