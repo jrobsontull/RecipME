@@ -1,0 +1,27 @@
+form.loginout-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 85%;
+    input {
+        width: calc(100% - 32px);
+        margin: 12px 0;
+        padding: 14px 16px;
+        border: 1px solid $form-border;
+        transition: border-color 0.4s ease;
+    }
+    input::placeholder {
+        color: $form-border;
+    }
+    input:hover {
+        border-color: $dark-orang;
+    }
+    input[type=submit] {
+        background-color: $disabled-col;
+        border: none;
+        color: $light-orang;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

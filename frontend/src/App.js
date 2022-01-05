@@ -14,7 +14,7 @@ import Settings from "./components/settings"
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false)
 
-  async function login(user = false) {
+  async function login() {
     setIsLoggedIn(true)
     toggleHamburger()
   }

@@ -3,7 +3,7 @@ import React from "react"
 function Settings() {
   return (
     <div className="App">
-      Dashboard Page.
+      Settings Page.
     </div>
   );
 }

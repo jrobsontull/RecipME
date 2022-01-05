@@ -3,7 +3,7 @@ import React from "react"
 function MyRecipes() {
   return (
     <div className="App">
-      Dashboard Page.
+      My Recipes Page.
     </div>
   );
 }
