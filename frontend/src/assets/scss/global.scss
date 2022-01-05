@@ -6,6 +6,7 @@ $lighter-dark: #F1AD9B;
 $form-backgrd: #FCFAF1;
 $form-border: #D2CEB0;
 $disabled-col: #E4B3A6;
+$hover-btn: #e78c73;
 
 /* Imports */
 @import '_home';
@@ -81,9 +82,20 @@ body {
     p, a {
         color: $light-orang;
     }
-    div.brand a {
-        font-weight: bold;
-        font-size: 24px;
+    
+    .brand {
+        display: flex;
+        a {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        img {
+            height: auto;
+            width: 30px;
+            margin-right: 10px;
+            margin-bottom: 4px;
+            display: block;
+        }
     }
 
     div.nav-ham {
@@ -147,6 +159,7 @@ body {
         text-align: center;
         margin-bottom: 10px;
     }
+    
     p a {
         font-weight: bold;
     }
@@ -158,30 +171,79 @@ img.pie-logo {
     margin: 20px;
 }
 
-form.loginout-form {
+form.general-form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     width: 85%;
-    input {
+    input, button {
         width: calc(100% - 32px);
         margin: 12px 0;
         padding: 14px 16px;
         border: 1px solid $form-border;
         transition: border-color 0.4s ease;
     }
+
     input::placeholder {
         color: $form-border;
     }
+
     input:hover {
         border-color: $dark-orang;
     }
-    input[type=submit] {
+
+    button[type=submit] {
         background-color: $disabled-col;
         border: none;
         color: $light-orang;
         width: 100%;
         margin-bottom: 20px;
+        transition: background-color 0.4s ease;
+    }
+
+    button[type=submit].enabled {
+        background-color: $dark-orang;
+    }
+
+    button[type=submit].enabled:hover {
+        cursor: pointer;
+        background-color: $hover-btn;
+    }
+}
+
+.google-auth {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    background-color: $dark-orang;
+    transition: background-color 0.4s ease;
+    img {
+        width: 24px;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+
+    .google-logo {
+        background-color: $light-orang;
+        padding: 4px;
+        border-radius: 100%;
+    }
+
+    p {
+        padding: 14px 0;
+        color: $light-orang;
+        margin-left: 10px;
+    }
+}
+
+.google-auth:hover {
+    cursor: pointer;
+    background-color: $hover-btn;
+    img {
+        transform: rotate(360deg);
     }
 }

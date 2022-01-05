@@ -2,6 +2,7 @@ import React from "react"
 import { Routes, Route, Link } from "react-router-dom"
 
 import "./assets/css/global.css"
+import LogoLight from "./assets/img/pie_logo_light.svg"
 
 import Home from "./components/home"
 import Login from "./components/login"
@@ -35,6 +36,7 @@ function App() {
       <div className="navbar">
         <div className="header">
           <div className="brand">
+            <img src={ LogoLight } />
             <Link to={"/"} onClick={toggleHamburger}>
               RecipME
             </Link>

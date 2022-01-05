@@ -6,29 +6,6 @@
     font-weight: bold;
     margin-bottom: 20px; }
 
-form.loginout-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 85%; }
-  form.loginout-form input {
-    width: calc(100% - 32px);
-    margin: 12px 0;
-    padding: 14px 16px;
-    border: 1px solid #D2CEB0;
-    transition: border-color 0.4s ease; }
-  form.loginout-form input::placeholder {
-    color: #D2CEB0; }
-  form.loginout-form input:hover {
-    border-color: #E07A5F; }
-  form.loginout-form input[type=submit] {
-    background-color: #E4B3A6;
-    border: none;
-    color: #F4F1DE;
-    width: 100%;
-    margin-bottom: 20px; }
-
 @font-face {
   font-family: 'Raleway Flex';
   src: url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2 supports variations"), url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2-variations");
@@ -88,9 +65,17 @@ body {
 .navbar p, .navbar a {
   color: #F4F1DE; }
 
-.navbar div.brand a {
-  font-weight: bold;
-  font-size: 24px; }
+.navbar .brand {
+  display: flex; }
+  .navbar .brand a {
+    font-weight: bold;
+    font-size: 24px; }
+  .navbar .brand img {
+    height: auto;
+    width: 30px;
+    margin-right: 10px;
+    margin-bottom: 4px;
+    display: block; }
 
 .navbar div.nav-ham {
   display: inline-block;
@@ -151,25 +136,59 @@ img.pie-logo {
   width: 60px;
   margin: 20px; }
 
-form.loginout-form {
+form.general-form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   width: 85%; }
-  form.loginout-form input {
+  form.general-form input, form.general-form button {
     width: calc(100% - 32px);
     margin: 12px 0;
     padding: 14px 16px;
     border: 1px solid #D2CEB0;
     transition: border-color 0.4s ease; }
-  form.loginout-form input::placeholder {
+  form.general-form input::placeholder {
     color: #D2CEB0; }
-  form.loginout-form input:hover {
+  form.general-form input:hover {
     border-color: #E07A5F; }
-  form.loginout-form input[type=submit] {
+  form.general-form button[type=submit] {
     background-color: #E4B3A6;
     border: none;
     color: #F4F1DE;
     width: 100%;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    transition: background-color 0.4s ease; }
+  form.general-form button[type=submit].enabled {
+    background-color: #E07A5F; }
+  form.general-form button[type=submit].enabled:hover {
+    cursor: pointer;
+    background-color: #e78c73; }
+
+.google-auth {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  background-color: #E07A5F;
+  transition: background-color 0.4s ease; }
+  .google-auth img {
+    width: 24px;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease; }
+  .google-auth .google-logo {
+    background-color: #F4F1DE;
+    padding: 4px;
+    border-radius: 100%; }
+  .google-auth p {
+    padding: 14px 0;
+    color: #F4F1DE;
+    margin-left: 10px; }
+
+.google-auth:hover {
+  cursor: pointer;
+  background-color: #e78c73; }
+  .google-auth:hover img {
+    transform: rotate(360deg); }
