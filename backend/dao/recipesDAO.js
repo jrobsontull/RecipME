@@ -4,7 +4,7 @@ const ObjectId = mongodb.ObjectId
 let recipes
 
 export default class RecipesDAO {
-    static async injectDB(conn) {
+    static async injectRecipesDB(conn) {
         if (recipes) {
             return
         }
