@@ -1,15 +1,13 @@
-import jwt from "jsonwebtoken"
+import jwt from 'jsonwebtoken';
 
-function verifyToken (req, res, next) {
-    const token = req.header('auth-token')
-    if (!token) return res.status(401).send('Access denied.')
-
+function verify (token) {
     try {
-        const verified = jwt.verify(token, process.env.TOKEN_SECRET)
-        req.user = verified
+        const verified = jwt.verify(token, process.env.TOKEN_SECRET);
+        console.log(verified);
+        return true
     } catch (e) {
-        res.status(400).send('Invalid token.')
+        return false
     }
 }
 
-export default verifyToken
+export default verify;

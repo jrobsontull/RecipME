@@ -1,42 +1,46 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import Logo from "../assets/img/pie_logo_orange.svg"
-import Google from "../assets/img/google.svg"
+import Logo from '../assets/img/pie_logo_orange.svg';
+import Google from '../assets/img/google.svg';
 
 function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   async function loginHandler(e) {
-    e.preventDefault()
-    setError(false)
+    e.preventDefault();
+    setError(false);
 
     try {
       const header = {
         headers: {
-            'Content-type': 'application/json',
+          "Content-type": "application/json",
         }
-      }
+      };
       const payload = {
-        'email': email,
-        'password': password,
-      }
+        "email": email,
+        "password": password,
+      };
 
-      setIsLoading(true)
+      setIsLoading(true);
 
       const response = await axios.post('http://localhost:5000/api/v1/user/login',
         payload,
         header
-      )
+      );
 
-      localStorage.setItem('user', JSON.stringify(response.data))
-      setIsLoading(false)
+      localStorage.setItem('user', JSON.stringify(response.data));
+      setIsLoading(false);
+      navigate('/dashboard');
     } catch (e) {
-      setError(e.response.data.error)
-      setIsLoading(false)
+      setError(e.response.data.error);
+      setIsLoading(false);
     }
   }
 

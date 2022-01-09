@@ -1,43 +1,72 @@
-import React from "react"
-import { useEffect } from "react"
+import React, { useEffect } from 'react';
+import axios from 'axios';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
 
-import { Routes, Route, Link } from "react-router-dom"
+import './assets/css/global.css';
+import LogoLight from './assets/img/pie_logo_light.svg';
 
-import "./assets/css/global.css"
-import LogoLight from "./assets/img/pie_logo_light.svg"
-
-import Home from "./components/home"
-import Login from "./components/login"
-import Register from "./components/register"
-import About from "./components/about"
-import Dashoard from "./components/dashboard"
-import MyRecipes from "./components/my-recipes"
-import Settings from "./components/settings"
+import Home from './components/home';
+import Login from './components/login';
+import Register from './components/register';
+import About from './components/about';
+import Dashoard from './components/dashboard';
+import MyRecipes from './components/my-recipes';
+import Settings from './components/settings';
 
 function App({ history }) {
-  const [isLoggedIn, setLoggedIn] = React.useState(false)
+  const [isLoggedIn, setLoggedIn] = React.useState(false);
+  const [hamburgerOpen, setHamburgerOpen] = React.useState(false);
 
+  async function verifyToken(token) {
+    const header = {
+      headers: {
+          "Content-type": "application/json",
+      }
+    }
+    const payload = {
+      "token": token,
+    }
+
+    const response = await axios.post('http://localhost:5000/api/v1/user/verify',
+      payload,
+      header
+    );
+
+    return response.data
+  }
+
+  function toggleHamburger (ham) {
+    ham.classList.toggle("change-state");
+    setHamburgerOpen(!hamburgerOpen);
+  }
+
+  function logout () {
+    localStorage.removeItem('user');
+    setLoggedIn(false);
+    Navigate('/');
+    toggleHamburger();
+  }
+  
   useEffect(() => {
-    const user = localStorage.getItem('user')
+    const user = localStorage.getItem('user');
 
     if (user) {
-      setLoggedIn(true)
+      // Verify 
+      const verifyResponse  = verifyToken(JSON.parse(user).token)
+      console.log(verifyResponse)
+
+      // Proceed
+      setLoggedIn(true);
       //history.pushState('/dashboard')
     }
-  }, [history])
-
-  const [hamburgerOpen, setHamburgerOpen] = React.useState(false)
-  function toggleHamburger(ham) {
-    ham.classList.toggle("change-state")
-    setHamburgerOpen(!hamburgerOpen)
-  }
+  }, [history]);
 
   return (
     <div className="container">
       <div className="navbar">
         <div className="header">
           <div className="brand">
-            <img src={ LogoLight } />
+            <img src={ LogoLight } alt="Logo"/>
             <Link to={"/"} onClick={toggleHamburger}>
               RecipME
             </Link>
@@ -45,7 +74,7 @@ function App({ history }) {
           <div className="nav-ham" onClick={(e) => {
             /*e.preventDefault()
             e.currentTarget.classList.toggle("change-state")*/
-            toggleHamburger(e.currentTarget)
+            toggleHamburger(e.currentTarget);
           }}>
             <div className="ham1"></div>
             <div className="ham2"></div>
@@ -70,7 +99,7 @@ function App({ history }) {
                   Settings
                 </Link>
               </li>
-              <li className="item">
+              <li className="item" onClick={logout}>
                 <Link to={"/"}>
                   Logout
                 </Link>
@@ -79,7 +108,7 @@ function App({ history }) {
           ) : (
             <ul className={hamburgerOpen ? "nav clicked" : "nav"}>
               <li className="item">
-                <Link to={"/login"}>
+                <Link to={"/login"} onClick={toggleHamburger}>
                   Sign In
                 </Link>
               </li>
@@ -103,9 +132,24 @@ function App({ history }) {
           <Route path={"/login"} element={<Login/>}/>
           <Route path={"/register"} element={<Register/>}/>
           <Route path={"/about"} element={<About/>}/>
-          <Route path={"/dashboard"} element={<Dashoard/>}/>
-          <Route path={"/my-recipes"} element={<MyRecipes/>}/>
-          <Route path={"/settings"} element={<Settings/>}/>
+          <Route 
+            path={"/dashboard"} 
+            element={
+                <Dashoard/>
+            }
+          />
+          <Route 
+            path={"/my-recipes"} 
+            element={
+                <MyRecipes/>
+            }
+          />
+          <Route path={"/settings"} 
+            element={
+                <Settings/>
+            }
+
+          />
         </Routes>
       </div>
     </div>
