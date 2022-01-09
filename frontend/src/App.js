@@ -1,4 +1,6 @@
 import React from "react"
+import { useEffect } from "react"
+
 import { Routes, Route, Link } from "react-router-dom"
 
 import "./assets/css/global.css"
@@ -12,18 +14,17 @@ import Dashoard from "./components/dashboard"
 import MyRecipes from "./components/my-recipes"
 import Settings from "./components/settings"
 
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false)
+function App({ history }) {
+  const [isLoggedIn, setLoggedIn] = React.useState(false)
 
-  async function login() {
-    setIsLoggedIn(true)
-    toggleHamburger()
-  }
+  useEffect(() => {
+    const user = localStorage.getItem('user')
 
-  async function logout() {
-    setIsLoggedIn(false)
-    toggleHamburger()
-  }
+    if (user) {
+      setLoggedIn(true)
+      //history.pushState('/dashboard')
+    }
+  }, [history])
 
   const [hamburgerOpen, setHamburgerOpen] = React.useState(false)
   function toggleHamburger(ham) {
@@ -70,7 +71,7 @@ function App() {
                 </Link>
               </li>
               <li className="item">
-                <Link to={"/"} onClick={logout}>
+                <Link to={"/"}>
                   Logout
                 </Link>
               </li>
@@ -78,7 +79,7 @@ function App() {
           ) : (
             <ul className={hamburgerOpen ? "nav clicked" : "nav"}>
               <li className="item">
-                <Link to={"/login"} onClick={login}>
+                <Link to={"/login"}>
                   Sign In
                 </Link>
               </li>
