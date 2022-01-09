@@ -12,6 +12,7 @@ import About from './components/about';
 import Dashoard from './components/dashboard';
 import MyRecipes from './components/my-recipes';
 import Settings from './components/settings';
+import ProtectedRoute from './components/protected.route.js';
 
 function App({ history }) {
   const [isLoggedIn, setLoggedIn] = React.useState(false);
@@ -135,7 +136,9 @@ function App({ history }) {
           <Route 
             path={"/dashboard"} 
             element={
+              <ProtectedRoute>
                 <Dashoard/>
+              </ProtectedRoute>
             }
           />
           <Route 

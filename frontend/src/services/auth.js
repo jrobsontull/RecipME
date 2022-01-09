@@ -1,7 +1,25 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+class auth {
+    constructor() {
+        this.authenticated = false;
+    }
 
+    login(callback) {
+        this.authenticated = true;
+        callback()
+    }
+
+    logout(callback) {
+        this.authenticated = false;
+        callback()
+    }
+
+    isAuthenticated() {
+        return this.authenticated;
+    }
+}
 
 async function verifyToken(token) {
     const header = {
@@ -20,3 +38,5 @@ async function verifyToken(token) {
 
     return response.data
 }
+
+export default auth;
