@@ -39,7 +39,9 @@ function Login() {
       setIsLoading(false);
       navigate('/dashboard');
     } catch (e) {
+      console.log(e)
       setError(e.response.data.error);
+      //setError(e)
       setIsLoading(false);
     }
   }

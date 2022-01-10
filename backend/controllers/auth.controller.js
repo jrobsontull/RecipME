@@ -2,7 +2,7 @@ import AuthDAO from '../dao/authDAO.js';
 import generateToken from '../utils/generateToken.js';
 import verify from '../utils/verifyToken.js';
 
-export default class AuthCtrl {
+class AuthCtrl {
     static async apiRegisterUser(req, res, next) {
         const registerResponse = await AuthDAO.registerUser(
             req.body.name,
@@ -64,3 +64,5 @@ export default class AuthCtrl {
         }
     }
 }
+
+export default AuthCtrl;

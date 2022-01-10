@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import logo from '../assets/img/pie_logo_orange.svg';
 import Google from '../assets/img/google.svg';
@@ -11,6 +12,8 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
   
   async function registerHandler (e) {
     e.preventDefault();
@@ -41,6 +44,7 @@ function Register() {
   
       localStorage.setItem('user', JSON.stringify(response.data))
       setIsLoading(false)
+      navigate('/dashboard');
     } catch (e) {
       setError(e.response.data.error)
       setIsLoading(false)

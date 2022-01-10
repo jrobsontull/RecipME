@@ -4,9 +4,9 @@ function verify (token) {
     try {
         const verified = jwt.verify(token, process.env.TOKEN_SECRET);
         console.log(verified);
-        return true
+        return true;
     } catch (e) {
-        return false
+        return false;
     }
 }
 

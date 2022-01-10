@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
-import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate, Navigate } from 'react-router-dom';
 
 import './assets/css/global.css';
 import LogoLight from './assets/img/pie_logo_light.svg';
@@ -12,29 +11,13 @@ import About from './components/about';
 import Dashoard from './components/dashboard';
 import MyRecipes from './components/my-recipes';
 import Settings from './components/settings';
+
 import ProtectedRoute from './components/protected.route.js';
 
 function App({ history }) {
   const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [hamburgerOpen, setHamburgerOpen] = React.useState(false);
-
-  async function verifyToken(token) {
-    const header = {
-      headers: {
-          "Content-type": "application/json",
-      }
-    }
-    const payload = {
-      "token": token,
-    }
-
-    const response = await axios.post('http://localhost:5000/api/v1/user/verify',
-      payload,
-      header
-    );
-
-    return response.data
-  }
+  const navigate = useNavigate();
 
   function toggleHamburger (ham) {
     ham.classList.toggle("change-state");
@@ -44,7 +27,7 @@ function App({ history }) {
   function logout () {
     localStorage.removeItem('user');
     setLoggedIn(false);
-    Navigate('/');
+    navigate('/');
     toggleHamburger();
   }
   
@@ -52,13 +35,8 @@ function App({ history }) {
     const user = localStorage.getItem('user');
 
     if (user) {
-      // Verify 
-      const verifyResponse  = verifyToken(JSON.parse(user).token)
-      console.log(verifyResponse)
-
-      // Proceed
       setLoggedIn(true);
-      //history.pushState('/dashboard')
+      //navigate('/dashboard');
     }
   }, [history]);
 
@@ -144,7 +122,9 @@ function App({ history }) {
           <Route 
             path={"/my-recipes"} 
             element={
+              <ProtectedRoute>
                 <MyRecipes/>
+              </ProtectedRoute>
             }
           />
           <Route path={"/settings"} 

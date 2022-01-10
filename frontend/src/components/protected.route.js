@@ -1,8 +1,10 @@
 import { Navigate } from 'react-router-dom';
+import Auth from '../services/auth';
 
 function ProtectedRoute ({ children }) {
-    const auth = false;
-    return auth ? children : <Navigate to="/login" />;
+    let auth = new Auth();
+    const response = auth.verifyToken();
+    return response ? children : <Navigate to="/login" />;
 }
 
 export default ProtectedRoute;
