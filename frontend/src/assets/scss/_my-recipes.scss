@@ -1,0 +1,38 @@
+.my-recipes-list-title {
+    width: 85%;
+    margin: 15px 0 0 0;
+    padding: 10px 0;
+    border-radius: 10px 10px 0 0;
+    display: block;
+}
+
+.my-recipes-list-title:first-of-type {
+    margin-top: 25px;
+}
+
+.my-recipes-list-title p.list-box-info {
+    display: inline;
+    transition: margin-left 0.4s ease;
+}
+
+.my-recipes-list-title {
+    transition: all 0.4s ease;
+
+    .arrow {
+        transition: border-color 0.4s ease;
+    }
+}
+
+.my-recipes-list-title:hover {
+    cursor: pointer;
+    color: $light-orang;
+    background-color: $hover-btn;
+    
+    p.list-box-info {
+        margin-left: 10px;
+    }
+
+    .arrow {
+        border-color: $light-orang;
+    }
+}

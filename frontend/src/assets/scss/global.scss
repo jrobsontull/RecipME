@@ -10,7 +10,7 @@ $hover-btn: #e78c73;
 
 /* Imports */
 @import '_home';
-@import '_dashboard';
+@import '_my-recipes';
 
 @font-face {
 	font-family: 'Raleway Flex';
@@ -54,6 +54,18 @@ body {
     margin: 0 auto;
 }
 
+div.arrow {
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    margin: 0 0 2px 4px;
+}
+
+div.arrow.right {
+    transform: rotate(-45deg);
+}
+
 .navbar {
     .header {
         display: flex;
@@ -61,7 +73,7 @@ body {
         padding: 15px;
         background-color: $dark-orang;
         position: relative;
-        z-index: 1;
+        z-index: 2;
     }
 
     .nav {
@@ -72,7 +84,7 @@ body {
         top: 49;
         left: 0;
         width: 100%;
-        z-index: 0;
+        z-index: 1;
     }
 
     .nav.clicked {
@@ -274,10 +286,16 @@ div.list-box {
 
         li {
             margin-bottom: 10px;
+            transition: margin-left 0.4s ease;
         }
 
         li:last-child {
             margin-bottom: 0;
+        }
+
+        li:hover {
+            cursor: pointer;
+            margin-left: 14px;
         }
     }
 }
@@ -292,6 +310,27 @@ div.list-box#tag-box {
         li {
             margin: 0 5px 0 5px;
             line-height: 30px;
+            transition: transform 0.2s ease;
+        }
+
+        li:hover {
+            cursor: pointer;
+            transform: scale(1.1);
         }
     }
+}
+
+button.general {
+    width: 85%;
+    margin: 20px 0 10px 0;
+    padding: 14px 0;
+    background-color: $dark-orang;
+    border: none;
+    color: $light-orang;
+    transition: background-color 0.4s ease;
+}
+
+button.general:hover {
+    cursor: pointer;
+    background-color: $hover-btn;
 }
