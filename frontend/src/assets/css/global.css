@@ -130,11 +130,13 @@ body {
     margin-bottom: 10px; }
   .intro-text p a {
     font-weight: bold; }
+  .intro-text strong {
+    font-weight: bold; }
 
 img.pie-logo {
   height: auto;
   width: 60px;
-  margin: 20px; }
+  margin: 30px 20px 10px 20px; }
 
 form.general-form {
   display: flex;
@@ -153,7 +155,7 @@ form.general-form {
   form.general-form input:hover {
     border-color: #E07A5F; }
   form.general-form button[type=submit] {
-    background-color: #E4B3A6;
+    background-color: #332d2b;
     border: none;
     color: #F4F1DE;
     width: 100%;
@@ -192,3 +194,33 @@ form.general-form {
   background-color: #e78c73; }
   .google-auth:hover img {
     transform: rotate(360deg); }
+
+p.list-box-info {
+  width: 85%;
+  margin: 20px 0 10px 0; }
+
+p.list-box-info:first-of-type {
+  margin-top: 5px; }
+
+div.list-box {
+  width: 85%;
+  background-color: #FCFAF1;
+  border: 1px solid #D2CEB0; }
+  div.list-box ul {
+    padding: 4% 5%;
+    text-decoration: none;
+    list-style-type: none;
+    color: #D2CEB0; }
+    div.list-box ul li {
+      margin-bottom: 10px; }
+    div.list-box ul li:last-child {
+      margin-bottom: 0; }
+
+div.list-box#tag-box ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; }
+  div.list-box#tag-box ul li {
+    margin: 0 5px 0 5px;
+    line-height: 30px; }

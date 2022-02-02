@@ -5,12 +5,12 @@ $dark-text: #141412;
 $lighter-dark: #F1AD9B;
 $form-backgrd: #FCFAF1;
 $form-border: #D2CEB0;
-$disabled-col: #E4B3A6;
+$disabled-col: #332d2b;
 $hover-btn: #e78c73;
 
 /* Imports */
 @import '_home';
-@import '_login';
+@import '_dashboard';
 
 @font-face {
 	font-family: 'Raleway Flex';
@@ -163,12 +163,16 @@ body {
     p a {
         font-weight: bold;
     }
+
+    strong {
+        font-weight: bold;
+    }
 }
 
 img.pie-logo {
     height: auto;
     width: 60px;
-    margin: 20px;
+    margin: 30px 20px 10px 20px;
 }
 
 form.general-form {
@@ -245,5 +249,49 @@ form.general-form {
     background-color: $hover-btn;
     img {
         transform: rotate(360deg);
+    }
+}
+
+p.list-box-info {
+    width: 85%;
+    margin: 20px 0 10px 0;
+}
+
+p.list-box-info:first-of-type {
+    margin-top: 5px;
+}
+
+div.list-box {
+    width: 85%;
+    background-color: $form-backgrd;
+    border: 1px solid $form-border;
+
+    ul {
+        padding: 4% 5%;
+        text-decoration: none;
+        list-style-type: none;
+        color: $form-border;
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+div.list-box#tag-box {
+    ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        li {
+            margin: 0 5px 0 5px;
+            line-height: 30px;
+        }
     }
 }
