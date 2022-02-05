@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, useNavigate, Navigate } from 'react-router-dom';
+import { AuthProvider } from './services/authContext';
 
 import './assets/css/global.css';
 import LogoLight from './assets/img/pie_logo_light.svg';
@@ -15,6 +16,8 @@ import Settings from './components/settings';
 import ProtectedRoute from './components/protected.route.js';
 
 function App({ history }) {
+  //const [user, setUser] = useState(null);
+
   const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [hamburgerOpen, setHamburgerOpen] = React.useState(false);
   const navigate = useNavigate();
@@ -30,15 +33,18 @@ function App({ history }) {
     navigate('/');
     toggleHamburger();
   }
-  
-  useEffect(() => {
-    const user = localStorage.getItem('user');
 
-    if (user) {
-      setLoggedIn(true);
-      //navigate('/dashboard');
-    }
-  }, [history]);
+  
+  // useEffect(() => {
+  //   const userLocal = localStorage.getItem('user');
+  //   if (userLocal) {
+  //     console.log('Setting new user...');
+  //     setLoggedIn(true);
+  //     const userLocalJSON = JSON.parse(userLocal);
+  //     userLocalJSON["verified"] = true;
+  //     setUser(userLocalJSON);
+  //   }
+  // }, []);
 
   return (
     <div className="container">
@@ -106,34 +112,36 @@ function App({ history }) {
         }
       </div>
       <div className="content">
-        <Routes>
-          <Route path={"/"} element={<Home/>}/>
-          <Route path={"/login"} element={<Login/>}/>
-          <Route path={"/register"} element={<Register/>}/>
-          <Route path={"/about"} element={<About/>}/>
-          <Route 
-            path={"/dashboard"} 
-            element={
-              <ProtectedRoute>
-                <Dashoard/>
-              </ProtectedRoute>
-            }
-          />
-          <Route 
-            path={"/my-recipes"} 
-            element={
-              <ProtectedRoute>
-                <MyRecipes/>
-              </ProtectedRoute>
-            }
-          />
-          <Route path={"/settings"} 
-            element={
-                <Settings/>
-            }
+        <AuthProvider>
+          <Routes>
+            <Route path={"/"} element={<Home/>}/>
+            <Route path={"/login"} element={<Login/>}/>
+            <Route path={"/register"} element={<Register/>}/>
+            <Route path={"/about"} element={<About/>}/>
+            <Route 
+              path={"/dashboard"} 
+              element={
+                <ProtectedRoute>
+                  <Dashoard/>
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path={"/my-recipes"} 
+              element={
+                <ProtectedRoute>
+                  <MyRecipes/>
+                </ProtectedRoute>
+              }
+            />
+            <Route path={"/settings"} 
+              element={
+                  <Settings/>
+              }
 
-          />
-        </Routes>
+            />
+          </Routes>
+        </AuthProvider>
       </div>
     </div>
   );

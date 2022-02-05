@@ -6,6 +6,10 @@ import Logo from '../assets/img/pie_logo_orange.svg';
 import Google from '../assets/img/google.svg';
 
 function Login() {
+  //const {user} = useAuthValue();
+  //console.log(user);
+  //console.log(user?.token);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
