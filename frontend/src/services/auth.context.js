@@ -7,26 +7,32 @@ const AuthContext = createContext();
 function AuthProvider({children}) {
     const [user, setUser] = useState({
         "user": null,
-        "verified": false
+        "verified": false,
+        "isVerifying": false
     });
 
     async function authUser() {
         const userLocal = localStorage.getItem('user');
         if (userLocal) {
-            console.log('Setting new user...');
+            console.log('Checking user...');
             const userLocalJSON = JSON.parse(userLocal);
             const verifyResponse = await verifyToken(userLocalJSON);
 
             if (verifyResponse) {
-                setUser({"user": userLocalJSON, "verified": true});
+                setUser({"user": userLocalJSON, "verified": true, "isVerifying": false});
             } else {
-                setUser({"user": userLocalJSON, "verified": false});
+                setUser({"user": userLocalJSON, "verified": false, "isVerifying": false});
             }
         }
     }
 
+    //useEffect(() => {
+    //    console.log('Is verifying: ' + user.isVerifying);
+    //}, [user])
+
     async function verifyToken(userJSON) {
         try {
+            setUser({"user": null, "verified": false, "isVerifying": true});
             const header = {
                 headers: {
                     "Content-type": "application/json",
@@ -56,10 +62,11 @@ function AuthProvider({children}) {
 
     useEffect(() => {
         authUser();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
-        <AuthContext.Provider value={user, authUser}>
+        <AuthContext.Provider value={{user, authUser}}>
             {children}
         </AuthContext.Provider>
     )
