@@ -3,9 +3,6 @@ import React from "react"
 import Logo from '../assets/img/pie_logo_orange.svg';
 
 function Dashboard() {
-  //const {user} = useAuthValue();
-  //console.log(user);
-  
   return (
     <div className="react-container">
       <div className="intro-text">

@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../utils/auth.context';
 
 import logo from '../assets/img/pie_logo_orange.svg';
 import Google from '../assets/img/google.svg';
 
 function Register() {
+  const { user, authUser } = useContext(AuthContext);
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,12 +17,27 @@ function Register() {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  // Navigate away if logged in
+  useEffect(() => {
+    if (!user.isVerifying && user.verified) {
+      navigate('/dashboard');
+    }
+  })
   
   async function registerHandler (e) {
     e.preventDefault();
     
     // Validation
+    function validateEmail() {
+      // do something
 
+    }
+
+    function validatePass() {
+      // do something
+
+    }
 
     // Register user
     try {
@@ -43,6 +61,8 @@ function Register() {
       );
   
       localStorage.setItem('user', JSON.stringify(response.data))
+      authUser();
+
       setIsLoading(false)
       navigate('/dashboard');
     } catch (e) {
@@ -62,7 +82,7 @@ function Register() {
         <input type="email" value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
         <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
         <input type="password" value={confirmPassword} placeholder="Repeat Password" onChange={(e) => setConfirmPassword(e.target.value)}/>
-        <button type="submit">Sign Up</button>
+        <button type="submit" disabled>Sign Up</button>
       </form>
       <div className="google-auth">
         <div className="google-logo">

@@ -8,22 +8,38 @@ function AuthProvider({children}) {
     const [user, setUser] = useState({
         "user": null,
         "verified": false,
-        "isVerifying": false
+        "isVerifying": true
     });
 
     async function authUser() {
+        console.log('authUser() called');
+        setUser(currentState => {
+            let result = currentState;
+            result.isVerifying = true;
+            return result;
+        });
+
         const userLocal = localStorage.getItem('user');
-        if (userLocal) {
-            console.log('Checking user...');
+
+        if (!userLocal) {
+            // No storage exists
+            setUser({
+                user: null,
+                verified: false,
+                isVerifying: false
+            })
+        } else {
+            // Storage exists
             const userLocalJSON = JSON.parse(userLocal);
             const verifyResponse = await verifyToken(userLocalJSON);
 
-            if (verifyResponse) {
-                setUser({"user": userLocalJSON, "verified": true, "isVerifying": false});
-            } else {
-                setUser({"user": userLocalJSON, "verified": false, "isVerifying": false});
-            }
+            setUser({
+                user: userLocalJSON,
+                verified: verifyResponse,
+                isVerifying: false
+            })
         }
+        console.log('authUser() finished');
     }
 
     //useEffect(() => {

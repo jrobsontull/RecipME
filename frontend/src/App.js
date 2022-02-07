@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './services/auth.context';
+import { AuthProvider } from './utils/auth.context';
 
 import './assets/css/global.css';
 

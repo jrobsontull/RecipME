@@ -193,17 +193,20 @@ form.general-form {
   form.general-form input:hover {
     border-color: #E07A5F; }
   form.general-form button[type=submit] {
-    background-color: #332d2b;
+    background-color: #E07A5F;
     border: none;
     color: #F4F1DE;
     width: 100%;
     margin-bottom: 20px;
     transition: background-color 0.4s ease; }
-  form.general-form button[type=submit].enabled {
-    background-color: #E07A5F; }
-  form.general-form button[type=submit].enabled:hover {
+  form.general-form button[type=submit]:disabled {
+    background-color: #E4B3A6; }
+  form.general-form button[type=submit]:hover {
     cursor: pointer;
     background-color: #e78c73; }
+  form.general-form button[type=submit]:disabled:hover {
+    cursor: not-allowed;
+    background-color: #E4B3A6; }
 
 .google-auth {
   display: flex;

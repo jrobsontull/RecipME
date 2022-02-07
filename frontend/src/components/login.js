@@ -1,14 +1,13 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../utils/auth.context';
 
 import Logo from '../assets/img/pie_logo_orange.svg';
 import Google from '../assets/img/google.svg';
 
 function Login() {
-  //const {user} = useAuthValue();
-  //console.log(user);
-  //console.log(user?.token);
+  const { user, authUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +15,22 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  // Navigate away if logged in
+  useEffect(() => {
+    if (!user.isVerifying && user.verified) {
+      navigate('/dashboard');
+    }
+  })
+
+  // Validation
+  function validateEmail() {
+    // do something
+  }
+
+  function validatePass() {
+    // do something
+  }
 
   async function loginHandler(e) {
     e.preventDefault();
@@ -40,12 +55,13 @@ function Login() {
       );
 
       localStorage.setItem('user', JSON.stringify(response.data));
+      authUser();
+
       setIsLoading(false);
       navigate('/dashboard');
     } catch (e) {
       console.log(e)
       setError(e.response.data.error);
-      //setError(e)
       setIsLoading(false);
     }
   }
@@ -59,7 +75,7 @@ function Login() {
       <form className="general-form" onSubmit={loginHandler}>
         <input type="email" value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
         <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-        <button type="submit">Log In</button>
+        <button type="submit" disabled>Log In</button>
       </form>
       <div className="google-auth">
         <div className="google-logo">

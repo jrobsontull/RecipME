@@ -2,22 +2,23 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LogoLight from '../assets/img/pie_logo_light.svg';
 
-import AuthContext from '../services/auth.context';
+import AuthContext from '../utils/auth.context';
 
 function Navbar() {
-    const { user } = useContext(AuthContext);
+    const { user, authUser } = useContext(AuthContext);
     const [hamburgerOpen, setHamburgerOpen] = React.useState(false);
     const navigate = useNavigate();
 
-    function toggleHamburger (ham) {
+    function toggleHamburger(ham) {
         ham.classList.toggle("change-state");
         setHamburgerOpen(!hamburgerOpen);
     }
 
-    function logout () {
+    function logout(ham) {
         localStorage.removeItem('user');
+        authUser();
+        toggleHamburger(ham);
         navigate('/');
-        toggleHamburger();
     }
 
     return (
@@ -57,7 +58,9 @@ function Navbar() {
                     Settings
                     </Link>
                 </li>
-                <li className="item" onClick={logout}>
+                <li className="item" onClick={(e) => {
+                    logout(e.currentTarget);
+                }}>
                     <Link to={"/"}>
                     Logout
                     </Link>

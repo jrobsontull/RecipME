@@ -5,7 +5,7 @@ $dark-text: #141412;
 $lighter-dark: #F1AD9B;
 $form-backgrd: #FCFAF1;
 $form-border: #D2CEB0;
-$disabled-col: #332d2b;
+$disabled-col: #E4B3A6;
 $hover-btn: #e78c73;
 
 /* Imports */
@@ -210,7 +210,7 @@ form.general-form {
     }
 
     button[type=submit] {
-        background-color: $disabled-col;
+        background-color: $dark-orang;
         border: none;
         color: $light-orang;
         width: 100%;
@@ -218,13 +218,18 @@ form.general-form {
         transition: background-color 0.4s ease;
     }
 
-    button[type=submit].enabled {
-        background-color: $dark-orang;
+    button[type=submit]:disabled {
+        background-color: $disabled-col;
     }
 
-    button[type=submit].enabled:hover {
+    button[type=submit]:hover {
         cursor: pointer;
         background-color: $hover-btn;
+    }
+
+    button[type=submit]:disabled:hover {
+        cursor: not-allowed;
+        background-color: $disabled-col;
     }
 }
 
