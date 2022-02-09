@@ -1,22 +1,37 @@
-import React from "react"
+import React, { useContext, useEffect, useState } from 'react';
+import AuthContext from '../utils/auth.context';
+import RecipesAPI from '../utils/recipes-api';
 
 import Logo from '../assets/img/pie_logo_orange.svg';
 
 function MyRecipes() {
+  const { user } = useContext(AuthContext);
+  const [recipes, setRecipes] = useState([]);
+  
+  useEffect(() => {
+    RecipesAPI.getUserRecipes(user.user).then((response) => {
+      setRecipes(response);
+    })
+  }, [])
+
   return (
     <div className="react-container">
-      <div className="my-recipes-list-title">
+      <div className="intro-text">
+        Welcome back <strong>{ user.user.name }</strong>!
+      </div>
+      <div className="line-br"></div>
+      <div className="my-recipes-list-title" id="first-child">
         <p className="list-box-info">My recipes</p>
         <div className="arrow right"></div>
       </div>
       <div className="list-box">
         <ul>
-          <li>Something recipe here</li>
-          <li>Something recipe here</li>
-          <li>Something recipe here</li>
-          <li>Something recipe here</li>
+          {recipes.map((recipe, index) => (
+            <li key={ index }>{ recipe.name }</li>
+          ))}
         </ul>
       </div>
+      <button className="general">Add recipe</button>
       <div className="my-recipes-list-title">
         <p className="list-box-info">Tags</p>
         <div className="arrow right"></div>
@@ -37,7 +52,18 @@ function MyRecipes() {
           <li>#Tag12</li>
         </ul>
       </div>
-      <button className="general">Add recipe</button>
+      <div className="my-recipes-list-title">
+        <p className="list-box-info">Favourites</p>
+        <div className="arrow right"></div>
+      </div>
+      <div className="list-box">
+        <ul>
+          <li>Something recipe here</li>
+          <li>Something recipe here</li>
+          <li>Something recipe here</li>
+          <li>Something recipe here</li>
+        </ul>
+      </div>
       <img className="pie-logo" src={ Logo } alt="logo"/>
       <div className="line-br"></div>
     </div>

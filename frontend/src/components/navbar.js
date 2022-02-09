@@ -44,11 +44,6 @@ function Navbar() {
             user.verified ? (
                 <ul className={hamburgerOpen ? "nav clicked" : "nav"}>
                 <li className="item">
-                    <Link to={"/dashboard"} onClick={toggleHamburger}>
-                    Dashboard
-                    </Link>
-                </li>
-                <li className="item">
                     <Link to={"/my-recipes"} onClick={toggleHamburger}>
                     My Recipes
                     </Link>

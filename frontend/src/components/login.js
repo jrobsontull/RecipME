@@ -19,7 +19,7 @@ function Login() {
   // Navigate away if logged in
   useEffect(() => {
     if (!user.isVerifying && user.verified) {
-      navigate('/dashboard');
+      navigate('/my-recipes');
     }
   })
 
@@ -58,7 +58,7 @@ function Login() {
       authUser();
 
       setIsLoading(false);
-      navigate('/dashboard');
+      navigate('/my-recipes');
     } catch (e) {
       console.log(e)
       setError(e.response.data.error);

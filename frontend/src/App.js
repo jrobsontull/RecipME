@@ -9,7 +9,6 @@ import Home from './components/home';
 import Login from './components/login';
 import Register from './components/register';
 import About from './components/about';
-import Dashoard from './components/dashboard';
 import MyRecipes from './components/my-recipes';
 import Settings from './components/settings';
 
@@ -27,14 +26,6 @@ function App() {
             <Route path={"/login"} element={<Login/>}/>
             <Route path={"/register"} element={<Register/>}/>
             <Route path={"/about"} element={<About/>}/>
-            <Route 
-              path={"/dashboard"} 
-              element={
-                <ProtectedRoute>
-                  <Dashoard/>
-                </ProtectedRoute>
-              }
-            />
             <Route 
               path={"/my-recipes"} 
               element={

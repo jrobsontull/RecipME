@@ -13,8 +13,8 @@
   border-radius: 10px 10px 0 0;
   display: block; }
 
-.my-recipes-list-title:first-of-type {
-  margin-top: 25px; }
+.my-recipes-list-title#first-child {
+  margin-top: 0; }
 
 .my-recipes-list-title p.list-box-info {
   display: inline;
