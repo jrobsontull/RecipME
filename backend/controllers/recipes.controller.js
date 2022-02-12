@@ -9,10 +9,15 @@ export default class RecipesController {
 
         let filters = {}
         if (req.query.name) {
-            filters.name = req.query.name
+            filters.name = req.query.name;
         }
+
         if (req.query.user_id) {
-            filters.user_id = req.query.user_id
+            filters.user_id = req.query.user_id;
+        }
+
+        if (req.query.tags) {
+            filters.tags = req.query.tags.split('+');
         }
 
         const { recipesList, totalNumRecipes } = await RecipesDAO.getRecipes({
@@ -120,6 +125,17 @@ export default class RecipesController {
             )
             res.json({ status: "success" })
         } catch (e) {
+            res.status(500).json({ error: e.message })
+        }
+    }
+
+    /* Get user recipes by ID */
+    static async apiGetRecipesByID(req, res, next) {
+        try {
+            let recipes = await RecipesDAO.getRecipeByID();
+            res.json(recipes);
+        } catch (e) {
+            console.log(e.message);
             res.status(500).json({ error: e.message })
         }
     }

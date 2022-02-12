@@ -302,6 +302,11 @@ div.list-box {
             cursor: pointer;
             margin-left: 14px;
         }
+
+        li#none:hover {
+            margin-left: 0;
+            cursor: default;
+        }
     }
 }
 

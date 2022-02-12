@@ -28,7 +28,15 @@ export default class RecipesDAO {
                 /* queries database to see if any of the text matches, this is set in mongodb atlas */
                 query = { $text: { $search: filters["name"]} }
             } else if ("tags" in filters) {
-                console.log("Search tags");
+                console.log("Search for user-specific tags");
+                console.log(filters)
+                if (filters["tags"][0].toLowerCase() === 'all') {
+                    // Get all recipe tags
+                    query = {}
+                } else {
+                    // Get recipes by tag
+                    // Do something
+                }
             } else if ("user_id" in filters) {
                 console.log("Search by user_id");
                 query = {user_id: filters["user_id"]}
@@ -143,6 +151,10 @@ export default class RecipesDAO {
             console.log('Unable to delete the recipe: ' + e)
             return { error: e }
         }
+    }
+
+    static async getRecipeByID() {
+        // Get recipes by user ID
     }
 
     static async getTags() {

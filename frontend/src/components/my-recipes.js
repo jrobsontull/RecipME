@@ -26,9 +26,10 @@ function MyRecipes() {
       </div>
       <div className="list-box">
         <ul>
-          {recipes.map((recipe, index) => (
-            <li key={ index }>{ recipe.name }</li>
-          ))}
+          { recipes.length > 0 ?
+            recipes.map((recipe, index) => (
+              <li key={ index }>{ recipe.name }</li>
+            )) : <li id="none">You have no recipes yet!</li> }
         </ul>
       </div>
       <button className="general">Add recipe</button>

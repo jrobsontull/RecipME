@@ -260,6 +260,9 @@ div.list-box {
     div.list-box ul li:hover {
       cursor: pointer;
       margin-left: 14px; }
+    div.list-box ul li#none:hover {
+      margin-left: 0;
+      cursor: default; }
 
 div.list-box#tag-box ul {
   display: flex;
