@@ -11,10 +11,32 @@ function Recipe() {
     useEffect(() => {
         RecipesAPI.getRecipe(params.id).then((response) => {
             setRecipe(response);
+            console.log(response.ingredients)
         });
     }, [])
+
     return (
-        <p>Recipes Page</p>
+        <div className="react-container">
+            <div className="recipe-title">
+                <h3>{ recipe.name }</h3>
+            </div>
+            <div className="line-br"></div>
+            <button>Serves { recipe.serves }</button>
+            <div className="cook-time">{ recipe.cook_time } mins</div>
+            
+            
+            <div className="list-box">
+                <ul>
+                    { recipe.ingredients ?
+                        recipe.ingredients.map((ingredient, index) => (
+                            <li key={ index }>
+                                {ingredient.quantity} {ingredient.unit} {ingredient.name}
+                            </li>
+                        )) : <li>No ingredients yet!</li>
+                    }
+                </ul>
+            </div>
+        </div>
     );
 }
 

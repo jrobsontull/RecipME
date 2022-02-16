@@ -11,6 +11,7 @@ $hover-btn: #e78c73;
 /* Imports */
 @import '_home';
 @import '_my-recipes';
+@import '_recipe';
 
 @font-face {
 	font-family: 'Raleway Flex';
@@ -306,6 +307,11 @@ div.list-box {
         li#none:hover {
             margin-left: 0;
             cursor: default;
+        }
+
+        li a {
+            text-decoration: inherit;
+            color: inherit;
         }
     }
 }

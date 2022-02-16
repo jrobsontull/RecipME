@@ -263,6 +263,9 @@ div.list-box {
     div.list-box ul li#none:hover {
       margin-left: 0;
       cursor: default; }
+    div.list-box ul li a {
+      text-decoration: inherit;
+      color: inherit; }
 
 div.list-box#tag-box ul {
   display: flex;
