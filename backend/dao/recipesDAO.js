@@ -107,7 +107,7 @@ export default class RecipesDAO {
                     "date_created": date,
                     "name": name,
                     "serves": serves,
-                    "cook-time": cookTime,
+                    "cook_time": cookTime,
                     "ingredients": ingredients,
                     "steps": steps,
                     "photos": photos,
