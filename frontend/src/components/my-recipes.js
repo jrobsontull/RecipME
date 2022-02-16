@@ -3,6 +3,7 @@ import AuthContext from '../utils/auth.context';
 import RecipesAPI from '../utils/recipes-api';
 
 import Logo from '../assets/img/pie_logo_orange.svg';
+import { Link } from 'react-router-dom';
 
 function MyRecipes() {
   const { user } = useContext(AuthContext);
@@ -28,7 +29,7 @@ function MyRecipes() {
         <ul>
           { recipes.length > 0 ?
             recipes.map((recipe, index) => (
-              <li key={ index }>{ recipe.name }</li>
+              <li key={ index }><Link to={'/recipe/' + recipe._id}>{ recipe.name }</Link></li>
             )) : <li id="none">You have no recipes yet!</li> }
         </ul>
       </div>

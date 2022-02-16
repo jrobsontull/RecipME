@@ -1,15 +1,17 @@
-import express from "express"
-import RecipesCtrl from "../controllers/recipes.controller.js"
+import express from "express";
+import RecipesCtrl from "../controllers/recipes.controller.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.route("/").get(RecipesCtrl.apiGetRecipes)
-router.route("/tags").get(RecipesCtrl.apiGetRecipeTags)
+router.route('/').get(RecipesCtrl.apiGetRecipes);
+router.route('/tags').get(RecipesCtrl.apiGetRecipeTags);
+
+router.route('/recipe/id/:id').get(RecipesCtrl.apiGetRecipeByID);
 
 router
-    .route("/recipe")
+    .route('/recipe')
     .post(RecipesCtrl.apiPostRecipe)
     .put(RecipesCtrl.apiEditRecipe)
-    .delete(RecipesCtrl.apiDeleteRecipe)
+    .delete(RecipesCtrl.apiDeleteRecipe);
 
-export default router
+export default router;

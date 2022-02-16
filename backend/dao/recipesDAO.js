@@ -1,5 +1,5 @@
-import mongodb from "mongodb"
-const ObjectId = mongodb.ObjectId
+import mongodb from 'mongodb';
+const ObjectId = mongodb.ObjectId;
 
 let recipes
 
@@ -67,6 +67,27 @@ export default class RecipesDAO {
             return { recipesList: [], totalNumRecipes: 0}
         }
     }
+
+    static async getRecipeByID(id) {
+        try {
+            const query = { _id: ObjectId(id) };
+            let cursor;
+
+            try {
+                cursor = await recipes.find(query);
+            } catch (e) {
+                console.log('Unable to issue find command, ' + e.message);
+                return { error: e };
+            }
+            
+            const recipeList = await cursor.toArray();
+            return { recipe: recipeList[0] };
+        } catch (e) {
+            console.log('Error getting recipe by ID: ' + e.message);
+            return { error: e };
+        }
+    }
+
 
     static async addRecipe(
         userId,
@@ -151,10 +172,6 @@ export default class RecipesDAO {
             console.log('Unable to delete the recipe: ' + e)
             return { error: e }
         }
-    }
-
-    static async getRecipeByID() {
-        // Get recipes by user ID
     }
 
     static async getTags() {

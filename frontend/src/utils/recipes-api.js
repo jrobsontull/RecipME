@@ -1,25 +1,27 @@
-import axios from "axios";
+import http from './http-common';
 
 export default class RecipesAPI {
     static async getUserRecipes(user) {
-        const url = 'http://localhost:5000/api/v1/recipes?user_id=' + user._id;
-        const response = await getRequest(url);
-        const recipes = response.data.recipes;
-        return recipes;
+        const response = await getRequest('?user_id=' + user._id);
+        if (response) {
+            const recipes = response.data.recipes;
+            return recipes;
+        }
+    }
+
+    static async getRecipe(id) {
+        const response = await getRequest('recipe/id/' + id);
+        if (response) {
+            const recipe = response.data.recipe;
+            return recipe;
+        }
     }
 }
 
 async function postRequest(body, url) {
     try {
-        const header = {
-            headers: {
-                "Content-type": "application/json",
-            }
-        };
-
         const payload = body;
-
-        const response = await axios.post(url, payload, header);
+        const response = await http.post(url, payload);
 
         if (response.status === 200) {
             console.log('Posted: ' + body + ' to ' + url + ' and got good response.');
@@ -28,20 +30,14 @@ async function postRequest(body, url) {
             return null;
         }
     } catch (e) {
-        console.log('Error: ' + e);
+        console.log('Error: ' + e.message);
         return null;
     }
 }
 
 async function getRequest(url) {
     try {
-        const header = {
-            headers: {
-                "Content-type": "application/json",
-            }
-        };
-
-        const response = await axios.get(url);
+        const response = await http.get(url);
         
         if (response.status === 200) {
             console.log('Get request to ' + url + " successful.");
@@ -51,7 +47,7 @@ async function getRequest(url) {
         }
 
     } catch (e) {
-        console.log('Error: ' + e);
+        console.log('Error: ' + e.message);
         return null;
     }
 }

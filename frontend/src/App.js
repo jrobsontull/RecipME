@@ -11,6 +11,7 @@ import Register from './components/register';
 import About from './components/about';
 import MyRecipes from './components/my-recipes';
 import Settings from './components/settings';
+import Recipe from './components/recipe';
 
 import ProtectedRoute from './components/protected.route.js';
 
@@ -34,6 +35,11 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path={"/recipe/:id"} element={
+              <ProtectedRoute>
+                <Recipe />
+              </ProtectedRoute>
+            }/>
             <Route path={"/settings"} 
               element={
                   <Settings/>
