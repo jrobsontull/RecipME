@@ -34,6 +34,52 @@
   .my-recipes-list-title:hover .arrow {
     border-color: #F4F1DE; }
 
+.recipe-title {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 26px; }
+  .recipe-title .name {
+    display: flex; }
+    .recipe-title .name h3 {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 0 6px; }
+  .recipe-title .recipe-edit img {
+    height: auto;
+    width: 30px;
+    margin-left: 4px;
+    transition: transform 0.3s ease; }
+  .recipe-title .recipe-edit img:hover {
+    transform: scale(1.2);
+    cursor: pointer; }
+
+.recipe-stats {
+  display: flex;
+  width: 85%; }
+  .recipe-stats div {
+    background-color: #E07A5F;
+    color: #F4F1DE;
+    width: 50%;
+    padding: 12px 0;
+    text-align: center;
+    transition: background-color 0.3s ease; }
+  .recipe-stats div:first-child {
+    margin-right: 10px; }
+  .recipe-stats div:last-child {
+    margin-left: 10px; }
+  .recipe-stats div.serves {
+    display: flex;
+    justify-content: center; }
+  .recipe-stats div.serves img {
+    height: auto;
+    width: 20px;
+    margin-right: 10px; }
+  .recipe-stats div.serves:hover {
+    background-color: #e78c73;
+    cursor: pointer; }
+
 @font-face {
   font-family: 'Raleway Flex';
   src: url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2 supports variations"), url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2-variations");
@@ -66,7 +112,7 @@ body {
 
 .content {
   padding: 0 50px;
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto; }
 
 div.arrow {
@@ -78,6 +124,9 @@ div.arrow {
 
 div.arrow.right {
   transform: rotate(-45deg); }
+
+div.arrow.left {
+  transform: rotate(135deg); }
 
 .navbar .header {
   display: flex;
