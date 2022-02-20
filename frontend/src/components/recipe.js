@@ -41,10 +41,10 @@ function Recipe() {
                 <div className="cook-time">{ recipe.cook_time } mins</div>
             </div>
             
-            <div className="my-recipes-list-title">
+            <div className="recipe-list-title" id="first-child">
                 <p className="list-box-info">Ingredients:</p>
             </div>
-            <div className="list-box">
+            <div className="list-box recipe">
                 <ul>
                     { recipe.ingredients ?
                         recipe.ingredients.map((ingredient, index) => (
@@ -56,10 +56,10 @@ function Recipe() {
                 </ul>
             </div>
 
-            <div className="my-recipes-list-title">
+            <div className="recipe-list-title">
                 <p className="list-box-info">Method:</p>
             </div>
-            <div className="list-box">
+            <div className="list-box recipe">
                 { recipe.steps ? 
                     <ol>
                         {recipe.steps.map((step, index) => (
@@ -73,26 +73,26 @@ function Recipe() {
                 }
             </div>
 
-            <div className="my-recipes-list-title">
+            <div className="recipe-list-title">
                 <p className="list-box-info">Photos:</p>
             </div>
-            <div className="list-box">
+            <div className="list-box recipe">
                 <ul>
                     <li key="0">Photo 1</li>
                 </ul>
             </div>
 
-            <div className="my-recipes-list-title">
+            <div className="recipe-list-title">
                 <p className="list-box-info">Notes:</p>
             </div>
-            <div className="list-box">
+            <div className="list-box recipe">
                 <p>{ recipe.notes ? recipe.notes : "Write any notes here." }</p>
             </div>
 
-            <div className="my-recipes-list-title">
+            <div className="recipe-list-title">
                 <p className="list-box-info">Tags:</p>
             </div>
-            <div className="list-box">
+            <div className="list-box recipe" id="tag-box">
                 <ul>
                     { recipe.tags ?
                         recipe.tags.map((tag, index) => (

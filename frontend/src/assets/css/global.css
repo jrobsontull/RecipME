@@ -80,6 +80,27 @@
     background-color: #e78c73;
     cursor: pointer; }
 
+.recipe-list-title {
+  width: 85%;
+  margin: 18px 0 0 0;
+  border-radius: 10px 10px 0 0;
+  display: block; }
+
+.recipe-list-title#first-child {
+  margin-top: 25px; }
+
+.list-box.recipe li:hover {
+  margin-left: 0;
+  cursor: default; }
+
+.list-box.recipe ol {
+  list-style: decimal;
+  list-style-position: inside; }
+
+.list-box.recipe#tag-box li:hover {
+  transform: scale(1);
+  cursor: default; }
+
 @font-face {
   font-family: 'Raleway Flex';
   src: url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2 supports variations"), url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2-variations");
@@ -296,25 +317,28 @@ div.list-box {
   width: 85%;
   background-color: #FCFAF1;
   border: 1px solid #D2CEB0; }
-  div.list-box ul {
+  div.list-box ol, div.list-box ul {
     padding: 4% 5%;
     text-decoration: none;
     list-style-type: none;
-    color: #D2CEB0; }
-    div.list-box ul li {
+    color: #928f75; }
+    div.list-box ol li, div.list-box ul li {
       margin-bottom: 10px;
       transition: margin-left 0.4s ease; }
-    div.list-box ul li:last-child {
+    div.list-box ol li:last-child, div.list-box ul li:last-child {
       margin-bottom: 0; }
-    div.list-box ul li:hover {
+    div.list-box ol li:hover, div.list-box ul li:hover {
       cursor: pointer;
       margin-left: 14px; }
-    div.list-box ul li#none:hover {
+    div.list-box ol li#none:hover, div.list-box ul li#none:hover {
       margin-left: 0;
       cursor: default; }
-    div.list-box ul li a {
+    div.list-box ol li a, div.list-box ul li a {
       text-decoration: inherit;
       color: inherit; }
+  div.list-box p {
+    padding: 4% 5%;
+    color: #928f75; }
 
 div.list-box#tag-box ul {
   display: flex;
@@ -325,6 +349,8 @@ div.list-box#tag-box ul {
     margin: 0 5px 0 5px;
     line-height: 30px;
     transition: transform 0.2s ease; }
+  div.list-box#tag-box ul li:before {
+    content: '\0023'; }
   div.list-box#tag-box ul li:hover {
     cursor: pointer;
     transform: scale(1.1); }

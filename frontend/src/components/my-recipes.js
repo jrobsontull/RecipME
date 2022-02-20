@@ -40,18 +40,18 @@ function MyRecipes() {
       </div>
       <div className="list-box" id="tag-box">
         <ul>
-          <li>#Tag1</li>
-          <li>#Tag2</li>
-          <li>#Tag3</li>
-          <li>#Tag4</li>
-          <li>#Tag5</li>
-          <li>#Tag6</li>
-          <li>#Tag7</li>
-          <li>#Tag8</li>
-          <li>#Tag9</li>
-          <li>#Tag10</li>
-          <li>#Tag11</li>
-          <li>#Tag12</li>
+          <li>Tag1</li>
+          <li>Tag2</li>
+          <li>Tag3</li>
+          <li>Tag4</li>
+          <li>Tag5</li>
+          <li>Tag6</li>
+          <li>Tag7</li>
+          <li>Tag8</li>
+          <li>Tag9</li>
+          <li>Tag10</li>
+          <li>Tag11</li>
+          <li>Tag12</li>
         </ul>
       </div>
       <div className="my-recipes-list-title">

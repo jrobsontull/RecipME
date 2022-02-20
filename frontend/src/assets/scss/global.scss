@@ -7,6 +7,7 @@ $form-backgrd: #FCFAF1;
 $form-border: #D2CEB0;
 $disabled-col: #E4B3A6;
 $hover-btn: #e78c73;
+$list-box-text: #928f75;
 
 /* Imports */
 @import '_home';
@@ -288,11 +289,11 @@ div.list-box {
     background-color: $form-backgrd;
     border: 1px solid $form-border;
 
-    ul {
+    ol, ul {
         padding: 4% 5%;
         text-decoration: none;
         list-style-type: none;
-        color: $form-border;
+        color: $list-box-text;
 
         li {
             margin-bottom: 10px;
@@ -318,6 +319,11 @@ div.list-box {
             color: inherit;
         }
     }
+
+    p {
+        padding: 4% 5%;
+        color: $list-box-text;
+    }
 }
 
 div.list-box#tag-box {
@@ -331,6 +337,10 @@ div.list-box#tag-box {
             margin: 0 5px 0 5px;
             line-height: 30px;
             transition: transform 0.2s ease;
+        }
+
+        li:before {
+            content: '\0023';
         }
 
         li:hover {

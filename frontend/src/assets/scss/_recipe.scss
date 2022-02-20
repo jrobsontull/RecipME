@@ -65,3 +65,29 @@
         cursor: pointer;
     }
 }
+
+.recipe-list-title {
+    width: 85%;
+    margin: 18px 0 0 0;
+    border-radius: 10px 10px 0 0;
+    display: block;
+}
+
+.recipe-list-title#first-child {
+    margin-top: 25px;
+}
+
+.list-box.recipe li:hover {
+    margin-left: 0;
+    cursor: default;
+}
+
+.list-box.recipe ol {
+    list-style: decimal;
+    list-style-position: inside;
+}
+
+.list-box.recipe#tag-box li:hover {
+    transform: scale(1);
+    cursor: default;
+}

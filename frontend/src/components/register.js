@@ -21,7 +21,7 @@ function Register() {
   // Navigate away if logged in
   useEffect(() => {
     if (!user.isVerifying && user.verified) {
-      navigate('/dashboard');
+      navigate('/my-recipes');
     }
   })
   
