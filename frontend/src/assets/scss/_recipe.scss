@@ -8,10 +8,17 @@
     .name {
         display: flex;
 
-        h3 {
+        h3, textarea {
             font-size: 20px;
             font-weight: bold;
             padding: 0 6px;
+        }
+
+        textarea {
+            background-color: $light-orang;
+            border: 1px dashed $form-border;
+            padding: 0;
+            resize: none;
         }
     }
 
@@ -41,6 +48,10 @@
         transition: background-color 0.3s ease;
     }
 
+    div.editing {
+        background-color: $disabled-col;
+    }
+
     div:first-child {
         margin-right: 10px;
     }
@@ -63,6 +74,11 @@
     div.serves:hover {
         background-color: $hover-btn;
         cursor: pointer;
+    }
+
+    div.editing:hover {
+        background-color: $disabled-col;
+        cursor: default;
     }
 }
 
@@ -91,3 +107,5 @@
     transform: scale(1);
     cursor: default;
 }
+
+/* Edit mode */

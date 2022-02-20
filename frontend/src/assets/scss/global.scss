@@ -298,6 +298,7 @@ div.list-box {
         li {
             margin-bottom: 10px;
             transition: margin-left 0.4s ease;
+            display: flex;
         }
 
         li:last-child {
@@ -323,6 +324,13 @@ div.list-box {
     p {
         padding: 4% 5%;
         color: $list-box-text;
+    }
+
+    input {
+        background-color: $form-backgrd;
+        width: auto;
+        padding: 0;
+        display: inline-block;
     }
 }
 

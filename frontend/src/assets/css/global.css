@@ -42,10 +42,15 @@
   margin-top: 26px; }
   .recipe-title .name {
     display: flex; }
-    .recipe-title .name h3 {
+    .recipe-title .name h3, .recipe-title .name textarea {
       font-size: 20px;
       font-weight: bold;
       padding: 0 6px; }
+    .recipe-title .name textarea {
+      background-color: #F4F1DE;
+      border: 1px dashed #D2CEB0;
+      padding: 0;
+      resize: none; }
   .recipe-title .recipe-edit img {
     height: auto;
     width: 30px;
@@ -65,6 +70,8 @@
     padding: 12px 0;
     text-align: center;
     transition: background-color 0.3s ease; }
+  .recipe-stats div.editing {
+    background-color: #E4B3A6; }
   .recipe-stats div:first-child {
     margin-right: 10px; }
   .recipe-stats div:last-child {
@@ -79,6 +86,9 @@
   .recipe-stats div.serves:hover {
     background-color: #e78c73;
     cursor: pointer; }
+  .recipe-stats div.editing:hover {
+    background-color: #E4B3A6;
+    cursor: default; }
 
 .recipe-list-title {
   width: 85%;
@@ -101,6 +111,7 @@
   transform: scale(1);
   cursor: default; }
 
+/* Edit mode */
 @font-face {
   font-family: 'Raleway Flex';
   src: url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2 supports variations"), url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2-variations");
@@ -324,7 +335,8 @@ div.list-box {
     color: #928f75; }
     div.list-box ol li, div.list-box ul li {
       margin-bottom: 10px;
-      transition: margin-left 0.4s ease; }
+      transition: margin-left 0.4s ease;
+      display: flex; }
     div.list-box ol li:last-child, div.list-box ul li:last-child {
       margin-bottom: 0; }
     div.list-box ol li:hover, div.list-box ul li:hover {
@@ -339,6 +351,11 @@ div.list-box {
   div.list-box p {
     padding: 4% 5%;
     color: #928f75; }
+  div.list-box input {
+    background-color: #FCFAF1;
+    width: auto;
+    padding: 0;
+    display: inline-block; }
 
 div.list-box#tag-box ul {
   display: flex;
