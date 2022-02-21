@@ -7,6 +7,8 @@
 
     .name {
         display: flex;
+        width: 100%;
+        margin-right: 10px;
 
         h3, textarea {
             font-size: 20px;
@@ -15,6 +17,7 @@
         }
 
         textarea {
+            width: 100%;
             background-color: $light-orang;
             border: 1px dashed $form-border;
             padding: 0;
@@ -93,14 +96,105 @@
     margin-top: 25px;
 }
 
-.list-box.recipe li:hover {
-    margin-left: 0;
-    cursor: default;
+.ingredients-header {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 4px 0;
+    width: 85%;
+    border: 1px solid $disabled-col;
+    background-color: $disabled-col;
+    color: $light-orang;
+    text-align: center;
+
+    #first-child {
+        width: 25%;
+        padding-left: 10px;
+    }
+
+    #second-child {
+        width: 20%;
+    }
+
+    #third-child {
+        width: 55%;
+        padding-right: 10px;
+    }
 }
 
-.list-box.recipe ol {
-    list-style: decimal;
-    list-style-position: inside;
+button.general.recipe {
+    background-color: $form-backgrd;
+    color: $dark-orang;
+    border: 1px solid $dark-orang;
+    margin: 12px 0 4px 0;
+}
+
+button.general.recipe:hover {
+    color: $light-orang;
+}
+
+div.list-box.recipe {
+    li {
+        width: 100%;
+    }
+
+    li:hover {
+        margin-left: 0;
+        cursor: default;
+    }
+    
+    ol {
+        list-style: decimal;
+        list-style-position: inside;
+    }
+}
+
+div.list-box.edit-ingredients {
+    textarea {
+        width: 20%;
+        background-color: $form-backgrd;
+        padding: 0;
+        resize: none;
+        border: 1px dashed $form-border;
+    }
+
+    textarea#first-child {
+        width: 25%;
+        margin-right: 10px;
+    }
+
+    textarea#last-child {
+        width: 55%;
+        margin-left: 10px;
+    }
+
+    // li:after {
+    //     content: url('../img/delete.svg');
+    //     height: auto;
+    //     width: 24px;
+    //     left: 86%;
+    //     position: absolute;
+    // }
+
+    .delete-item {
+        width: 24px;
+        height: auto;
+        position: absolute;
+        right: 8%;
+        transition: transform 0.3s ease;
+    }
+
+    .delete-item:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+
+    @media screen and (min-width: 900px) {
+        .delete-item {
+            right: 0;
+            /* Do something elese */
+        }
+    }
+
 }
 
 .list-box.recipe#tag-box li:hover {
@@ -108,4 +202,17 @@
     cursor: default;
 }
 
-/* Edit mode */
+.db-btns {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button.general {
+        margin: 0;
+    }
+
+    button.general:last-child {
+        margin-top: 18px;
+    }
+}

@@ -41,12 +41,15 @@
   align-items: center;
   margin-top: 26px; }
   .recipe-title .name {
-    display: flex; }
+    display: flex;
+    width: 100%;
+    margin-right: 10px; }
     .recipe-title .name h3, .recipe-title .name textarea {
       font-size: 20px;
       font-weight: bold;
       padding: 0 6px; }
     .recipe-title .name textarea {
+      width: 100%;
       background-color: #F4F1DE;
       border: 1px dashed #D2CEB0;
       padding: 0;
@@ -99,19 +102,89 @@
 .recipe-list-title#first-child {
   margin-top: 25px; }
 
-.list-box.recipe li:hover {
+.ingredients-header {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 4px 0;
+  width: 85%;
+  border: 1px solid #E4B3A6;
+  background-color: #E4B3A6;
+  color: #F4F1DE;
+  text-align: center; }
+  .ingredients-header #first-child {
+    width: 25%;
+    padding-left: 10px; }
+  .ingredients-header #second-child {
+    width: 20%; }
+  .ingredients-header #third-child {
+    width: 55%;
+    padding-right: 10px; }
+
+button.general.recipe {
+  background-color: #FCFAF1;
+  color: #E07A5F;
+  border: 1px solid #E07A5F;
+  margin: 12px 0 4px 0; }
+
+button.general.recipe:hover {
+  color: #F4F1DE; }
+
+div.list-box.recipe li {
+  width: 100%; }
+
+div.list-box.recipe li:hover {
   margin-left: 0;
   cursor: default; }
 
-.list-box.recipe ol {
+div.list-box.recipe ol {
   list-style: decimal;
   list-style-position: inside; }
+
+div.list-box.edit-ingredients textarea {
+  width: 20%;
+  background-color: #FCFAF1;
+  padding: 0;
+  resize: none;
+  border: 1px dashed #D2CEB0; }
+
+div.list-box.edit-ingredients textarea#first-child {
+  width: 25%;
+  margin-right: 10px; }
+
+div.list-box.edit-ingredients textarea#last-child {
+  width: 55%;
+  margin-left: 10px; }
+
+div.list-box.edit-ingredients .delete-item {
+  width: 24px;
+  height: auto;
+  position: absolute;
+  right: 8%;
+  transition: transform 0.3s ease; }
+
+div.list-box.edit-ingredients .delete-item:hover {
+  transform: scale(1.1);
+  cursor: pointer; }
+
+@media screen and (min-width: 900px) {
+  div.list-box.edit-ingredients .delete-item {
+    right: 0;
+    /* Do something elese */ } }
 
 .list-box.recipe#tag-box li:hover {
   transform: scale(1);
   cursor: default; }
 
-/* Edit mode */
+.db-btns {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .db-btns button.general {
+    margin: 0; }
+  .db-btns button.general:last-child {
+    margin-top: 18px; }
+
 @font-face {
   font-family: 'Raleway Flex';
   src: url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2 supports variations"), url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2-variations");
@@ -351,11 +424,6 @@ div.list-box {
   div.list-box p {
     padding: 4% 5%;
     color: #928f75; }
-  div.list-box input {
-    background-color: #FCFAF1;
-    width: auto;
-    padding: 0;
-    display: inline-block; }
 
 div.list-box#tag-box ul {
   display: flex;

@@ -6,6 +6,8 @@ import TextareaAutosize from 'react-textarea-autosize';
 
 import Logo from '../assets/img/pie_logo_orange.svg';
 import Edit from '../assets/img/edit_icon.svg';
+import EditActive from '../assets/img/edit_icon_active.svg';
+import Delete from '../assets/img/delete.svg';
 
 function Recipe() {
     const params = useParams();
@@ -36,6 +38,16 @@ function Recipe() {
         updatedIngredients[key] = ingredient;
         setRecipe(prevRecipe => (
             {...prevRecipe, "ingredients": updatedIngredients}
+        ));
+    }
+
+    function deleteIngredient(ingredient) {
+        const currentIngredients = recipe.ingredients;
+        const ingredDelIndex = currentIngredients.indexOf(ingredient);
+        currentIngredients.splice(ingredDelIndex, 1)
+        console.log(currentIngredients)
+        setRecipe(prevRecipe => (
+            {...prevRecipe, "ingredients": currentIngredients}
         ));
     }
 
@@ -145,7 +157,7 @@ function Recipe() {
                         <TextareaAutosize name="name" defaultValue={ recipe.name } onChange={(e) => updateRecipeObj(e.target, 'name')}></TextareaAutosize>
                     </div>
                     <div className="recipe-edit">
-                        <img src={ Edit } alt="edit-btn" onClick={(e) => editRecipe(e)}></img>
+                        <img src={ EditActive } alt="edit-btn" onClick={(e) => editRecipe(e)}></img>
                     </div>
                 </div>
                 
@@ -162,28 +174,35 @@ function Recipe() {
                 <div className="recipe-list-title" id="first-child">
                     <p className="list-box-info">Ingredients:</p>
                 </div>
-                <div className="list-box recipe">
+                <div className="ingredients-header">
+                    <div className="element" id="first-child">Quantity</div>
+                    <div className="element" id="second-child">Unit</div>
+                    <div className="element" id="third-child">Description</div>
+                </div>
+                <div className="list-box recipe edit-ingredients">
                     <ul>
                         { recipe.ingredients ?
                             recipe.ingredients.map((ingredient, index) => (
                                 <li key={ index }>
-                                    <input defaultValue={ ingredient.quantity } onChange={ (e) => {
+                                    <TextareaAutosize id="first-child" defaultValue={ ingredient.quantity } onChange={ (e) => {
                                             updateRecipeObjIngred(e.currentTarget.parentElement, index);
                                         }
                                     }/>
-                                    <input defaultValue={ ingredient.unit } onChange={ (e) => {
+                                    <TextareaAutosize defaultValue={ ingredient.unit } onChange={ (e) => {
                                             updateRecipeObjIngred(e.currentTarget.parentElement, index);
                                         }
                                     }/>
-                                    <input defaultValue={ ingredient.name } onChange={ (e) => {
+                                    <TextareaAutosize id="last-child" defaultValue={ ingredient.name } onChange={ (e) => {
                                             updateRecipeObjIngred(e.currentTarget.parentElement, index);
                                         }
                                     }/>
+                                    <img className="delete-item" src={ Delete } onClick={ () => deleteIngredient(ingredient) } />
                                 </li>
                             )) : <li key="0">No ingredients yet.</li>
                         }
                     </ul>
                 </div>
+                <button className="general recipe">Add ingredient</button>
 
                 <div className="recipe-list-title">
                     <p className="list-box-info">Method:</p>
@@ -201,6 +220,7 @@ function Recipe() {
                         </ul>
                     }
                 </div>
+                <button className="general recipe">Add step</button>
 
                 <div className="recipe-list-title">
                     <p className="list-box-info">Photos:</p>
@@ -231,6 +251,11 @@ function Recipe() {
                             )) : <li key="0">Add tags here.</li>
                         }
                     </ul>
+                </div>
+                <div className="line-br"></div>
+                <div className="db-btns">
+                    <button className="general">Save changes</button>
+                    <button className="general">Delete recipe</button>
                 </div>
                 <img className="pie-logo" src={ Logo } alt="logo"/>
                 <div className="line-br"></div>
