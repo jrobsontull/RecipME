@@ -135,6 +135,7 @@ button.general.recipe:hover {
 div.list-box.recipe {
     li {
         width: 100%;
+        display: list-item;
     }
 
     li:hover {
@@ -155,6 +156,7 @@ div.list-box.edit-ingredients {
         padding: 0;
         resize: none;
         border: 1px dashed $form-border;
+        color: $list-box-text;
     }
 
     textarea#first-child {
@@ -167,13 +169,9 @@ div.list-box.edit-ingredients {
         margin-left: 10px;
     }
 
-    // li:after {
-    //     content: url('../img/delete.svg');
-    //     height: auto;
-    //     width: 24px;
-    //     left: 86%;
-    //     position: absolute;
-    // }
+    li {
+        display: flex;
+    }
 
     .delete-item {
         width: 24px;
@@ -195,6 +193,42 @@ div.list-box.edit-ingredients {
         }
     }
 
+}
+
+div.list-box.edit-steps {
+    li {
+        display: flex;
+    }
+
+    textarea {
+        border: 1px dashed $form-border;
+        background-color: $form-backgrd;
+        padding: 0;
+        resize: none;
+        color: $list-box-text;
+        width: 100%;
+        display: inline;
+    }
+
+    .delete-item {
+        width: 24px;
+        height: auto;
+        position: absolute;
+        right: 8%;
+        transition: transform 0.3s ease;
+    }
+
+    .delete-item:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+
+    @media screen and (min-width: 900px) {
+        .delete-item {
+            right: 0;
+            /* Do something elese */
+        }
+    }
 }
 
 .list-box.recipe#tag-box li:hover {

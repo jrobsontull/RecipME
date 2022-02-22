@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useResolvedPath } from 'react-router-dom';
 import RecipesAPI from '../utils/recipes-api';
 import AuthContext from '../utils/auth.context';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -27,7 +27,7 @@ function Recipe() {
         ));
     }
 
-    function updateRecipeObjIngred(parent, key) {
+    function updateRecipeObjIngred(parent, id) {
         const children = parent.children;
         const ingredient = {
             "quantity": children[0].value,
@@ -35,7 +35,10 @@ function Recipe() {
             "name": children[2].value
         }
         const updatedIngredients = recipe.ingredients;
-        updatedIngredients[key] = ingredient;
+        updatedIngredients[updatedIngredients.find(
+            element => element.id === id
+        )] = ingredient;
+        
         setRecipe(prevRecipe => (
             {...prevRecipe, "ingredients": updatedIngredients}
         ));
@@ -45,9 +48,17 @@ function Recipe() {
         const currentIngredients = recipe.ingredients;
         const ingredDelIndex = currentIngredients.indexOf(ingredient);
         currentIngredients.splice(ingredDelIndex, 1)
-        console.log(currentIngredients)
         setRecipe(prevRecipe => (
             {...prevRecipe, "ingredients": currentIngredients}
+        ));
+    }
+
+    function deleteStep(step) {
+        const currentSteps = recipe.steps;
+        const stepDelIndex = currentSteps.indexOf(step);
+        currentSteps.splice(stepDelIndex, 1);
+        setRecipe(prevRecipe => (
+            {...prevRecipe, "steps": currentSteps}
         ));
     }
 
@@ -89,8 +100,8 @@ function Recipe() {
                 <div className="list-box recipe">
                     <ul>
                         { recipe.ingredients ?
-                            recipe.ingredients.map((ingredient, index) => (
-                                <li key={ index }>
+                            recipe.ingredients.map((ingredient) => (
+                                <li key={ ingredient.id }>
                                     { ingredient.quantity } { ingredient.unit } { ingredient.name }
                                 </li>
                             )) : <li key="0">No ingredients yet.</li>
@@ -104,9 +115,9 @@ function Recipe() {
                 <div className="list-box recipe">
                     { recipe.steps ? 
                         <ol>
-                            {recipe.steps.map((step, index) => (
-                                <li key={ index }>
-                                    { step }
+                            {recipe.steps.map((step) => (
+                                <li key={ step.id }>
+                                    { step.description }
                                 </li>
                             ))} 
                         </ol> : <ul>
@@ -120,7 +131,14 @@ function Recipe() {
                 </div>
                 <div className="list-box recipe">
                     <ul>
-                        <li key="0">Photo 1</li>
+                        {
+                            recipe.photos ?
+                                recipe.photos.map((photo) => (
+                                    <li key={ photo.id }>
+                                        <Link to={ photo.link }>Photo</Link>
+                                    </li>
+                                )) : <li key="0">No photos added yet.</li>
+                        }
                     </ul>
                 </div>
 
@@ -139,7 +157,7 @@ function Recipe() {
                         { recipe.tags ?
                             recipe.tags.map((tag, index) => (
                                 <li key={ index }>
-                                    { tag }
+                                    { tag.name }
                                 </li>
                             )) : <li key="0">Add tags here.</li>
                         }
@@ -182,18 +200,18 @@ function Recipe() {
                 <div className="list-box recipe edit-ingredients">
                     <ul>
                         { recipe.ingredients ?
-                            recipe.ingredients.map((ingredient, index) => (
-                                <li key={ index }>
+                            recipe.ingredients.map((ingredient) => (
+                                <li key={ ingredient.id }>
                                     <TextareaAutosize id="first-child" defaultValue={ ingredient.quantity } onChange={ (e) => {
-                                            updateRecipeObjIngred(e.currentTarget.parentElement, index);
+                                            updateRecipeObjIngred(e.currentTarget.parentElement, ingredient.id);
                                         }
                                     }/>
                                     <TextareaAutosize defaultValue={ ingredient.unit } onChange={ (e) => {
-                                            updateRecipeObjIngred(e.currentTarget.parentElement, index);
+                                            updateRecipeObjIngred(e.currentTarget.parentElement, ingredient.id);
                                         }
                                     }/>
                                     <TextareaAutosize id="last-child" defaultValue={ ingredient.name } onChange={ (e) => {
-                                            updateRecipeObjIngred(e.currentTarget.parentElement, index);
+                                            updateRecipeObjIngred(e.currentTarget.parentElement, ingredient.id);
                                         }
                                     }/>
                                     <img className="delete-item" src={ Delete } onClick={ () => deleteIngredient(ingredient) } />
@@ -207,12 +225,13 @@ function Recipe() {
                 <div className="recipe-list-title">
                     <p className="list-box-info">Method:</p>
                 </div>
-                <div className="list-box recipe">
+                <div className="list-box recipe edit-steps">
                     { recipe.steps ? 
                         <ol>
-                            {recipe.steps.map((step, index) => (
-                                <li key={ index }>
-                                    { step }
+                            {recipe.steps.map((step) => (
+                                <li key={ step.id }>
+                                    <TextareaAutosize defaultValue={ step.description }></TextareaAutosize>
+                                    <img className="delete-item" src={ Delete } onClick={ () => deleteStep(step) } />
                                 </li>
                             ))} 
                         </ol> : <ul>
@@ -227,7 +246,14 @@ function Recipe() {
                 </div>
                 <div className="list-box recipe">
                     <ul>
-                        <li key="0">Photo 1</li>
+                    {
+                        recipe.photos ?
+                            recipe.photos.map((photo) => (
+                                <li key={ photo.id }>
+                                    <Link to={ photo.link }>Photo</Link>
+                                </li>
+                            )) : <li key="0">No photos added yet.</li>
+                    }
                     </ul>
                 </div>
 
@@ -244,9 +270,9 @@ function Recipe() {
                 <div className="list-box recipe" id="tag-box">
                     <ul>
                         { recipe.tags ?
-                            recipe.tags.map((tag, index) => (
-                                <li key={ index }>
-                                    { tag }
+                            recipe.tags.map((tag) => (
+                                <li key={ tag.id }>
+                                    { tag.name }
                                 </li>
                             )) : <li key="0">Add tags here.</li>
                         }

@@ -1,4 +1,5 @@
 /* Variables */
+/*$list-box-text: #928f75;*/
 /* Imports */
 .how-to {
   margin: 5px 0; }
@@ -130,7 +131,8 @@ button.general.recipe:hover {
   color: #F4F1DE; }
 
 div.list-box.recipe li {
-  width: 100%; }
+  width: 100%;
+  display: list-item; }
 
 div.list-box.recipe li:hover {
   margin-left: 0;
@@ -145,7 +147,8 @@ div.list-box.edit-ingredients textarea {
   background-color: #FCFAF1;
   padding: 0;
   resize: none;
-  border: 1px dashed #D2CEB0; }
+  border: 1px dashed #D2CEB0;
+  color: #46442e; }
 
 div.list-box.edit-ingredients textarea#first-child {
   width: 25%;
@@ -154,6 +157,9 @@ div.list-box.edit-ingredients textarea#first-child {
 div.list-box.edit-ingredients textarea#last-child {
   width: 55%;
   margin-left: 10px; }
+
+div.list-box.edit-ingredients li {
+  display: flex; }
 
 div.list-box.edit-ingredients .delete-item {
   width: 24px;
@@ -168,6 +174,34 @@ div.list-box.edit-ingredients .delete-item:hover {
 
 @media screen and (min-width: 900px) {
   div.list-box.edit-ingredients .delete-item {
+    right: 0;
+    /* Do something elese */ } }
+
+div.list-box.edit-steps li {
+  display: flex; }
+
+div.list-box.edit-steps textarea {
+  border: 1px dashed #D2CEB0;
+  background-color: #FCFAF1;
+  padding: 0;
+  resize: none;
+  color: #46442e;
+  width: 100%;
+  display: inline; }
+
+div.list-box.edit-steps .delete-item {
+  width: 24px;
+  height: auto;
+  position: absolute;
+  right: 8%;
+  transition: transform 0.3s ease; }
+
+div.list-box.edit-steps .delete-item:hover {
+  transform: scale(1.1);
+  cursor: pointer; }
+
+@media screen and (min-width: 900px) {
+  div.list-box.edit-steps .delete-item {
     right: 0;
     /* Do something elese */ } }
 
@@ -405,7 +439,7 @@ div.list-box {
     padding: 4% 5%;
     text-decoration: none;
     list-style-type: none;
-    color: #928f75; }
+    color: #46442e; }
     div.list-box ol li, div.list-box ul li {
       margin-bottom: 10px;
       transition: margin-left 0.4s ease;
@@ -423,7 +457,7 @@ div.list-box {
       color: inherit; }
   div.list-box p {
     padding: 4% 5%;
-    color: #928f75; }
+    color: #46442e; }
 
 div.list-box#tag-box ul {
   display: flex;
