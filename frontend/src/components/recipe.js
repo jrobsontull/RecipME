@@ -3,6 +3,7 @@ import { Link, useParams, useResolvedPath } from 'react-router-dom';
 import RecipesAPI from '../utils/recipes-api';
 import AuthContext from '../utils/auth.context';
 import TextareaAutosize from 'react-textarea-autosize';
+import { v4 as uuid } from 'uuid';
 
 import Logo from '../assets/img/pie_logo_orange.svg';
 import Edit from '../assets/img/edit_icon.svg';
@@ -30,14 +31,17 @@ function Recipe() {
     function updateRecipeObjIngred(parent, id) {
         const children = parent.children;
         const ingredient = {
-            "quantity": children[0].value,
+            "id": id,
+            "quantity": parseInt(children[0].value),
             "unit": children[1].value,
             "name": children[2].value
         }
         const updatedIngredients = recipe.ingredients;
-        updatedIngredients[updatedIngredients.find(
+        const originalIngred = updatedIngredients.find(
             element => element.id === id
-        )] = ingredient;
+        );
+        const originalIndex = updatedIngredients.indexOf(originalIngred);
+        updatedIngredients[originalIndex] = ingredient;
         
         setRecipe(prevRecipe => (
             {...prevRecipe, "ingredients": updatedIngredients}
@@ -53,10 +57,51 @@ function Recipe() {
         ));
     }
 
+    function addIngredient() {
+        const currentIngredients = recipe.ingredients;
+        currentIngredients.push({ 
+            "id": uuid(),
+            "quantity": null,
+            "unit": "",
+            "name": ""
+        });
+        setRecipe(prevRecipe => (
+            {...prevRecipe, "ingredients": currentIngredients}
+        ));
+    }
+
+    function updateSteps(step, id) {
+        const newStep = {
+            "id": id,
+            "description": step.value
+        }
+        const updatedSteps = recipe.steps;
+        const originalStep = updatedSteps.find(
+            element => element.id === id
+        );
+        const originalIndex = updatedSteps.indexOf(originalStep);
+        updatedSteps[originalIndex] = newStep;
+        
+        setRecipe(prevRecipe => (
+            {...prevRecipe, "steps": updatedSteps}
+        ));
+    }
+
     function deleteStep(step) {
         const currentSteps = recipe.steps;
         const stepDelIndex = currentSteps.indexOf(step);
         currentSteps.splice(stepDelIndex, 1);
+        setRecipe(prevRecipe => (
+            {...prevRecipe, "steps": currentSteps}
+        ));
+    }
+
+    function addStep() {
+        const currentSteps = recipe.steps;
+        currentSteps.push({
+            "id": uuid(),
+            "description": ""
+        })
         setRecipe(prevRecipe => (
             {...prevRecipe, "steps": currentSteps}
         ));
@@ -168,7 +213,6 @@ function Recipe() {
             </div>
         ) : 
         // Edit mode enabled
-        <form>
             <div className="react-container">   
                 <div className="recipe-title">
                     <div className="name">
@@ -220,7 +264,7 @@ function Recipe() {
                         }
                     </ul>
                 </div>
-                <button className="general recipe">Add ingredient</button>
+                <button className="general recipe" onClick={ () => addIngredient() }>Add ingredient</button>
 
                 <div className="recipe-list-title">
                     <p className="list-box-info">Method:</p>
@@ -230,7 +274,7 @@ function Recipe() {
                         <ol>
                             {recipe.steps.map((step) => (
                                 <li key={ step.id }>
-                                    <TextareaAutosize defaultValue={ step.description }></TextareaAutosize>
+                                    <TextareaAutosize defaultValue={ step.description } onChange={ (e) => updateSteps(e.target, step.id) }></TextareaAutosize>
                                     <img className="delete-item" src={ Delete } onClick={ () => deleteStep(step) } />
                                 </li>
                             ))} 
@@ -239,7 +283,7 @@ function Recipe() {
                         </ul>
                     }
                 </div>
-                <button className="general recipe">Add step</button>
+                <button className="general recipe" onClick={ () => addStep() }>Add step</button>
 
                 <div className="recipe-list-title">
                     <p className="list-box-info">Photos:</p>
@@ -286,7 +330,6 @@ function Recipe() {
                 <img className="pie-logo" src={ Logo } alt="logo"/>
                 <div className="line-br"></div>
             </div>
-        </form>
     );
 }
 
