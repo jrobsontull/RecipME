@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Link, useParams, useResolvedPath } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import RecipesAPI from '../utils/recipes-api';
 import AuthContext from '../utils/auth.context';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -14,15 +14,24 @@ function Recipe() {
     const params = useParams();
     const { user } = useContext(AuthContext);
     const [ recipe, setRecipe ] = useState({});
+    const [ origRecipe, setOrigRecipe] = useState({})
     const [ editMode, isEditing ] = useState(false);
 
     function editRecipe(e) {
         //e.preventDefault();
+        if (editMode) {
+            // Dsiable edit mode
+            const clone = structuredClone(origRecipe);
+            setRecipe(clone);
+        } else {
+            // Enter edit mode
+            const clone = structuredClone(recipe);
+            setOrigRecipe(clone);
+        }
         isEditing(setInverse => !setInverse);
     }
 
     function updateRecipeObj(target, property) {
-        console.log(target.value, [property])
         setRecipe(prevRecipe => (
             {...prevRecipe, [property]: target.value}
         ));
@@ -58,13 +67,14 @@ function Recipe() {
     }
 
     function addIngredient() {
-        const currentIngredients = recipe.ingredients;
-        currentIngredients.push({ 
+        let currentIngredients = recipe.ingredients;
+        const newIngred = {
             "id": uuid(),
             "quantity": null,
             "unit": "",
             "name": ""
-        });
+        }
+        currentIngredients ? currentIngredients.push(newIngred) : currentIngredients = newIngred;
         setRecipe(prevRecipe => (
             {...prevRecipe, "ingredients": currentIngredients}
         ));
@@ -105,6 +115,20 @@ function Recipe() {
         setRecipe(prevRecipe => (
             {...prevRecipe, "steps": currentSteps}
         ));
+    }
+
+    function saveChanges() {
+        // Put changes to db
+        console.log('Saving changes...');
+        const response = RecipesAPI.editRecipe(recipe);
+        if (response) {
+            const clone = structuredClone(recipe);
+            setOrigRecipe(clone);
+        } else {
+            const clone = structuredClone(origRecipe);
+            setRecipe(clone);
+        }
+        isEditing(setInverse => !setInverse);
     }
 
     useEffect(() => {
@@ -174,13 +198,13 @@ function Recipe() {
                 <div className="recipe-list-title">
                     <p className="list-box-info">Photos:</p>
                 </div>
-                <div className="list-box recipe">
+                <div className="list-box recipe photo">
                     <ul>
                         {
                             recipe.photos ?
                                 recipe.photos.map((photo) => (
                                     <li key={ photo.id }>
-                                        <Link to={ photo.link }>Photo</Link>
+                                        <img src="" alt='Photo'></img>
                                     </li>
                                 )) : <li key="0">No photos added yet.</li>
                         }
@@ -288,13 +312,13 @@ function Recipe() {
                 <div className="recipe-list-title">
                     <p className="list-box-info">Photos:</p>
                 </div>
-                <div className="list-box recipe">
+                <div className="list-box recipe photo">
                     <ul>
                     {
                         recipe.photos ?
                             recipe.photos.map((photo) => (
                                 <li key={ photo.id }>
-                                    <Link to={ photo.link }>Photo</Link>
+                                    <img src="" alt='Photo'></img>
                                 </li>
                             )) : <li key="0">No photos added yet.</li>
                     }
@@ -324,7 +348,7 @@ function Recipe() {
                 </div>
                 <div className="line-br"></div>
                 <div className="db-btns">
-                    <button className="general">Save changes</button>
+                    <button className="general" onClick={ () => saveChanges() }>Save changes</button>
                     <button className="general">Delete recipe</button>
                 </div>
                 <img className="pie-logo" src={ Logo } alt="logo"/>

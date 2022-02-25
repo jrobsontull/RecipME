@@ -144,7 +144,7 @@ export default class RecipesDAO {
         tags
     ) {
         try {
-            const updateResponse = await recipes.updateOne(
+            const updateResponse = await recipes.findOneAndUpdate(
                 { "user_id": userId, "_id": ObjectId(recipeId) },
                 { $set: {
                     "name": name,
@@ -155,7 +155,7 @@ export default class RecipesDAO {
                     "photos": photos,
                     "notes": notes,
                     "tags": tags
-                }}
+                }}, { returnNewDocument : true }
             )
             
             return updateResponse

@@ -33,7 +33,9 @@ function MyRecipes() {
             )) : <li id="none">You have no recipes yet!</li> }
         </ul>
       </div>
-      <button className="general">Add recipe</button>
+      <button className="general">
+        <Link to={'/add-recipe'}>Add recipe</Link>
+      </button>
       <div className="my-recipes-list-title">
         <p className="list-box-info">Tags</p>
         <div className="arrow right"></div>

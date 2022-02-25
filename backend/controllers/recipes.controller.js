@@ -95,7 +95,7 @@ export default class RecipesController {
     static async apiEditRecipe(req, res, next) {
         try {
             /* need to check id later on */
-            const recipeId = req.body.recipe_id
+            const recipeId = req.body._id
             const userId = req.body.user_id
             const name = req.body.name
             const serves = req.body.serves
@@ -124,7 +124,7 @@ export default class RecipesController {
                 res.status(400).json({ error: error.message })
             }
 
-            if (recipeResponse.modifiedCount === 0) {
+            if (recipeResponse.value === null) {
                 /* Recipe not updated */
                 throw new Error(
                     "Unable to update the recipe. User may not be the original poster."

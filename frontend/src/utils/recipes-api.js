@@ -16,6 +16,13 @@ export default class RecipesAPI {
             return recipe;
         }
     }
+
+    static async editRecipe(recipe) {
+        const response = await putRequest(recipe, 'recipe/');
+        if (response) {
+            return response;
+        } 
+    }
 }
 
 async function postRequest(body, url) {
@@ -25,6 +32,23 @@ async function postRequest(body, url) {
 
         if (response.status === 200) {
             console.log('Posted: ' + body + ' to ' + url + ' and got good response.');
+            return response;
+        } else {
+            return null;
+        }
+    } catch (e) {
+        console.log('Error: ' + e.message);
+        return null;
+    }
+}
+
+async function putRequest(body, url) {
+    try {
+        const payload = body;
+        const response = await http.put(url, payload);
+
+        if (response.status === 200) {
+            console.log('Put: ' + body + ' to ' + url + ' and got good response.');
             return response;
         } else {
             return null;

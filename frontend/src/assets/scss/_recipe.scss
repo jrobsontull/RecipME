@@ -149,6 +149,20 @@ div.list-box.recipe {
     }
 }
 
+// div.list-box.recipe.photo {
+//     ul {
+//         display: flex;
+//         flex-wrap: nowrap;
+//         justify-content: space-between;
+
+//         li {
+//             border: 1px solid red;
+//             width: auto;
+//             height: 200px;
+//         }
+//     }
+// }
+
 div.list-box.edit-ingredients {
     textarea {
         width: 20%;
@@ -229,6 +243,10 @@ div.list-box.edit-steps {
             /* Do something elese */
         }
     }
+}
+
+.list-box.recipe#tag-box li {
+    width: auto;
 }
 
 .list-box.recipe#tag-box li:hover {

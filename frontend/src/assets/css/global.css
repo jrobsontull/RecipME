@@ -205,6 +205,9 @@ div.list-box.edit-steps .delete-item:hover {
     right: 0;
     /* Do something elese */ } }
 
+.list-box.recipe#tag-box li {
+  width: auto; }
+
 .list-box.recipe#tag-box li:hover {
   transform: scale(1);
   cursor: default; }
