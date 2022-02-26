@@ -23,6 +23,13 @@ export default class RecipesAPI {
       return response;
     }
   }
+
+  static async newRecipe(recipe) {
+    const response = await postRequest(recipe, 'recipe/');
+    if (response) {
+      return response;
+    }
+  }
 }
 
 async function postRequest(body, url) {

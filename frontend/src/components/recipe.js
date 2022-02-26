@@ -412,7 +412,10 @@ function Recipe() {
                 onChange={(e) => updateRecipeObj(e.target, 'notes')}
               />
             ) : (
-              <TextareaAutosize placeholder="Add recipe notes here." />
+              <TextareaAutosize
+                placeholder="Add recipe notes here."
+                onChange={(e) => updateRecipeObj(e.target, 'notes')}
+              />
             )}
           </li>
         </ul>
