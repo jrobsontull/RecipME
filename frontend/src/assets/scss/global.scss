@@ -4,6 +4,7 @@ $dark-orang: #e07a5f;
 $dark-text: #141412;
 $lighter-dark: #f1ad9b;
 $form-backgrd: #fcfaf1;
+$form-backgrd-lighter: hsl(50, 100%, 99%);
 $form-border: #d2ceb0;
 $disabled-col: #e4b3a6;
 $hover-btn: #e78c73;
@@ -11,25 +12,25 @@ $hover-btn: #e78c73;
 $list-box-text: #46442e;
 
 /* Imports */
-@import "_home";
-@import "_my-recipes";
-@import "_recipe";
+@import '_home';
+@import '_my-recipes';
+@import '_recipe';
 
 @font-face {
-  font-family: "Raleway Flex";
-  src: url("../fonts/Raleway-VariableFont_wght.ttf")
-      format("woff2 supports variations"),
-    url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2-variations");
+  font-family: 'Raleway Flex';
+  src: url('../fonts/Raleway-VariableFont_wght.ttf')
+      format('woff2 supports variations'),
+    url('../fonts/Raleway-VariableFont_wght.ttf') format('woff2-variations');
   font-weight: 100 900;
   font-stretch: 25% 151%;
 }
 
 @font-face {
-  font-family: "Raleway Italic Flex";
-  src: url("../fonts/Raleway-Italic-VariableFont_wght.ttf")
-      format("woff2 supports variations"),
-    url("../fonts/Raleway-Italic-VariableFont_wght.ttf")
-      format("woff2-variations");
+  font-family: 'Raleway Italic Flex';
+  src: url('../fonts/Raleway-Italic-VariableFont_wght.ttf')
+      format('woff2 supports variations'),
+    url('../fonts/Raleway-Italic-VariableFont_wght.ttf')
+      format('woff2-variations');
   font-weight: 100 900;
   font-stretch: 25% 151%;
 }
@@ -50,7 +51,7 @@ $list-box-text: #46442e;
 /* Styling */
 body {
   background-color: $light-orang;
-  font-family: "Raleway Flex", "sans-serif";
+  font-family: 'Raleway Flex', 'sans-serif';
   font-size: 20px;
 }
 
@@ -225,7 +226,7 @@ form.general-form {
     border-color: $dark-orang;
   }
 
-  button[type="submit"] {
+  button[type='submit'] {
     background-color: $dark-orang;
     border: none;
     color: $light-orang;
@@ -234,16 +235,16 @@ form.general-form {
     transition: background-color 0.4s ease;
   }
 
-  button[type="submit"]:disabled {
+  button[type='submit']:disabled {
     background-color: $disabled-col;
   }
 
-  button[type="submit"]:hover {
+  button[type='submit']:hover {
     cursor: pointer;
     background-color: $hover-btn;
   }
 
-  button[type="submit"]:disabled:hover {
+  button[type='submit']:disabled:hover {
     cursor: not-allowed;
     background-color: $disabled-col;
   }
@@ -296,8 +297,6 @@ p.list-box-info:first-of-type {
 
 div.list-box {
   width: 85%;
-  background-color: $form-backgrd;
-  border: 1px solid $form-border;
   font-size: 18px;
 
   ol,
@@ -306,6 +305,8 @@ div.list-box {
     text-decoration: none;
     list-style-type: none;
     color: $list-box-text;
+    background-color: $form-backgrd;
+    border: 1px solid $form-border;
 
     li {
       margin-bottom: 10px;
@@ -336,6 +337,8 @@ div.list-box {
   p {
     padding: 4% 5%;
     color: $list-box-text;
+    background-color: $form-backgrd;
+    border: 1px solid $form-border;
   }
 }
 
@@ -353,7 +356,7 @@ div.list-box#tag-box {
     }
 
     li:before {
-      content: "\0023";
+      content: '\0023';
     }
 
     li:hover {

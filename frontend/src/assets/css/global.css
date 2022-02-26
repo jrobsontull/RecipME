@@ -126,7 +126,8 @@ button.general.recipe {
   background-color: #fcfaf1;
   color: #e07a5f;
   border: 1px solid #e07a5f;
-  margin: 12px 0 4px 0; }
+  margin: 0 0 4px 0;
+  font-size: 18px; }
 
 button.general.recipe:hover {
   color: #f4f1de; }
@@ -142,6 +143,9 @@ div.list-box.recipe li:hover {
 div.list-box.recipe ol {
   list-style: decimal;
   list-style-position: inside; }
+
+div.list-box.edit-ingredients ul {
+  border-width: 1px 1px 0 1px; }
 
 div.list-box.edit-ingredients textarea {
   width: 20%;
@@ -178,10 +182,15 @@ div.list-box.edit-ingredients .delete-item:hover {
     right: 0;
     /* Do something elese */ } }
 
-div.list-box.edit-steps li {
+div.list-box.edit-steps ol {
+  border-width: 1px 1px 0 1px; }
+
+div.list-box.edit-steps li,
+div.list-box.edit-notes li {
   display: flex; }
 
-div.list-box.edit-steps textarea {
+div.list-box.edit-steps textarea,
+div.list-box.edit-notes textarea {
   border: 1px dashed #d2ceb0;
   background-color: #fcfaf1;
   padding: 0;
@@ -190,21 +199,24 @@ div.list-box.edit-steps textarea {
   width: 100%;
   display: inline; }
 
-div.list-box.edit-steps .delete-item {
+div.list-box.edit-steps .delete-item,
+div.list-box.edit-notes .delete-item {
   width: 24px;
   height: auto;
   position: absolute;
   right: 8%;
   transition: transform 0.3s ease; }
 
-div.list-box.edit-steps .delete-item:hover {
+div.list-box.edit-steps .delete-item:hover,
+div.list-box.edit-notes .delete-item:hover {
   transform: scale(1.1);
   cursor: pointer; }
 
 @media screen and (min-width: 900px) {
-  div.list-box.edit-steps .delete-item {
+  div.list-box.edit-steps .delete-item,
+  div.list-box.edit-notes .delete-item {
     right: 0;
-    /* Do something elese */ } }
+    /* Do something else */ } }
 
 .list-box.recipe#tag-box li {
   width: auto; }
@@ -212,6 +224,41 @@ div.list-box.edit-steps .delete-item:hover {
 .list-box.recipe#tag-box li:hover {
   transform: scale(1);
   cursor: default; }
+
+div.list-box.recipe.edit-tags ul {
+  border-width: 1px 1px 0 1px; }
+
+div.list-box.recipe.edit-tags .delete-item {
+  width: 20px;
+  height: auto;
+  transition: transform 0.3s ease;
+  margin: 0 5px; }
+
+div.list-box.recipe.edit-tags .delete-item:hover {
+  transform: scale(1.1);
+  cursor: pointer; }
+
+.add-tag-btn-in {
+  width: 85%;
+  display: flex; }
+  .add-tag-btn-in input {
+    width: 65%;
+    padding: 8px 5%;
+    border-style: solid;
+    border-color: #d2ceb0;
+    border-width: 1px 0 1px 1px;
+    background-color: #fffefa; }
+  .add-tag-btn-in button {
+    width: 35%;
+    padding: 8px 12px;
+    background-color: #fcfaf1;
+    color: #e07a5f;
+    border: 1px solid #e07a5f;
+    transition: all 0.3s ease; }
+  .add-tag-btn-in button:hover {
+    color: #f4f1de;
+    background-color: #e07a5f;
+    cursor: pointer; }
 
 .db-btns {
   width: 100%;
@@ -224,13 +271,13 @@ div.list-box.edit-steps .delete-item:hover {
     margin-top: 18px; }
 
 @font-face {
-  font-family: "Raleway Flex";
+  font-family: 'Raleway Flex';
   src: url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2 supports variations"), url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2-variations");
   font-weight: 100 900;
   font-stretch: 25% 151%; }
 
 @font-face {
-  font-family: "Raleway Italic Flex";
+  font-family: 'Raleway Italic Flex';
   src: url("../fonts/Raleway-Italic-VariableFont_wght.ttf") format("woff2 supports variations"), url("../fonts/Raleway-Italic-VariableFont_wght.ttf") format("woff2-variations");
   font-weight: 100 900;
   font-stretch: 25% 151%; }
@@ -250,7 +297,7 @@ div.list-box.edit-steps .delete-item:hover {
 /* Styling */
 body {
   background-color: #f4f1de;
-  font-family: "Raleway Flex", "sans-serif";
+  font-family: 'Raleway Flex', 'sans-serif';
   font-size: 20px; }
 
 .content {
@@ -388,19 +435,19 @@ form.general-form {
     color: #d2ceb0; }
   form.general-form input:hover {
     border-color: #e07a5f; }
-  form.general-form button[type="submit"] {
+  form.general-form button[type='submit'] {
     background-color: #e07a5f;
     border: none;
     color: #f4f1de;
     width: 100%;
     margin-bottom: 20px;
     transition: background-color 0.4s ease; }
-  form.general-form button[type="submit"]:disabled {
+  form.general-form button[type='submit']:disabled {
     background-color: #e4b3a6; }
-  form.general-form button[type="submit"]:hover {
+  form.general-form button[type='submit']:hover {
     cursor: pointer;
     background-color: #e78c73; }
-  form.general-form button[type="submit"]:disabled:hover {
+  form.general-form button[type='submit']:disabled:hover {
     cursor: not-allowed;
     background-color: #e4b3a6; }
 
@@ -441,15 +488,15 @@ p.list-box-info:first-of-type {
 
 div.list-box {
   width: 85%;
-  background-color: #fcfaf1;
-  border: 1px solid #d2ceb0;
   font-size: 18px; }
   div.list-box ol,
   div.list-box ul {
     padding: 4% 5%;
     text-decoration: none;
     list-style-type: none;
-    color: #46442e; }
+    color: #46442e;
+    background-color: #fcfaf1;
+    border: 1px solid #d2ceb0; }
     div.list-box ol li,
     div.list-box ul li {
       margin-bottom: 10px;
@@ -472,7 +519,9 @@ div.list-box {
       color: inherit; }
   div.list-box p {
     padding: 4% 5%;
-    color: #46442e; }
+    color: #46442e;
+    background-color: #fcfaf1;
+    border: 1px solid #d2ceb0; }
 
 div.list-box#tag-box ul {
   display: flex;
@@ -484,7 +533,7 @@ div.list-box#tag-box ul {
     line-height: 30px;
     transition: transform 0.2s ease; }
   div.list-box#tag-box ul li:before {
-    content: "\0023"; }
+    content: '\0023'; }
   div.list-box#tag-box ul li:hover {
     cursor: pointer;
     transform: scale(1.1); }

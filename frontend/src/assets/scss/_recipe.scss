@@ -126,7 +126,8 @@ button.general.recipe {
   background-color: $form-backgrd;
   color: $dark-orang;
   border: 1px solid $dark-orang;
-  margin: 12px 0 4px 0;
+  margin: 0 0 4px 0;
+  font-size: 18px;
 }
 
 button.general.recipe:hover {
@@ -165,6 +166,10 @@ div.list-box.recipe {
 // }
 
 div.list-box.edit-ingredients {
+  ul {
+    border-width: 1px 1px 0 1px;
+  }
+
   textarea {
     width: 20%;
     background-color: $form-backgrd;
@@ -210,6 +215,13 @@ div.list-box.edit-ingredients {
 }
 
 div.list-box.edit-steps {
+  ol {
+    border-width: 1px 1px 0 1px;
+  }
+}
+
+div.list-box.edit-steps,
+div.list-box.edit-notes {
   li {
     display: flex;
   }
@@ -240,7 +252,7 @@ div.list-box.edit-steps {
   @media screen and (min-width: 900px) {
     .delete-item {
       right: 0;
-      /* Do something elese */
+      /* Do something else */
     }
   }
 }
@@ -252,6 +264,53 @@ div.list-box.edit-steps {
 .list-box.recipe#tag-box li:hover {
   transform: scale(1);
   cursor: default;
+}
+
+div.list-box.recipe.edit-tags {
+  ul {
+    border-width: 1px 1px 0 1px;
+  }
+
+  .delete-item {
+    width: 20px;
+    height: auto;
+    transition: transform 0.3s ease;
+    margin: 0 5px;
+  }
+
+  .delete-item:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+.add-tag-btn-in {
+  width: 85%;
+  display: flex;
+
+  input {
+    width: 65%;
+    padding: 8px 5%;
+    border-style: solid;
+    border-color: $form-border;
+    border-width: 1px 0 1px 1px;
+    background-color: $form-backgrd-lighter;
+  }
+
+  button {
+    width: 35%;
+    padding: 8px 12px;
+    background-color: $form-backgrd;
+    color: $dark-orang;
+    border: 1px solid $dark-orang;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    color: $light-orang;
+    background-color: $dark-orang;
+    cursor: pointer;
+  }
 }
 
 .db-btns {

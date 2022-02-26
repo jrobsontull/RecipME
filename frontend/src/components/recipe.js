@@ -112,6 +112,23 @@ function Recipe() {
     setRecipe((prevRecipe) => ({ ...prevRecipe, steps: currentSteps }));
   }
 
+  function addTag(target) {
+    const currentTags = recipe.tags;
+    const newTag = target.parentElement.children[0].value;
+    currentTags.push({
+      id: uuid(),
+      name: newTag,
+    });
+    setRecipe((prevRecipe) => ({ ...prevRecipe, tags: currentTags }));
+  }
+
+  function deleteTag(tag) {
+    const currentTags = recipe.tags;
+    const tagDelIndex = currentTags.indexOf(tag);
+    currentTags.splice(tagDelIndex, 1);
+    setRecipe((prevRecipe) => ({ ...prevRecipe, tags: currentTags }));
+  }
+
   function saveChanges() {
     // Put changes to db
     console.log('Saving changes...');
@@ -212,7 +229,7 @@ function Recipe() {
         <p className="list-box-info">Notes:</p>
       </div>
       <div className="list-box recipe">
-        <p>{recipe.notes ? recipe.notes : 'Write any notes here.'}</p>
+        <p>{recipe.notes ? recipe.notes : 'No notes added.'}</p>
       </div>
 
       <div className="recipe-list-title">
@@ -374,23 +391,52 @@ function Recipe() {
       <div className="recipe-list-title">
         <p className="list-box-info">Notes:</p>
       </div>
-      <div className="list-box recipe">
-        <p>{recipe.notes ? recipe.notes : 'Write any notes here.'}</p>
+      <div className="list-box recipe edit-notes">
+        <ul>
+          <li>
+            {recipe.notes ? (
+              <TextareaAutosize
+                defaultValue={recipe.notes}
+                placeholder="Add recipe notes here."
+                onChange={(e) => updateRecipeObj(e.target, 'notes')}
+              />
+            ) : (
+              <TextareaAutosize placeholder="Add recipe notes here." />
+            )}
+          </li>
+        </ul>
       </div>
 
       <div className="recipe-list-title">
         <p className="list-box-info">Tags:</p>
       </div>
-      <div className="list-box recipe" id="tag-box">
+      <div className="list-box recipe edit-tags" id="tag-box">
         <ul>
           {recipe.tags ? (
-            recipe.tags.map((tag) => <li key={tag.id}>{tag.name}</li>)
+            recipe.tags.map((tag) => (
+              <li key={tag.id}>
+                {tag.name}
+                <img
+                  src={Delete}
+                  className="delete-item"
+                  onClick={() => deleteTag(tag)}
+                />
+              </li>
+            ))
           ) : (
             <li key="0">Add tags here.</li>
           )}
         </ul>
       </div>
+      <div className="add-tag-btn-in">
+        <input className="add-tag-input" placeholder="Tag name"></input>
+        <button className="add-tag-btn" onClick={(e) => addTag(e.target)}>
+          Add tag
+        </button>
+      </div>
+
       <div className="line-br"></div>
+
       <div className="db-btns">
         <button className="general" onClick={() => saveChanges()}>
           Save changes
