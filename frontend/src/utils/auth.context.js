@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
-import axios from "axios";
+import React, { createContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
 const AuthContext = createContext();
 
@@ -11,14 +11,14 @@ function AuthProvider({ children }) {
   });
 
   async function authUser() {
-    console.log("authUser() called");
+    console.log('authUser() called');
     setUser((currentState) => {
       let result = currentState;
       result.isVerifying = true;
       return result;
     });
 
-    const userLocal = localStorage.getItem("user");
+    const userLocal = localStorage.getItem('user');
 
     if (!userLocal) {
       // No storage exists
@@ -38,7 +38,7 @@ function AuthProvider({ children }) {
         isVerifying: false,
       });
     }
-    console.log("authUser() finished");
+    console.log('authUser() finished');
   }
 
   //useEffect(() => {
@@ -50,7 +50,7 @@ function AuthProvider({ children }) {
       setUser({ user: null, verified: false, isVerifying: true });
       const header = {
         headers: {
-          "Content-type": "application/json",
+          'Content-type': 'application/json',
         },
       };
 
@@ -59,21 +59,21 @@ function AuthProvider({ children }) {
       };
 
       const response = await axios.post(
-        "http://localhost:5000/api/v1/user/verify",
+        'http://localhost:5000/api/v1/user/verify',
         payload,
         header
       );
 
       if (response.status === 200) {
         console.log(
-          "Identity confirmed. Server response: " + response.data.identity
+          'Identity confirmed. Server response: ' + response.data.identity
         );
         return true;
       } else {
         return false;
       }
     } catch (e) {
-      console.log("Error: " + e);
+      console.log('Error: ' + e);
       return false;
     }
   }

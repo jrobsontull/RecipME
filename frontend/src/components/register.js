@@ -1,18 +1,18 @@
-import React, { useContext, useState, useEffect } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import AuthContext from "../utils/auth.context";
+import React, { useContext, useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../utils/auth.context';
 
-import logo from "../assets/img/pie_logo_orange.svg";
-import Google from "../assets/img/google.svg";
+import logo from '../assets/img/pie_logo_orange.svg';
+import Google from '../assets/img/google.svg';
 
 function Register() {
   const { user, authUser } = useContext(AuthContext);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,7 +21,7 @@ function Register() {
   // Navigate away if logged in
   useEffect(() => {
     if (!user.isVerifying && user.verified) {
-      navigate("/my-recipes");
+      navigate('/my-recipes');
     }
   });
 
@@ -42,7 +42,7 @@ function Register() {
       setError(false);
       const header = {
         headers: {
-          "Content-type": "application/json",
+          'Content-type': 'application/json',
         },
       };
       const payload = {
@@ -54,16 +54,16 @@ function Register() {
       setIsLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/v1/user/register",
+        'http://localhost:5000/api/v1/user/register',
         payload,
         header
       );
 
-      localStorage.setItem("user", JSON.stringify(response.data));
+      localStorage.setItem('user', JSON.stringify(response.data));
       authUser();
 
       setIsLoading(false);
-      navigate("/dashboard");
+      navigate('/dashboard');
     } catch (e) {
       setError(e.response.data.error);
       setIsLoading(false);

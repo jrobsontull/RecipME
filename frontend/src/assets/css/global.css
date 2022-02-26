@@ -442,7 +442,8 @@ p.list-box-info:first-of-type {
 div.list-box {
   width: 85%;
   background-color: #fcfaf1;
-  border: 1px solid #d2ceb0; }
+  border: 1px solid #d2ceb0;
+  font-size: 18px; }
   div.list-box ol,
   div.list-box ul {
     padding: 4% 5%;

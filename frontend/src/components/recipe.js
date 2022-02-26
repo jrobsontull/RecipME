@@ -1,14 +1,14 @@
-import React, { useEffect, useContext, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import RecipesAPI from "../utils/recipes-api";
-import AuthContext from "../utils/auth.context";
-import TextareaAutosize from "react-textarea-autosize";
-import { v4 as uuid } from "uuid";
+import React, { useEffect, useContext, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import RecipesAPI from '../utils/recipes-api';
+import AuthContext from '../utils/auth.context';
+import TextareaAutosize from 'react-textarea-autosize';
+import { v4 as uuid } from 'uuid';
 
-import Logo from "../assets/img/pie_logo_orange.svg";
-import Edit from "../assets/img/edit_icon.svg";
-import EditActive from "../assets/img/edit_icon_active.svg";
-import Delete from "../assets/img/delete.svg";
+import Logo from '../assets/img/pie_logo_orange.svg';
+import Edit from '../assets/img/edit_icon.svg';
+import EditActive from '../assets/img/edit_icon_active.svg';
+import Delete from '../assets/img/delete.svg';
 
 function Recipe() {
   const params = useParams();
@@ -71,8 +71,8 @@ function Recipe() {
     const newIngred = {
       id: uuid(),
       quantity: null,
-      unit: "",
-      name: "",
+      unit: '',
+      name: '',
     };
     currentIngredients
       ? currentIngredients.push(newIngred)
@@ -107,14 +107,14 @@ function Recipe() {
     const currentSteps = recipe.steps;
     currentSteps.push({
       id: uuid(),
-      description: "",
+      description: '',
     });
     setRecipe((prevRecipe) => ({ ...prevRecipe, steps: currentSteps }));
   }
 
   function saveChanges() {
     // Put changes to db
-    console.log("Saving changes...");
+    console.log('Saving changes...');
     const response = RecipesAPI.editRecipe(recipe);
     if (response) {
       const clone = structuredClone(recipe);
@@ -137,7 +137,7 @@ function Recipe() {
     <div className="react-container">
       <div className="recipe-title">
         <div className="name">
-          <Link to={"/my-recipes"}>
+          <Link to={'/my-recipes'}>
             <div className="arrow left" />
           </Link>
           <h3>{recipe.name}</h3>
@@ -212,7 +212,7 @@ function Recipe() {
         <p className="list-box-info">Notes:</p>
       </div>
       <div className="list-box recipe">
-        <p>{recipe.notes ? recipe.notes : "Write any notes here."}</p>
+        <p>{recipe.notes ? recipe.notes : 'Write any notes here.'}</p>
       </div>
 
       <div className="recipe-list-title">
@@ -238,7 +238,7 @@ function Recipe() {
           <TextareaAutosize
             name="name"
             defaultValue={recipe.name}
-            onChange={(e) => updateRecipeObj(e.target, "name")}
+            onChange={(e) => updateRecipeObj(e.target, 'name')}
           ></TextareaAutosize>
         </div>
         <div className="recipe-edit">
@@ -375,7 +375,7 @@ function Recipe() {
         <p className="list-box-info">Notes:</p>
       </div>
       <div className="list-box recipe">
-        <p>{recipe.notes ? recipe.notes : "Write any notes here."}</p>
+        <p>{recipe.notes ? recipe.notes : 'Write any notes here.'}</p>
       </div>
 
       <div className="recipe-list-title">

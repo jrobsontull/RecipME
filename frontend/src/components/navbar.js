@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import LogoLight from "../assets/img/pie_logo_light.svg";
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import LogoLight from '../assets/img/pie_logo_light.svg';
 
-import AuthContext from "../utils/auth.context";
+import AuthContext from '../utils/auth.context';
 
 function Navbar() {
   const { user, authUser } = useContext(AuthContext);
@@ -10,15 +10,15 @@ function Navbar() {
   const navigate = useNavigate();
 
   function toggleHamburger(ham) {
-    ham.classList.toggle("change-state");
+    ham.classList.toggle('change-state');
     setHamburgerOpen(!hamburgerOpen);
   }
 
   function logout(ham) {
-    localStorage.removeItem("user");
+    localStorage.removeItem('user');
     authUser();
     toggleHamburger(ham);
-    navigate("/");
+    navigate('/');
   }
 
   return (
@@ -26,7 +26,7 @@ function Navbar() {
       <div className="header">
         <div className="brand">
           <img src={LogoLight} alt="Logo" />
-          <Link to={"/"} onClick={toggleHamburger}>
+          <Link to={'/'} onClick={toggleHamburger}>
             RecipME
           </Link>
         </div>
@@ -44,14 +44,14 @@ function Navbar() {
         </div>
       </div>
       {user.verified ? (
-        <ul className={hamburgerOpen ? "nav clicked" : "nav"}>
+        <ul className={hamburgerOpen ? 'nav clicked' : 'nav'}>
           <li className="item">
-            <Link to={"/my-recipes"} onClick={toggleHamburger}>
+            <Link to={'/my-recipes'} onClick={toggleHamburger}>
               My Recipes
             </Link>
           </li>
           <li className="item">
-            <Link to={"/settings"} onClick={toggleHamburger}>
+            <Link to={'/settings'} onClick={toggleHamburger}>
               Settings
             </Link>
           </li>
@@ -61,23 +61,23 @@ function Navbar() {
               logout(e.currentTarget);
             }}
           >
-            <Link to={"/"}>Logout</Link>
+            <Link to={'/'}>Logout</Link>
           </li>
         </ul>
       ) : (
-        <ul className={hamburgerOpen ? "nav clicked" : "nav"}>
+        <ul className={hamburgerOpen ? 'nav clicked' : 'nav'}>
           <li className="item">
-            <Link to={"/login"} onClick={toggleHamburger}>
+            <Link to={'/login'} onClick={toggleHamburger}>
               Sign In
             </Link>
           </li>
           <li className="item">
-            <Link to={"/register"} onClick={toggleHamburger}>
+            <Link to={'/register'} onClick={toggleHamburger}>
               Register
             </Link>
           </li>
           <li className="item">
-            <Link to={"/about"} onClick={toggleHamburger}>
+            <Link to={'/about'} onClick={toggleHamburger}>
               About
             </Link>
           </li>

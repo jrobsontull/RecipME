@@ -1,15 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../assets/img/pie_logo_orange.svg";
+import React, { useEffect, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthContext from '../utils/auth.context';
+import logo from '../assets/img/pie_logo_orange.svg';
 
 function Home() {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user.verified === true) {
+      navigate('/my-recipes');
+    }
+  });
+
   return (
     <div className="react-container">
       <div className="intro-text">
         <p>Welcome! This is a web-based recipie manager.</p>
         <p>
-          To start using, please <Link to={"/login"}>sign in</Link> or{" "}
-          <Link to={"/register"}>register</Link> for an account.
+          To start using, please <Link to={'/login'}>sign in</Link> or{' '}
+          <Link to={'/register'}>register</Link> for an account.
         </p>
       </div>
       <div className="line-br"></div>

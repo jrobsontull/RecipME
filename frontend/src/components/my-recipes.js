@@ -14,13 +14,13 @@ function MyRecipes() {
   useEffect(() => {
     RecipesAPI.getUserRecipes(user.user).then((response) => {
       setRecipes(response);
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <div className="react-container">
       <div className="intro-text">
-        Welcome back <strong>{ user.user.name }</strong>!
+        Welcome back <strong>{user.user.name}</strong>!
       </div>
       <div className="line-br"></div>
       <div className="my-recipes-list-title" id="first-child">
@@ -29,13 +29,20 @@ function MyRecipes() {
       </div>
       <div className="list-box">
         <ul>
-          { recipes.length > 0 ?
+          {recipes.length > 0 ? (
             recipes.map((recipe, index) => (
-              <li key={ index }><Link to={'/recipe/' + recipe._id}>{ recipe.name }</Link></li>
-            )) : <li id="none">You have no recipes yet!</li> }
+              <li key={index}>
+                <Link to={'/recipe/' + recipe._id}>{recipe.name}</Link>
+              </li>
+            ))
+          ) : (
+            <li id="none">You have no recipes yet!</li>
+          )}
         </ul>
       </div>
-      <button className="general" onClick={ () => navigate('/add-recipe') }>Add recipe</button>
+      <button className="general" onClick={() => navigate('/add-recipe')}>
+        Add recipe
+      </button>
       <div className="my-recipes-list-title">
         <p className="list-box-info">Tags</p>
         <div className="arrow right"></div>
@@ -68,7 +75,7 @@ function MyRecipes() {
           <li>Something recipe here</li>
         </ul>
       </div>
-      <img className="pie-logo" src={ Logo } alt="logo"/>
+      <img className="pie-logo" src={Logo} alt="logo" />
       <div className="line-br"></div>
     </div>
   );

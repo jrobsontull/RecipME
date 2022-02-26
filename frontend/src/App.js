@@ -1,20 +1,20 @@
-import React from "react";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { AuthProvider } from "./utils/auth.context";
+import React from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from './utils/auth.context';
 
-import "./assets/css/global.css";
+import './assets/css/global.css';
 
-import Navbar from "./components/navbar";
-import Home from "./components/home";
-import Login from "./components/login";
-import Register from "./components/register";
-import About from "./components/about";
-import MyRecipes from "./components/my-recipes";
-import Settings from "./components/settings";
-import Recipe from "./components/recipe";
-import AddRecipe from "./components/add-recipe";
+import Navbar from './components/navbar';
+import Home from './components/home';
+import Login from './components/login';
+import Register from './components/register';
+import About from './components/about';
+import MyRecipes from './components/my-recipes';
+import Settings from './components/settings';
+import Recipe from './components/recipe';
+import AddRecipe from './components/add-recipe';
 
-import ProtectedRoute from "./components/protected.route.js";
+import ProtectedRoute from './components/protected.route.js';
 
 function App() {
   return (
@@ -24,12 +24,12 @@ function App() {
           <Navbar />
           <div className="content">
             <Routes>
-              <Route path={"/"} element={<Home />} />
-              <Route path={"/login"} element={<Login />} />
-              <Route path={"/register"} element={<Register />} />
-              <Route path={"/about"} element={<About />} />
+              <Route path={'/'} element={<Home />} />
+              <Route path={'/login'} element={<Login />} />
+              <Route path={'/register'} element={<Register />} />
+              <Route path={'/about'} element={<About />} />
               <Route
-                path={"/my-recipes"}
+                path={'/my-recipes'}
                 element={
                   <ProtectedRoute>
                     <MyRecipes />
@@ -37,7 +37,7 @@ function App() {
                 }
               />
               <Route
-                path={"/recipe/:id"}
+                path={'/recipe/:id'}
                 element={
                   <ProtectedRoute>
                     <Recipe />
@@ -45,14 +45,14 @@ function App() {
                 }
               />
               <Route
-                path={"/add-recipe"}
+                path={'/add-recipe'}
                 element={
                   <ProtectedRoute>
                     <AddRecipe />
                   </ProtectedRoute>
                 }
               />
-              <Route path={"/settings"} element={<Settings />} />
+              <Route path={'/settings'} element={<Settings />} />
             </Routes>
           </div>
         </BrowserRouter>

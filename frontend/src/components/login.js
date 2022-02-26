@@ -1,16 +1,16 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import AuthContext from "../utils/auth.context";
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../utils/auth.context';
 
-import Logo from "../assets/img/pie_logo_orange.svg";
-import Google from "../assets/img/google.svg";
+import Logo from '../assets/img/pie_logo_orange.svg';
+import Google from '../assets/img/google.svg';
 
 function Login() {
   const { user, authUser } = useContext(AuthContext);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -19,7 +19,7 @@ function Login() {
   // Navigate away if logged in
   useEffect(() => {
     if (!user.isVerifying && user.verified) {
-      navigate("/my-recipes");
+      navigate('/my-recipes');
     }
   });
 
@@ -39,7 +39,7 @@ function Login() {
     try {
       const header = {
         headers: {
-          "Content-type": "application/json",
+          'Content-type': 'application/json',
         },
       };
       const payload = {
@@ -50,16 +50,16 @@ function Login() {
       setIsLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/v1/user/login",
+        'http://localhost:5000/api/v1/user/login',
         payload,
         header
       );
 
-      localStorage.setItem("user", JSON.stringify(response.data));
+      localStorage.setItem('user', JSON.stringify(response.data));
       authUser();
 
       setIsLoading(false);
-      navigate("/my-recipes");
+      navigate('/my-recipes');
     } catch (e) {
       console.log(e);
       setError(e.response.data.error);
