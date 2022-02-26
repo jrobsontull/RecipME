@@ -165,6 +165,45 @@ div.list-box.recipe {
 //     }
 // }
 
+div.serves.editing,
+div.cook-time.editing {
+  display: flex;
+  justify-content: flex-start;
+  background-color: $form-backgrd;
+  color: $dark-orang;
+  padding: 0;
+
+  textarea {
+    width: 35%;
+    background-color: $form-backgrd;
+    color: $list-box-text;
+    border: 1px dashed $form-border;
+    resize: none;
+    padding: 12px 0;
+    text-align: center;
+  }
+
+  p {
+    width: 65%;
+    padding: 12px 0;
+    text-align: center;
+    border: 1px solid $dark-orang;
+  }
+}
+
+div.serves.editing textarea {
+  border-width: 1px 1px 1px 0;
+}
+
+div.cook-time.editing textarea {
+  border-width: 1px 0 1px 1px;
+}
+
+div.serves.editing:hover,
+div.cook-time.editing:hover {
+  background-color: $form-backgrd;
+}
+
 div.list-box.edit-ingredients {
   ul {
     border-width: 1px 1px 0 1px;

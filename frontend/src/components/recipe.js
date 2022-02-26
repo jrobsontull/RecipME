@@ -271,10 +271,21 @@ function Recipe() {
 
       <div className="recipe-stats">
         <div className="serves editing">
-          <img src={Edit} alt="edit-btn"></img>
-          <p>Serves {recipe.serves}</p>
+          <p>Serves</p>
+          <TextareaAutosize
+            defaultValue={recipe.serves}
+            placeholder="#"
+            onChange={(e) => updateRecipeObj(e.target, 'serves')}
+          />
         </div>
-        <div className="cook-time editing">{recipe.cook_time} mins</div>
+        <div className="cook-time editing">
+          <TextareaAutosize
+            defaultValue={recipe.cook_time}
+            placeholder="#"
+            onChange={(e) => updateRecipeObj(e.target, 'cook_time')}
+          />
+          <p>mins</p>
+        </div>
       </div>
 
       <div className="recipe-list-title" id="first-child">

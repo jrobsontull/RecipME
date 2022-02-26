@@ -144,6 +144,39 @@ div.list-box.recipe ol {
   list-style: decimal;
   list-style-position: inside; }
 
+div.serves.editing,
+div.cook-time.editing {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #fcfaf1;
+  color: #e07a5f;
+  padding: 0; }
+  div.serves.editing textarea,
+  div.cook-time.editing textarea {
+    width: 35%;
+    background-color: #fcfaf1;
+    color: #46442e;
+    border: 1px dashed #d2ceb0;
+    resize: none;
+    padding: 12px 0;
+    text-align: center; }
+  div.serves.editing p,
+  div.cook-time.editing p {
+    width: 65%;
+    padding: 12px 0;
+    text-align: center;
+    border: 1px solid #e07a5f; }
+
+div.serves.editing textarea {
+  border-width: 1px 1px 1px 0; }
+
+div.cook-time.editing textarea {
+  border-width: 1px 0 1px 1px; }
+
+div.serves.editing:hover,
+div.cook-time.editing:hover {
+  background-color: #fcfaf1; }
+
 div.list-box.edit-ingredients ul {
   border-width: 1px 1px 0 1px; }
 
