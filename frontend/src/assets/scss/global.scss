@@ -1,368 +1,383 @@
 /* Variables */
-$light-orang: #F4F1DE;
-$dark-orang: #E07A5F;
+$light-orang: #f4f1de;
+$dark-orang: #e07a5f;
 $dark-text: #141412;
-$lighter-dark: #F1AD9B;
-$form-backgrd: #FCFAF1;
-$form-border: #D2CEB0;
-$disabled-col: #E4B3A6;
+$lighter-dark: #f1ad9b;
+$form-backgrd: #fcfaf1;
+$form-border: #d2ceb0;
+$disabled-col: #e4b3a6;
 $hover-btn: #e78c73;
 /*$list-box-text: #928f75;*/
 $list-box-text: #46442e;
 
 /* Imports */
-@import '_home';
-@import '_my-recipes';
-@import '_recipe';
+@import "_home";
+@import "_my-recipes";
+@import "_recipe";
 
 @font-face {
-	font-family: 'Raleway Flex';
-	src: url('../fonts/Raleway-VariableFont_wght.ttf') format('woff2 supports variations'),
-        url('../fonts/Raleway-VariableFont_wght.ttf') format('woff2-variations');
-	font-weight: 100 900;
-	font-stretch: 25% 151%;
+  font-family: "Raleway Flex";
+  src: url("../fonts/Raleway-VariableFont_wght.ttf")
+      format("woff2 supports variations"),
+    url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2-variations");
+  font-weight: 100 900;
+  font-stretch: 25% 151%;
 }
 
 @font-face {
-	font-family: 'Raleway Italic Flex';
-	src: url('../fonts/Raleway-Italic-VariableFont_wght.ttf') format('woff2 supports variations'),
-        url('../fonts/Raleway-Italic-VariableFont_wght.ttf') format('woff2-variations');
-	font-weight: 100 900;
-	font-stretch: 25% 151%;
+  font-family: "Raleway Italic Flex";
+  src: url("../fonts/Raleway-Italic-VariableFont_wght.ttf")
+      format("woff2 supports variations"),
+    url("../fonts/Raleway-Italic-VariableFont_wght.ttf")
+      format("woff2-variations");
+  font-weight: 100 900;
+  font-stretch: 25% 151%;
 }
 
 /* Global reset */
 * {
-	vertical-align: baseline;
-	font-weight: inherit;
-	font-family: inherit;
-	font-style: inherit;
-	font-size: 100%;
-	border: 0 none;
-	outline: 0;
-    margin: 0;
-    text-decoration: none;
+  vertical-align: baseline;
+  font-weight: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  border: 0 none;
+  outline: 0;
+  margin: 0;
+  text-decoration: none;
 }
 
 /* Styling */
 body {
-    background-color: $light-orang;
-    font-family: 'Raleway Flex', 'sans-serif';
-    font-size: 20px;
+  background-color: $light-orang;
+  font-family: "Raleway Flex", "sans-serif";
+  font-size: 20px;
 }
 
 .content {
-    padding: 0 50px;
-    max-width: 800px;
-    margin: 0 auto;
+  padding: 0 50px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 div.arrow {
-    border: solid black;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 3px;
-    margin: 0 0 2px 4px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  margin: 0 0 2px 4px;
 }
 
 div.arrow.right {
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 div.arrow.left {
-    transform: rotate(135deg);
+  transform: rotate(135deg);
 }
 
 .navbar {
-    .header {
-        display: flex;
-        justify-content: space-between;
-        padding: 15px;
-        background-color: $dark-orang;
-        position: relative;
-        z-index: 2;
-    }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: $dark-orang;
+    position: relative;
+    z-index: 2;
+  }
 
-    .nav {
-        transform: translateY(-100vh);
-        background-color: $dark-orang;
-        transition: transform 0.4s cubic-bezier(0, .52, 0, 1);
-        position: absolute;
-        top: 49;
-        left: 0;
-        width: 100%;
-        z-index: 1;
-    }
+  .nav {
+    transform: translateY(-100vh);
+    background-color: $dark-orang;
+    transition: transform 0.4s cubic-bezier(0, 0.52, 0, 1);
+    position: absolute;
+    top: 49;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
 
-    .nav.clicked {
-        transform: translateY(0vh);
-    }
+  .nav.clicked {
+    transform: translateY(0vh);
+  }
 
-    p, a {
-        color: $light-orang;
-    }
-    
-    .brand {
-        display: flex;
-        a {
-            font-weight: bold;
-            font-size: 24px;
-        }
-        img {
-            height: auto;
-            width: 30px;
-            margin-right: 10px;
-            margin-bottom: 4px;
-            display: block;
-        }
-    }
+  p,
+  a {
+    color: $light-orang;
+  }
 
-    div.nav-ham {
-        display: inline-block;
-        cursor: pointer;
-        border: 2px solid $light-orang;
-        border-radius: 8px;
-        padding: 0 6px;
-        transition: background-color 0.4s ease;
-        .ham1, .ham2, .ham3 {
-            width: 30px;
-            height: 2px;
-            background-color: $light-orang;
-            margin: 6px 0;
-            transition: 0.4s;
-        }
+  .brand {
+    display: flex;
+    a {
+      font-weight: bold;
+      font-size: 24px;
     }
-
-    .change-state.nav-ham {
-        background-color: $lighter-dark;
+    img {
+      height: auto;
+      width: 30px;
+      margin-right: 10px;
+      margin-bottom: 4px;
+      display: block;
     }
+  }
 
-    .change-state .ham1 {
-        transform: rotate(-45deg) translate(-6.5px, 5.5px) scale(0.8, 1);
-      }
-      
-    .change-state .ham2 {opacity: 0;}
-
-    .change-state .ham3 {
-        transform: rotate(45deg) translate(-5.5px, -5.5px) scale(0.8, 1);
+  div.nav-ham {
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid $light-orang;
+    border-radius: 8px;
+    padding: 0 6px;
+    transition: background-color 0.4s ease;
+    .ham1,
+    .ham2,
+    .ham3 {
+      width: 30px;
+      height: 2px;
+      background-color: $light-orang;
+      margin: 6px 0;
+      transition: 0.4s;
     }
+  }
 
-    ul {
-        padding: 0 0 10px 15px;
-    }
+  .change-state.nav-ham {
+    background-color: $lighter-dark;
+  }
 
-    ul.nav li {
-        list-style-type: none;
-        font-size: 24px;
-        padding-bottom: 8px;
-    }
+  .change-state .ham1 {
+    transform: rotate(-45deg) translate(-6.5px, 5.5px) scale(0.8, 1);
+  }
+
+  .change-state .ham2 {
+    opacity: 0;
+  }
+
+  .change-state .ham3 {
+    transform: rotate(45deg) translate(-5.5px, -5.5px) scale(0.8, 1);
+  }
+
+  ul {
+    padding: 0 0 10px 15px;
+  }
+
+  ul.nav li {
+    list-style-type: none;
+    font-size: 24px;
+    padding-bottom: 8px;
+  }
 }
 
 .line-br {
-    background-color: $form-border;
-    height: 1px;
-    width: 85%;
-    margin: 20px 0;
+  background-color: $form-border;
+  height: 1px;
+  width: 85%;
+  margin: 20px 0;
 }
 
 .react-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .intro-text {
-    margin-top: 50px;
-    p {
-        text-align: center;
-        margin-bottom: 10px;
-    }
-    
-    p a {
-        font-weight: bold;
-    }
+  margin-top: 50px;
+  p {
+    text-align: center;
+    margin-bottom: 10px;
+  }
 
-    strong {
-        font-weight: bold;
-    }
+  p a {
+    font-weight: bold;
+  }
+
+  strong {
+    font-weight: bold;
+  }
 }
 
 img.pie-logo {
-    height: auto;
-    width: 60px;
-    margin: 30px 20px 10px 20px;
+  height: auto;
+  width: 60px;
+  margin: 30px 20px 10px 20px;
 }
 
 form.general-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 85%;
-    input, button {
-        width: calc(100% - 32px);
-        margin: 12px 0;
-        padding: 14px 16px;
-        border: 1px solid $form-border;
-        transition: border-color 0.4s ease;
-    }
-
-    input::placeholder {
-        color: $form-border;
-    }
-
-    input:hover {
-        border-color: $dark-orang;
-    }
-
-    button[type=submit] {
-        background-color: $dark-orang;
-        border: none;
-        color: $light-orang;
-        width: 100%;
-        margin-bottom: 20px;
-        transition: background-color 0.4s ease;
-    }
-
-    button[type=submit]:disabled {
-        background-color: $disabled-col;
-    }
-
-    button[type=submit]:hover {
-        cursor: pointer;
-        background-color: $hover-btn;
-    }
-
-    button[type=submit]:disabled:hover {
-        cursor: not-allowed;
-        background-color: $disabled-col;
-    }
-}
-
-.google-auth {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 85%;
-    background-color: $dark-orang;
-    transition: background-color 0.4s ease;
-    img {
-        width: 24px;
-        height: auto;
-        display: block;
-        transition: transform 0.5s ease;
-    }
-
-    .google-logo {
-        background-color: $light-orang;
-        padding: 4px;
-        border-radius: 100%;
-    }
-
-    p {
-        padding: 14px 0;
-        color: $light-orang;
-        margin-left: 10px;
-    }
-}
-
-.google-auth:hover {
-    cursor: pointer;
-    background-color: $hover-btn;
-    img {
-        transform: rotate(360deg);
-    }
-}
-
-p.list-box-info {
-    width: 85%;
-    margin: 20px 0 10px 0;
-}
-
-p.list-box-info:first-of-type {
-    margin-top: 5px;
-}
-
-div.list-box {
-    width: 85%;
-    background-color: $form-backgrd;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 85%;
+  input,
+  button {
+    width: calc(100% - 32px);
+    margin: 12px 0;
+    padding: 14px 16px;
     border: 1px solid $form-border;
+    transition: border-color 0.4s ease;
+  }
 
-    ol, ul {
-        padding: 4% 5%;
-        text-decoration: none;
-        list-style-type: none;
-        color: $list-box-text;
+  input::placeholder {
+    color: $form-border;
+  }
 
-        li {
-            margin-bottom: 10px;
-            transition: margin-left 0.4s ease;
-            display: flex;
-        }
+  input:hover {
+    border-color: $dark-orang;
+  }
 
-        li:last-child {
-            margin-bottom: 0;
-        }
-
-        li:hover {
-            cursor: pointer;
-            margin-left: 14px;
-        }
-
-        li#none:hover {
-            margin-left: 0;
-            cursor: default;
-        }
-
-        li a {
-            text-decoration: inherit;
-            color: inherit;
-        }
-    }
-
-    p {
-        padding: 4% 5%;
-        color: $list-box-text;
-    }
-}
-
-div.list-box#tag-box {
-    ul {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-
-        li {
-            margin: 0 5px 0 5px;
-            line-height: 30px;
-            transition: transform 0.2s ease;
-        }
-
-        li:before {
-            content: '\0023';
-        }
-
-        li:hover {
-            cursor: pointer;
-            transform: scale(1.1);
-        }
-    }
-}
-
-button.general {
-    width: 85%;
-    margin: 20px 0 10px 0;
-    padding: 14px 0;
+  button[type="submit"] {
     background-color: $dark-orang;
     border: none;
     color: $light-orang;
+    width: 100%;
+    margin-bottom: 20px;
     transition: background-color 0.4s ease;
+  }
+
+  button[type="submit"]:disabled {
+    background-color: $disabled-col;
+  }
+
+  button[type="submit"]:hover {
+    cursor: pointer;
+    background-color: $hover-btn;
+  }
+
+  button[type="submit"]:disabled:hover {
+    cursor: not-allowed;
+    background-color: $disabled-col;
+  }
+}
+
+.google-auth {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  background-color: $dark-orang;
+  transition: background-color 0.4s ease;
+  img {
+    width: 24px;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .google-logo {
+    background-color: $light-orang;
+    padding: 4px;
+    border-radius: 100%;
+  }
+
+  p {
+    padding: 14px 0;
+    color: $light-orang;
+    margin-left: 10px;
+  }
+}
+
+.google-auth:hover {
+  cursor: pointer;
+  background-color: $hover-btn;
+  img {
+    transform: rotate(360deg);
+  }
+}
+
+p.list-box-info {
+  width: 85%;
+  margin: 20px 0 10px 0;
+}
+
+p.list-box-info:first-of-type {
+  margin-top: 5px;
+}
+
+div.list-box {
+  width: 85%;
+  background-color: $form-backgrd;
+  border: 1px solid $form-border;
+
+  ol,
+  ul {
+    padding: 4% 5%;
+    text-decoration: none;
+    list-style-type: none;
+    color: $list-box-text;
+
+    li {
+      margin-bottom: 10px;
+      transition: margin-left 0.4s ease;
+      display: flex;
+    }
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+
+    li:hover {
+      cursor: pointer;
+      margin-left: 14px;
+    }
+
+    li#none:hover {
+      margin-left: 0;
+      cursor: default;
+    }
+
+    li a {
+      text-decoration: inherit;
+      color: inherit;
+    }
+  }
+
+  p {
+    padding: 4% 5%;
+    color: $list-box-text;
+  }
+}
+
+div.list-box#tag-box {
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      margin: 0 5px 0 5px;
+      line-height: 30px;
+      transition: transform 0.2s ease;
+    }
+
+    li:before {
+      content: "\0023";
+    }
+
+    li:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+}
+
+button.general {
+  width: 85%;
+  margin: 20px 0 10px 0;
+  padding: 14px 0;
+  background-color: $dark-orang;
+  border: none;
+  color: $light-orang;
+  transition: background-color 0.4s ease;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 button.general:hover {
-    cursor: pointer;
-    background-color: $hover-btn;
+  cursor: pointer;
+  background-color: $hover-btn;
 }

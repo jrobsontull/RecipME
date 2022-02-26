@@ -1,152 +1,153 @@
 .recipe-title {
-    width: 85%;
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 26px;
+
+  .name {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 26px;
+    width: 100%;
+    margin-right: 10px;
 
-    .name {
-        display: flex;
-        width: 100%;
-        margin-right: 10px;
-
-        h3, textarea {
-            font-size: 20px;
-            font-weight: bold;
-            padding: 0 6px;
-        }
-
-        textarea {
-            width: 100%;
-            background-color: $light-orang;
-            border: 1px dashed $form-border;
-            padding: 0;
-            resize: none;
-        }
+    h3,
+    textarea {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 0 6px;
     }
 
-    .recipe-edit img {
-        height: auto;
-        width: 30px;
-        margin-left: 4px;
-        transition: transform 0.3s ease;
+    textarea {
+      width: 100%;
+      background-color: $light-orang;
+      border: 1px dashed $form-border;
+      padding: 0;
+      resize: none;
     }
+  }
 
-    .recipe-edit img:hover {
-        transform: scale(1.2);
-        cursor: pointer;
-    }
+  .recipe-edit img {
+    height: auto;
+    width: 30px;
+    margin-left: 4px;
+    transition: transform 0.3s ease;
+  }
+
+  .recipe-edit img:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
 }
 
 .recipe-stats {
+  display: flex;
+  width: 85%;
+
+  div {
+    background-color: $dark-orang;
+    color: $light-orang;
+    width: 50%;
+    padding: 12px 0;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+
+  div.editing {
+    background-color: $disabled-col;
+  }
+
+  div:first-child {
+    margin-right: 10px;
+  }
+
+  div:last-child {
+    margin-left: 10px;
+  }
+
+  div.serves {
     display: flex;
-    width: 85%;
+    justify-content: center;
+  }
 
-    div {
-        background-color: $dark-orang;
-        color: $light-orang;
-        width: 50%;
-        padding: 12px 0;
-        text-align: center;
-        transition: background-color 0.3s ease;
-    }
+  div.serves img {
+    height: auto;
+    width: 20px;
+    margin-right: 10px;
+  }
 
-    div.editing {
-        background-color: $disabled-col;
-    }
+  div.serves:hover {
+    background-color: $hover-btn;
+    cursor: pointer;
+  }
 
-    div:first-child {
-        margin-right: 10px;
-    }
-
-    div:last-child {
-        margin-left: 10px;
-    }
-
-    div.serves {
-        display: flex;
-        justify-content: center;
-    }
-
-    div.serves img {
-        height: auto;
-        width: 20px;
-        margin-right: 10px;
-    }
-
-    div.serves:hover {
-        background-color: $hover-btn;
-        cursor: pointer;
-    }
-
-    div.editing:hover {
-        background-color: $disabled-col;
-        cursor: default;
-    }
+  div.editing:hover {
+    background-color: $disabled-col;
+    cursor: default;
+  }
 }
 
 .recipe-list-title {
-    width: 85%;
-    margin: 18px 0 0 0;
-    border-radius: 10px 10px 0 0;
-    display: block;
+  width: 85%;
+  margin: 18px 0 0 0;
+  border-radius: 10px 10px 0 0;
+  display: block;
 }
 
 .recipe-list-title#first-child {
-    margin-top: 25px;
+  margin-top: 25px;
 }
 
 .ingredients-header {
-    display: flex;
-    flex-wrap: nowrap;
-    padding: 4px 0;
-    width: 85%;
-    border: 1px solid $disabled-col;
-    background-color: $disabled-col;
-    color: $light-orang;
-    text-align: center;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 4px 0;
+  width: 85%;
+  border: 1px solid $disabled-col;
+  background-color: $disabled-col;
+  color: $light-orang;
+  text-align: center;
 
-    #first-child {
-        width: 25%;
-        padding-left: 10px;
-    }
+  #first-child {
+    width: 25%;
+    padding-left: 10px;
+  }
 
-    #second-child {
-        width: 20%;
-    }
+  #second-child {
+    width: 20%;
+  }
 
-    #third-child {
-        width: 55%;
-        padding-right: 10px;
-    }
+  #third-child {
+    width: 55%;
+    padding-right: 10px;
+  }
 }
 
 button.general.recipe {
-    background-color: $form-backgrd;
-    color: $dark-orang;
-    border: 1px solid $dark-orang;
-    margin: 12px 0 4px 0;
+  background-color: $form-backgrd;
+  color: $dark-orang;
+  border: 1px solid $dark-orang;
+  margin: 12px 0 4px 0;
 }
 
 button.general.recipe:hover {
-    color: $light-orang;
+  color: $light-orang;
 }
 
 div.list-box.recipe {
-    li {
-        width: 100%;
-        display: list-item;
-    }
+  li {
+    width: 100%;
+    display: list-item;
+  }
 
-    li:hover {
-        margin-left: 0;
-        cursor: default;
-    }
-    
-    ol {
-        list-style: decimal;
-        list-style-position: inside;
-    }
+  li:hover {
+    margin-left: 0;
+    cursor: default;
+  }
+
+  ol {
+    list-style: decimal;
+    list-style-position: inside;
+  }
 }
 
 // div.list-box.recipe.photo {
@@ -164,107 +165,106 @@ div.list-box.recipe {
 // }
 
 div.list-box.edit-ingredients {
-    textarea {
-        width: 20%;
-        background-color: $form-backgrd;
-        padding: 0;
-        resize: none;
-        border: 1px dashed $form-border;
-        color: $list-box-text;
-    }
+  textarea {
+    width: 20%;
+    background-color: $form-backgrd;
+    padding: 0;
+    resize: none;
+    border: 1px dashed $form-border;
+    color: $list-box-text;
+  }
 
-    textarea#first-child {
-        width: 25%;
-        margin-right: 10px;
-    }
+  textarea#first-child {
+    width: 25%;
+    margin-right: 10px;
+  }
 
-    textarea#last-child {
-        width: 55%;
-        margin-left: 10px;
-    }
+  textarea#last-child {
+    width: 55%;
+    margin-left: 10px;
+  }
 
-    li {
-        display: flex;
-    }
+  li {
+    display: flex;
+  }
 
+  .delete-item {
+    width: 24px;
+    height: auto;
+    position: absolute;
+    right: 8%;
+    transition: transform 0.3s ease;
+  }
+
+  .delete-item:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 900px) {
     .delete-item {
-        width: 24px;
-        height: auto;
-        position: absolute;
-        right: 8%;
-        transition: transform 0.3s ease;
+      right: 0;
+      /* Do something elese */
     }
-
-    .delete-item:hover {
-        transform: scale(1.1);
-        cursor: pointer;
-    }
-
-    @media screen and (min-width: 900px) {
-        .delete-item {
-            right: 0;
-            /* Do something elese */
-        }
-    }
-
+  }
 }
 
 div.list-box.edit-steps {
-    li {
-        display: flex;
-    }
+  li {
+    display: flex;
+  }
 
-    textarea {
-        border: 1px dashed $form-border;
-        background-color: $form-backgrd;
-        padding: 0;
-        resize: none;
-        color: $list-box-text;
-        width: 100%;
-        display: inline;
-    }
+  textarea {
+    border: 1px dashed $form-border;
+    background-color: $form-backgrd;
+    padding: 0;
+    resize: none;
+    color: $list-box-text;
+    width: 100%;
+    display: inline;
+  }
 
+  .delete-item {
+    width: 24px;
+    height: auto;
+    position: absolute;
+    right: 8%;
+    transition: transform 0.3s ease;
+  }
+
+  .delete-item:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 900px) {
     .delete-item {
-        width: 24px;
-        height: auto;
-        position: absolute;
-        right: 8%;
-        transition: transform 0.3s ease;
+      right: 0;
+      /* Do something elese */
     }
-
-    .delete-item:hover {
-        transform: scale(1.1);
-        cursor: pointer;
-    }
-
-    @media screen and (min-width: 900px) {
-        .delete-item {
-            right: 0;
-            /* Do something elese */
-        }
-    }
+  }
 }
 
 .list-box.recipe#tag-box li {
-    width: auto;
+  width: auto;
 }
 
 .list-box.recipe#tag-box li:hover {
-    transform: scale(1);
-    cursor: default;
+  transform: scale(1);
+  cursor: default;
 }
 
 .db-btns {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    button.general {
-        margin: 0;
-    }
+  button.general {
+    margin: 0;
+  }
 
-    button.general:last-child {
-        margin-top: 18px;
-    }
+  button.general:last-child {
+    margin-top: 18px;
+  }
 }

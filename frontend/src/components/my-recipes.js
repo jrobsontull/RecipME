@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from '../utils/auth.context';
 import RecipesAPI from '../utils/recipes-api';
 
@@ -8,7 +9,8 @@ import { Link } from 'react-router-dom';
 function MyRecipes() {
   const { user } = useContext(AuthContext);
   const [recipes, setRecipes] = useState([]);
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
     RecipesAPI.getUserRecipes(user.user).then((response) => {
       setRecipes(response);
@@ -33,9 +35,7 @@ function MyRecipes() {
             )) : <li id="none">You have no recipes yet!</li> }
         </ul>
       </div>
-      <button className="general">
-        <Link to={'/add-recipe'}>Add recipe</Link>
-      </button>
+      <button className="general" onClick={ () => navigate('/add-recipe') }>Add recipe</button>
       <div className="my-recipes-list-title">
         <p className="list-box-info">Tags</p>
         <div className="arrow right"></div>

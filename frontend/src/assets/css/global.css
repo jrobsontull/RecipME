@@ -28,12 +28,12 @@
 
 .my-recipes-list-title:hover {
   cursor: pointer;
-  color: #F4F1DE;
+  color: #f4f1de;
   background-color: #e78c73; }
   .my-recipes-list-title:hover p.list-box-info {
     margin-left: 10px; }
   .my-recipes-list-title:hover .arrow {
-    border-color: #F4F1DE; }
+    border-color: #f4f1de; }
 
 .recipe-title {
   width: 85%;
@@ -45,14 +45,15 @@
     display: flex;
     width: 100%;
     margin-right: 10px; }
-    .recipe-title .name h3, .recipe-title .name textarea {
+    .recipe-title .name h3,
+    .recipe-title .name textarea {
       font-size: 20px;
       font-weight: bold;
       padding: 0 6px; }
     .recipe-title .name textarea {
       width: 100%;
-      background-color: #F4F1DE;
-      border: 1px dashed #D2CEB0;
+      background-color: #f4f1de;
+      border: 1px dashed #d2ceb0;
       padding: 0;
       resize: none; }
   .recipe-title .recipe-edit img {
@@ -68,14 +69,14 @@
   display: flex;
   width: 85%; }
   .recipe-stats div {
-    background-color: #E07A5F;
-    color: #F4F1DE;
+    background-color: #e07a5f;
+    color: #f4f1de;
     width: 50%;
     padding: 12px 0;
     text-align: center;
     transition: background-color 0.3s ease; }
   .recipe-stats div.editing {
-    background-color: #E4B3A6; }
+    background-color: #e4b3a6; }
   .recipe-stats div:first-child {
     margin-right: 10px; }
   .recipe-stats div:last-child {
@@ -91,7 +92,7 @@
     background-color: #e78c73;
     cursor: pointer; }
   .recipe-stats div.editing:hover {
-    background-color: #E4B3A6;
+    background-color: #e4b3a6;
     cursor: default; }
 
 .recipe-list-title {
@@ -108,9 +109,9 @@
   flex-wrap: nowrap;
   padding: 4px 0;
   width: 85%;
-  border: 1px solid #E4B3A6;
-  background-color: #E4B3A6;
-  color: #F4F1DE;
+  border: 1px solid #e4b3a6;
+  background-color: #e4b3a6;
+  color: #f4f1de;
   text-align: center; }
   .ingredients-header #first-child {
     width: 25%;
@@ -122,13 +123,13 @@
     padding-right: 10px; }
 
 button.general.recipe {
-  background-color: #FCFAF1;
-  color: #E07A5F;
-  border: 1px solid #E07A5F;
+  background-color: #fcfaf1;
+  color: #e07a5f;
+  border: 1px solid #e07a5f;
   margin: 12px 0 4px 0; }
 
 button.general.recipe:hover {
-  color: #F4F1DE; }
+  color: #f4f1de; }
 
 div.list-box.recipe li {
   width: 100%;
@@ -144,10 +145,10 @@ div.list-box.recipe ol {
 
 div.list-box.edit-ingredients textarea {
   width: 20%;
-  background-color: #FCFAF1;
+  background-color: #fcfaf1;
   padding: 0;
   resize: none;
-  border: 1px dashed #D2CEB0;
+  border: 1px dashed #d2ceb0;
   color: #46442e; }
 
 div.list-box.edit-ingredients textarea#first-child {
@@ -181,8 +182,8 @@ div.list-box.edit-steps li {
   display: flex; }
 
 div.list-box.edit-steps textarea {
-  border: 1px dashed #D2CEB0;
-  background-color: #FCFAF1;
+  border: 1px dashed #d2ceb0;
+  background-color: #fcfaf1;
   padding: 0;
   resize: none;
   color: #46442e;
@@ -223,13 +224,13 @@ div.list-box.edit-steps .delete-item:hover {
     margin-top: 18px; }
 
 @font-face {
-  font-family: 'Raleway Flex';
+  font-family: "Raleway Flex";
   src: url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2 supports variations"), url("../fonts/Raleway-VariableFont_wght.ttf") format("woff2-variations");
   font-weight: 100 900;
   font-stretch: 25% 151%; }
 
 @font-face {
-  font-family: 'Raleway Italic Flex';
+  font-family: "Raleway Italic Flex";
   src: url("../fonts/Raleway-Italic-VariableFont_wght.ttf") format("woff2 supports variations"), url("../fonts/Raleway-Italic-VariableFont_wght.ttf") format("woff2-variations");
   font-weight: 100 900;
   font-stretch: 25% 151%; }
@@ -248,8 +249,8 @@ div.list-box.edit-steps .delete-item:hover {
 
 /* Styling */
 body {
-  background-color: #F4F1DE;
-  font-family: 'Raleway Flex', 'sans-serif';
+  background-color: #f4f1de;
+  font-family: "Raleway Flex", "sans-serif";
   font-size: 20px; }
 
 .content {
@@ -274,13 +275,13 @@ div.arrow.left {
   display: flex;
   justify-content: space-between;
   padding: 15px;
-  background-color: #E07A5F;
+  background-color: #e07a5f;
   position: relative;
   z-index: 2; }
 
 .navbar .nav {
   transform: translateY(-100vh);
-  background-color: #E07A5F;
+  background-color: #e07a5f;
   transition: transform 0.4s cubic-bezier(0, 0.52, 0, 1);
   position: absolute;
   top: 49;
@@ -291,8 +292,9 @@ div.arrow.left {
 .navbar .nav.clicked {
   transform: translateY(0vh); }
 
-.navbar p, .navbar a {
-  color: #F4F1DE; }
+.navbar p,
+.navbar a {
+  color: #f4f1de; }
 
 .navbar .brand {
   display: flex; }
@@ -309,19 +311,21 @@ div.arrow.left {
 .navbar div.nav-ham {
   display: inline-block;
   cursor: pointer;
-  border: 2px solid #F4F1DE;
+  border: 2px solid #f4f1de;
   border-radius: 8px;
   padding: 0 6px;
   transition: background-color 0.4s ease; }
-  .navbar div.nav-ham .ham1, .navbar div.nav-ham .ham2, .navbar div.nav-ham .ham3 {
+  .navbar div.nav-ham .ham1,
+  .navbar div.nav-ham .ham2,
+  .navbar div.nav-ham .ham3 {
     width: 30px;
     height: 2px;
-    background-color: #F4F1DE;
+    background-color: #f4f1de;
     margin: 6px 0;
     transition: 0.4s; }
 
 .navbar .change-state.nav-ham {
-  background-color: #F1AD9B; }
+  background-color: #f1ad9b; }
 
 .navbar .change-state .ham1 {
   transform: rotate(-45deg) translate(-6.5px, 5.5px) scale(0.8, 1); }
@@ -341,7 +345,7 @@ div.arrow.left {
   padding-bottom: 8px; }
 
 .line-br {
-  background-color: #D2CEB0;
+  background-color: #d2ceb0;
   height: 1px;
   width: 85%;
   margin: 20px 0; }
@@ -373,31 +377,32 @@ form.general-form {
   justify-content: space-evenly;
   align-items: center;
   width: 85%; }
-  form.general-form input, form.general-form button {
+  form.general-form input,
+  form.general-form button {
     width: calc(100% - 32px);
     margin: 12px 0;
     padding: 14px 16px;
-    border: 1px solid #D2CEB0;
+    border: 1px solid #d2ceb0;
     transition: border-color 0.4s ease; }
   form.general-form input::placeholder {
-    color: #D2CEB0; }
+    color: #d2ceb0; }
   form.general-form input:hover {
-    border-color: #E07A5F; }
-  form.general-form button[type=submit] {
-    background-color: #E07A5F;
+    border-color: #e07a5f; }
+  form.general-form button[type="submit"] {
+    background-color: #e07a5f;
     border: none;
-    color: #F4F1DE;
+    color: #f4f1de;
     width: 100%;
     margin-bottom: 20px;
     transition: background-color 0.4s ease; }
-  form.general-form button[type=submit]:disabled {
-    background-color: #E4B3A6; }
-  form.general-form button[type=submit]:hover {
+  form.general-form button[type="submit"]:disabled {
+    background-color: #e4b3a6; }
+  form.general-form button[type="submit"]:hover {
     cursor: pointer;
     background-color: #e78c73; }
-  form.general-form button[type=submit]:disabled:hover {
+  form.general-form button[type="submit"]:disabled:hover {
     cursor: not-allowed;
-    background-color: #E4B3A6; }
+    background-color: #e4b3a6; }
 
 .google-auth {
   display: flex;
@@ -405,7 +410,7 @@ form.general-form {
   justify-content: center;
   align-items: center;
   width: 85%;
-  background-color: #E07A5F;
+  background-color: #e07a5f;
   transition: background-color 0.4s ease; }
   .google-auth img {
     width: 24px;
@@ -413,12 +418,12 @@ form.general-form {
     display: block;
     transition: transform 0.5s ease; }
   .google-auth .google-logo {
-    background-color: #F4F1DE;
+    background-color: #f4f1de;
     padding: 4px;
     border-radius: 100%; }
   .google-auth p {
     padding: 14px 0;
-    color: #F4F1DE;
+    color: #f4f1de;
     margin-left: 10px; }
 
 .google-auth:hover {
@@ -436,26 +441,32 @@ p.list-box-info:first-of-type {
 
 div.list-box {
   width: 85%;
-  background-color: #FCFAF1;
-  border: 1px solid #D2CEB0; }
-  div.list-box ol, div.list-box ul {
+  background-color: #fcfaf1;
+  border: 1px solid #d2ceb0; }
+  div.list-box ol,
+  div.list-box ul {
     padding: 4% 5%;
     text-decoration: none;
     list-style-type: none;
     color: #46442e; }
-    div.list-box ol li, div.list-box ul li {
+    div.list-box ol li,
+    div.list-box ul li {
       margin-bottom: 10px;
       transition: margin-left 0.4s ease;
       display: flex; }
-    div.list-box ol li:last-child, div.list-box ul li:last-child {
+    div.list-box ol li:last-child,
+    div.list-box ul li:last-child {
       margin-bottom: 0; }
-    div.list-box ol li:hover, div.list-box ul li:hover {
+    div.list-box ol li:hover,
+    div.list-box ul li:hover {
       cursor: pointer;
       margin-left: 14px; }
-    div.list-box ol li#none:hover, div.list-box ul li#none:hover {
+    div.list-box ol li#none:hover,
+    div.list-box ul li#none:hover {
       margin-left: 0;
       cursor: default; }
-    div.list-box ol li a, div.list-box ul li a {
+    div.list-box ol li a,
+    div.list-box ul li a {
       text-decoration: inherit;
       color: inherit; }
   div.list-box p {
@@ -472,7 +483,7 @@ div.list-box#tag-box ul {
     line-height: 30px;
     transition: transform 0.2s ease; }
   div.list-box#tag-box ul li:before {
-    content: '\0023'; }
+    content: "\0023"; }
   div.list-box#tag-box ul li:hover {
     cursor: pointer;
     transform: scale(1.1); }
@@ -481,10 +492,13 @@ button.general {
   width: 85%;
   margin: 20px 0 10px 0;
   padding: 14px 0;
-  background-color: #E07A5F;
+  background-color: #e07a5f;
   border: none;
-  color: #F4F1DE;
+  color: #f4f1de;
   transition: background-color 0.4s ease; }
+  button.general a {
+    text-decoration: none;
+    color: inherit; }
 
 button.general:hover {
   cursor: pointer;
