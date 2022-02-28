@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import RecipesAPI from '../utils/recipes-api';
 import AuthContext from '../utils/auth.context';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -12,6 +12,7 @@ import Delete from '../assets/img/delete.svg';
 
 function Recipe() {
   const params = useParams();
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [recipe, setRecipe] = useState({});
   const [origRecipe, setOrigRecipe] = useState({});
@@ -141,6 +142,15 @@ function Recipe() {
       setRecipe(clone);
     }
     isEditing((setInverse) => !setInverse);
+  }
+
+  function deleteRecipe() {
+    // Delete recipe
+    console.log('Deleting recipe: ' + recipe._id);
+    const response = RecipesAPI.deleteRecipe(recipe._id, user.user._id);
+    if (response) {
+      navigate('/my-recipes');
+    }
   }
 
   useEffect(() => {
@@ -455,7 +465,9 @@ function Recipe() {
         <button className="general" onClick={() => saveChanges()}>
           Save changes
         </button>
-        <button className="general">Delete recipe</button>
+        <button className="general" onClick={() => deleteRecipe()}>
+          Delete recipe
+        </button>
       </div>
       <img className="pie-logo" src={Logo} alt="logo" />
       <div className="line-br"></div>

@@ -1,4 +1,4 @@
-import RecipesDAO from "../dao/recipesDAO.js";
+import RecipesDAO from '../dao/recipesDAO.js';
 
 export default class RecipesController {
   /* Get request for recipes */
@@ -18,7 +18,7 @@ export default class RecipesController {
     }
 
     if (req.query.tags) {
-      filters.tags = req.query.tags.split("+");
+      filters.tags = req.query.tags.split('+');
     }
 
     const { recipesList, totalNumRecipes } = await RecipesDAO.getRecipes({
@@ -48,13 +48,13 @@ export default class RecipesController {
         res.status(400).json({ error: error.message });
       } else {
         if (!recipe.recipe) {
-          res.status(404).json({ error: "Recipe not found." });
+          res.status(404).json({ error: 'Recipe not found.' });
         } else {
           res.json(recipe);
         }
       }
     } catch (e) {
-      console.log("Failed to get recipe by ID: " + e.message);
+      console.log('Failed to get recipe by ID: ' + e.message);
       res.status(500).json({ error: e });
     }
   }
@@ -128,10 +128,10 @@ export default class RecipesController {
       if (recipeResponse.value === null) {
         /* Recipe not updated */
         throw new Error(
-          "Unable to update the recipe. User may not be the original poster."
+          'Unable to update the recipe. User may not be the original poster.'
         );
       } else {
-        res.json({ status: "success" });
+        res.json({ status: 'success' });
       }
     } catch (e) {
       res.status(500).json({ error: e.message });
@@ -143,9 +143,9 @@ export default class RecipesController {
     try {
       const recipeId = req.body.recipe_id;
       const userId = req.body.user_id;
-      console.log(recipeId + ' wants to be deleted by "' + userId + '"');
+      console.log(userId.trim('"') + ' requested delete of: ' + recipeId);
       const recipeResponse = await RecipesDAO.deleteRecipe(recipeId, userId);
-      res.json({ status: "success" });
+      res.json({ status: 'success' });
     } catch (e) {
       res.status(500).json({ error: e.message });
     }

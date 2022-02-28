@@ -30,6 +30,17 @@ export default class RecipesAPI {
       return response;
     }
   }
+
+  static async deleteRecipe(id, user) {
+    const body = {
+      recipe_id: id,
+      user_id: user,
+    };
+    const response = await deleteRequest(body, 'recipe/');
+    if (response) {
+      return response;
+    }
+  }
 }
 
 async function postRequest(body, url) {
@@ -72,6 +83,23 @@ async function getRequest(url) {
 
     if (response.status === 200) {
       console.log('Get request to ' + url + ' successful.');
+      return response;
+    } else {
+      return null;
+    }
+  } catch (e) {
+    console.log('Error: ' + e.message);
+    return null;
+  }
+}
+
+async function deleteRequest(body, url) {
+  try {
+    const payload = body;
+    const response = await http.delete(url, { data: body });
+
+    if (response.status === 200) {
+      console.log('Delete: ' + body + ' to ' + url + ' and got good response.');
       return response;
     } else {
       return null;
