@@ -6,7 +6,11 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write **/*.js"
+    "format": "prettier --write **/*.js",
+    "build": "cd ../frontend && npm run build",
+    "install-frontent": "cd ../frontent && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",

@@ -86,9 +86,7 @@ function Login() {
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" disabled>
-          Log In
-        </button>
+        <button type="submit">Log In</button>
       </form>
       <div className="google-auth">
         <div className="google-logo">

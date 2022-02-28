@@ -1,5 +1,5 @@
-import mongodb from "mongodb";
-import { UUID } from "bson";
+import mongodb from 'mongodb';
+import { UUID } from 'bson';
 
 const ObjectId = mongodb.ObjectId;
 
@@ -11,10 +11,17 @@ export default class RecipesDAO {
       return;
     }
     try {
-      recipes = await conn.db(process.env.RESTRECIPES_NS).collection("recipes");
+      // Check if production environment
+      let db_uri = process.env.RESTRECIPES_NS_DEV;
+      if (process.env.NODE_ENV === 'production') {
+        console.log('Enabling recipesDAO production mode.');
+        db_uri = process.env.RESTRECIPES_NS_PRODUCTION;
+      }
+
+      recipes = await conn.db(db_uri).collection('recipes');
     } catch (e) {
       console.error(
-        "Unable to establish a connection handle in recipesDAO: " + e
+        'Unable to establish a connection handle in recipesDAO: ' + e
       );
     }
   }
@@ -26,22 +33,22 @@ export default class RecipesDAO {
   } = {}) {
     let query;
     if (filters) {
-      if ("name" in filters) {
+      if ('name' in filters) {
         /* queries database to see if any of the text matches, this is set in mongodb atlas */
-        query = { $text: { $search: filters["name"] } };
-      } else if ("tags" in filters) {
-        console.log("Search for user-specific tags");
+        query = { $text: { $search: filters['name'] } };
+      } else if ('tags' in filters) {
+        console.log('Search for user-specific tags');
         console.log(filters);
-        if (filters["tags"][0].toLowerCase() === "all") {
+        if (filters['tags'][0].toLowerCase() === 'all') {
           // Get all recipe tags
           query = {};
         } else {
           // Get recipes by tag
           // Do something
         }
-      } else if ("user_id" in filters) {
-        console.log("Search by user_id");
-        query = { user_id: filters["user_id"] };
+      } else if ('user_id' in filters) {
+        console.log('Search by user_id');
+        query = { user_id: filters['user_id'] };
       }
     }
 
@@ -50,7 +57,7 @@ export default class RecipesDAO {
     try {
       cursor = await recipes.find(query);
     } catch (e) {
-      console.log("Unable to issue find command, " + e);
+      console.log('Unable to issue find command, ' + e);
       return { recipesList: [], totalNumRecipes: 0 };
     }
 
@@ -65,7 +72,7 @@ export default class RecipesDAO {
       return { recipesList, totalNumRecipes };
     } catch (e) {
       console.log(
-        "Unable to convert cursor to array or problem counting documents.\n" + e
+        'Unable to convert cursor to array or problem counting documents.\n' + e
       );
       return { recipesList: [], totalNumRecipes: 0 };
     }
@@ -79,14 +86,14 @@ export default class RecipesDAO {
       try {
         cursor = await recipes.find(query);
       } catch (e) {
-        console.log("Unable to issue find command, " + e.message);
+        console.log('Unable to issue find command, ' + e.message);
         return { error: e };
       }
 
       const recipeList = await cursor.toArray();
       return { recipe: recipeList[0] };
     } catch (e) {
-      console.log("Error getting recipe by ID: " + e.message);
+      console.log('Error getting recipe by ID: ' + e.message);
       return { error: e };
     }
   }
@@ -126,7 +133,7 @@ export default class RecipesDAO {
 
       return await recipes.insertOne(recipeDoc);
     } catch (e) {
-      console.log("Unable to post recipe: " + e);
+      console.log('Unable to post recipe: ' + e);
       return { error: e };
     }
   }
@@ -164,7 +171,7 @@ export default class RecipesDAO {
 
       return updateResponse;
     } catch (e) {
-      console.log("Unable to update the recipe: " + e);
+      console.log('Unable to update the recipe: ' + e);
       return { error: e };
     }
   }
@@ -178,7 +185,7 @@ export default class RecipesDAO {
 
       return deleteResponse;
     } catch (e) {
-      console.log("Unable to delete the recipe: " + e);
+      console.log('Unable to delete the recipe: ' + e);
       return { error: e };
     }
   }
@@ -186,10 +193,10 @@ export default class RecipesDAO {
   static async getTags() {
     let tags = [];
     try {
-      tags = await recipes.distinct("tags");
+      tags = await recipes.distinct('tags');
       return tags;
     } catch (e) {
-      console.log("Unable to get tags: " + e);
+      console.log('Unable to get tags: ' + e);
       return tags;
     }
   }
@@ -201,7 +208,7 @@ function generateUUIDArray(inArray) {
   if (inArray) {
     inArray.forEach((element) => {
       const UUIDelem = element;
-      UUIDelem["id"] = new UUID().toString();
+      UUIDelem['id'] = new UUID().toString();
       result.push(UUIDelem);
     });
     return result;
