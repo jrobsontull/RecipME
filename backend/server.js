@@ -16,10 +16,12 @@ app.use('/api/v1/user', auth);
 // Serve static files if production mode
 if (process.env.NODE_ENV === 'production') {
   // Serve react app files
-  app.use(express.static('../frontend/build'));
+  app.use(express.static(path.resolve(__dirname, '../frontend/build')));
   // All other GET requests not handled before will return the app
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
+    res.sendFile(
+      path.resolve(__dirname, '../frontend/build/public', 'index.html')
+    );
   });
 }
 
