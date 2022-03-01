@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import http from './http-common';
 
 const AuthContext = createContext();
 
@@ -58,11 +58,7 @@ function AuthProvider({ children }) {
         token: userJSON.token,
       };
 
-      const response = await axios.post(
-        'http://localhost:5000/api/v1/user/verify',
-        payload,
-        header
-      );
+      const response = await http.post('api/v1/user/verify', payload, header);
 
       if (response.status === 200) {
         console.log(

@@ -2,7 +2,7 @@ import http from './http-common';
 
 export default class RecipesAPI {
   static async getUserRecipes(user) {
-    const response = await getRequest('?user_id=' + user._id);
+    const response = await getRequest('api/v1/recipes?user_id=' + user._id);
     if (response) {
       const recipes = response.data.recipes;
       return recipes;
@@ -10,7 +10,7 @@ export default class RecipesAPI {
   }
 
   static async getRecipe(id) {
-    const response = await getRequest('recipe/id/' + id);
+    const response = await getRequest('api/v1/recipes/recipe/id/' + id);
     if (response) {
       const recipe = response.data.recipe;
       return recipe;
@@ -18,14 +18,14 @@ export default class RecipesAPI {
   }
 
   static async editRecipe(recipe) {
-    const response = await putRequest(recipe, 'recipe/');
+    const response = await putRequest(recipe, 'api/v1/recipes/recipe/');
     if (response) {
       return response;
     }
   }
 
   static async newRecipe(recipe) {
-    const response = await postRequest(recipe, 'recipe/');
+    const response = await postRequest(recipe, 'api/v1/recipes/recipe/');
     if (response) {
       return response;
     }
@@ -36,7 +36,7 @@ export default class RecipesAPI {
       recipe_id: id,
       user_id: user,
     };
-    const response = await deleteRequest(body, 'recipe/');
+    const response = await deleteRequest(body, 'api/v1/recipes/recipe/');
     if (response) {
       return response;
     }
@@ -96,7 +96,7 @@ async function getRequest(url) {
 async function deleteRequest(body, url) {
   try {
     const payload = body;
-    const response = await http.delete(url, { data: body });
+    const response = await http.delete(url, { data: payload });
 
     if (response.status === 200) {
       console.log('Delete: ' + body + ' to ' + url + ' and got good response.');
