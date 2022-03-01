@@ -97,9 +97,7 @@ function Register() {
           placeholder="Repeat Password"
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button type="submit" disabled>
-          Sign Up
-        </button>
+        <button type="submit">Sign Up</button>
       </form>
       <div className="google-auth">
         <div className="google-logo">
