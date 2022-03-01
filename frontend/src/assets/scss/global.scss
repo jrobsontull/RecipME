@@ -59,6 +59,10 @@ body {
   padding: 0 50px;
   max-width: 800px;
   margin: 0 auto;
+
+  @media screen and (max-width: 600px) {
+    padding: 0 2%;
+  }
 }
 
 div.arrow {
