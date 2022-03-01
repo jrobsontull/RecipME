@@ -59,7 +59,7 @@ function Register() {
       authUser();
 
       setIsLoading(false);
-      navigate('/dashboard');
+      navigate('/my-recipes');
     } catch (e) {
       setError(e.response.data.error);
       setIsLoading(false);
