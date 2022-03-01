@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../utils/auth.context';
+import http from '../utils/http-common';
 
 import Logo from '../assets/img/pie_logo_orange.svg';
 import Google from '../assets/img/google.svg';
@@ -49,11 +49,7 @@ function Login() {
 
       setIsLoading(true);
 
-      const response = await axios.post(
-        'http://localhost:5000/api/v1/user/login',
-        payload,
-        header
-      );
+      const response = await http.post('api/v1/user/login', payload, header);
 
       localStorage.setItem('user', JSON.stringify(response.data));
       authUser();

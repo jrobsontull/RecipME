@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../utils/auth.context';
+import http from '../utils/http-common';
 
 import logo from '../assets/img/pie_logo_orange.svg';
 import Google from '../assets/img/google.svg';
@@ -53,11 +53,7 @@ function Register() {
 
       setIsLoading(true);
 
-      const response = await axios.post(
-        'http://localhost:5000/api/v1/user/register',
-        payload,
-        header
-      );
+      const response = await http.post('api/v1/user/register', payload, header);
 
       localStorage.setItem('user', JSON.stringify(response.data));
       authUser();
