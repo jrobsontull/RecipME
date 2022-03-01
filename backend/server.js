@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('../frontend/build'));
   // All other GET requests not handled before will return the app
   app.get('*', (req, res) => {
-    res.sendFile('../frontend/build/');
+    res.sendFile('../frontend/build/public/index.html');
   });
 }
 
