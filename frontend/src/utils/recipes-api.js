@@ -41,6 +41,14 @@ export default class RecipesAPI {
       return response;
     }
   }
+
+  static async getDistinctTags(id) {
+    const user_id = id;
+    const response = await getRequest('api/v1/recipes/tags?user_id=' + user_id);
+    if (response) {
+      return response.data;
+    }
+  }
 }
 
 async function postRequest(body, url) {

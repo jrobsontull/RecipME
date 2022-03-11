@@ -154,7 +154,11 @@ export default class RecipesController {
   /* Get recipe tags */
   static async apiGetRecipeTags(req, res, next) {
     try {
-      let tags = await RecipesDAO.getTags();
+      let filters = {};
+      if (req.query.user_id) {
+        filters.user_id = req.query.user_id;
+      }
+      let tags = await RecipesDAO.getTags(filters);
       res.json(tags);
     } catch (e) {
       console.log(e.message);

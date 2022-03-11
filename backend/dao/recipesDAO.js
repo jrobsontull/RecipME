@@ -190,10 +190,20 @@ export default class RecipesDAO {
     }
   }
 
-  static async getTags() {
+  // Get distinct user tags and filter out null elements before return
+  static async getTags(filters = null) {
+    let query = {
+      'tags.name': { $nin: ['', null] },
+    };
+    if (filters) {
+      if ('user_id' in filters) {
+        query.user_id = filters['user_id'];
+      }
+    }
+
     let tags = [];
     try {
-      tags = await recipes.distinct('tags');
+      tags = await recipes.distinct('tags', query);
       return tags;
     } catch (e) {
       console.log('Unable to get tags: ' + e);

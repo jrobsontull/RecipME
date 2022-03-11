@@ -9,11 +9,15 @@ import { Link } from 'react-router-dom';
 function MyRecipes() {
   const { user } = useContext(AuthContext);
   const [recipes, setRecipes] = useState([]);
+  const [tags, setTags] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     RecipesAPI.getUserRecipes(user.user).then((response) => {
       setRecipes(response);
+    });
+    RecipesAPI.getDistinctTags(user.user._id).then((response) => {
+      setTags(response);
     });
   }, []);
 
@@ -31,12 +35,14 @@ function MyRecipes() {
         <ul>
           {recipes.length > 0 ? (
             recipes.map((recipe, index) => (
-              <li key={index}>
+              <li key={recipe._id}>
                 <Link to={'/recipe/' + recipe._id}>{recipe.name}</Link>
               </li>
             ))
           ) : (
-            <li id="none">You have no recipes yet!</li>
+            <li id="none" key={'0'}>
+              You have no recipes yet!
+            </li>
           )}
         </ul>
       </div>
@@ -49,18 +55,11 @@ function MyRecipes() {
       </div>
       <div className="list-box" id="tag-box">
         <ul>
-          <li>Tag1</li>
-          <li>Tag2</li>
-          <li>Tag3</li>
-          <li>Tag4</li>
-          <li>Tag5</li>
-          <li>Tag6</li>
-          <li>Tag7</li>
-          <li>Tag8</li>
-          <li>Tag9</li>
-          <li>Tag10</li>
-          <li>Tag11</li>
-          <li>Tag12</li>
+          {tags.length > 0 ? (
+            tags.map((tag) => <li key={tag.id}>{tag.name}</li>)
+          ) : (
+            <li key={'0'}>No tags yet.</li>
+          )}
         </ul>
       </div>
       <div className="my-recipes-list-title">
