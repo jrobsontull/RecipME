@@ -115,12 +115,14 @@ function Recipe() {
 
   function addTag(target) {
     const currentTags = recipe.tags;
-    const newTag = target.parentElement.children[0].value;
+    const newTagParent = target.parentElement.children[0];
+    const newTag = newTagParent.value;
     currentTags.push({
       id: uuid(),
       name: newTag,
     });
     setRecipe((prevRecipe) => ({ ...prevRecipe, tags: currentTags }));
+    newTagParent.value = ''; // set to empty for new input
   }
 
   function deleteTag(tag) {
