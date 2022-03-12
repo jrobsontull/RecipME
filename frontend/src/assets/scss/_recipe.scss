@@ -37,6 +37,19 @@
     transform: scale(1.2);
     cursor: pointer;
   }
+
+  .recipe-edit.fav-btn {
+    margin-right: 6px;
+  }
+
+  .recipe-edit.fav-btn.no-edit img:hover {
+    transform: scale(1);
+    cursor: default;
+  }
+
+  .recipe-edit.fav-btn.new-recipe {
+    margin-right: 0;
+  }
 }
 
 .recipe-stats {

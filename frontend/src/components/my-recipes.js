@@ -10,6 +10,7 @@ function MyRecipes() {
   const { user } = useContext(AuthContext);
   const [recipes, setRecipes] = useState([]);
   const [tags, setTags] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,6 +19,9 @@ function MyRecipes() {
     });
     RecipesAPI.getDistinctTags(user.user._id).then((response) => {
       setTags(response);
+    });
+    RecipesAPI.getFavourites(user.user).then((response) => {
+      setFavourites(response);
     });
   }, []);
 
@@ -68,10 +72,17 @@ function MyRecipes() {
       </div>
       <div className="list-box">
         <ul>
-          <li>Something recipe here</li>
-          <li>Something recipe here</li>
-          <li>Something recipe here</li>
-          <li>Something recipe here</li>
+          {favourites.length > 0 ? (
+            favourites.map((recipe, index) => (
+              <li key={recipe._id}>
+                <Link to={'/recipe/' + recipe._id}>{recipe.name}</Link>
+              </li>
+            ))
+          ) : (
+            <li id="none" key={'0'}>
+              You have no favourites yet.
+            </li>
+          )}
         </ul>
       </div>
       <img className="pie-logo" src={Logo} alt="logo" />

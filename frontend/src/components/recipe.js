@@ -8,6 +8,8 @@ import { v4 as uuid } from 'uuid';
 import Logo from '../assets/img/pie_logo_orange.svg';
 import Edit from '../assets/img/edit_icon.svg';
 import EditActive from '../assets/img/edit_icon_active.svg';
+import UnFav from '../assets/img/star_light.svg';
+import Fav from '../assets/img/star_dark.svg';
 import Delete from '../assets/img/delete.svg';
 
 function Recipe() {
@@ -17,6 +19,7 @@ function Recipe() {
   const [recipe, setRecipe] = useState({});
   const [origRecipe, setOrigRecipe] = useState({});
   const [editMode, isEditing] = useState(false);
+  const [favourite, setIsFavourite] = useState(false);
 
   function editRecipe(e) {
     //e.preventDefault();
@@ -155,9 +158,16 @@ function Recipe() {
     }
   }
 
+  function setFav() {
+    // Set recipe favourite
+    setRecipe((prevRecipe) => ({ ...prevRecipe, favourite: !favourite }));
+    setIsFavourite((setInverse) => !setInverse);
+  }
+
   useEffect(() => {
     RecipesAPI.getRecipe(params.id).then((response) => {
       setRecipe(response);
+      setIsFavourite(response.favourite || false);
     });
   }, []);
 
@@ -170,6 +180,13 @@ function Recipe() {
             <div className="arrow left" />
           </Link>
           <h3>{recipe.name}</h3>
+        </div>
+        <div className="recipe-edit fav-btn no-edit">
+          {favourite ? (
+            <img src={Fav} alt="fav-btn"></img>
+          ) : (
+            <img src={UnFav} alt="fav-btn"></img>
+          )}
         </div>
         <div className="recipe-edit">
           <img src={Edit} alt="edit-btn" onClick={(e) => editRecipe(e)}></img>
@@ -269,6 +286,13 @@ function Recipe() {
             defaultValue={recipe.name}
             onChange={(e) => updateRecipeObj(e.target, 'name')}
           ></TextareaAutosize>
+        </div>
+        <div className="recipe-edit fav-btn">
+          {favourite ? (
+            <img src={Fav} alt="fav-btn" onClick={() => setFav()}></img>
+          ) : (
+            <img src={UnFav} alt="fav-btn" onClick={() => setFav()}></img>
+          )}
         </div>
         <div className="recipe-edit">
           <img

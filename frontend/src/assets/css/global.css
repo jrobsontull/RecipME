@@ -64,6 +64,13 @@
   .recipe-title .recipe-edit img:hover {
     transform: scale(1.2);
     cursor: pointer; }
+  .recipe-title .recipe-edit.fav-btn {
+    margin-right: 6px; }
+  .recipe-title .recipe-edit.fav-btn.no-edit img:hover {
+    transform: scale(1);
+    cursor: default; }
+  .recipe-title .recipe-edit.fav-btn.new-recipe {
+    margin-right: 0; }
 
 .recipe-stats {
   display: flex;

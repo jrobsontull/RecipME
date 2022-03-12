@@ -9,6 +9,16 @@ export default class RecipesAPI {
     }
   }
 
+  static async getFavourites(user) {
+    const response = await getRequest(
+      'api/v1/recipes?favourite=true&user_id=' + user._id
+    );
+    if (response) {
+      const favourites = response.data.recipes;
+      return favourites;
+    }
+  }
+
   static async getRecipe(id) {
     const response = await getRequest('api/v1/recipes/recipe/id/' + id);
     if (response) {

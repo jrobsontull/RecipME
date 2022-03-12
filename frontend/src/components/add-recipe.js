@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 import Delete from '../assets/img/delete.svg';
 import Logo from '../assets/img/pie_logo_orange.svg';
+import Fav from '../assets/img/star_dark.svg';
+import UnFav from '../assets/img/star_light.svg';
 
 function AddRecipe() {
   const { user } = useContext(AuthContext);
@@ -21,7 +23,9 @@ function AddRecipe() {
     photos: null,
     notes: null,
     tags: null,
+    favourite: false,
   });
+  const [favourite, setIsFavourite] = useState(false);
 
   function updateRecipeObj(target, prop) {
     setNewRecipe((current) => ({ ...current, [prop]: target.value }));
@@ -132,6 +136,12 @@ function AddRecipe() {
     setNewRecipe((prevRecipe) => ({ ...prevRecipe, tags: currentTags }));
   }
 
+  function setFav() {
+    // Set recipe favourite
+    setNewRecipe((prevRecipe) => ({ ...prevRecipe, favourite: !favourite }));
+    setIsFavourite((setInverse) => !setInverse);
+  }
+
   function saveRecipe() {
     // Put changes to db
     console.log('Saving recipe...');
@@ -152,6 +162,13 @@ function AddRecipe() {
             placeholder="Type title here"
             onChange={(e) => updateRecipeObj(e.target, 'name')}
           ></TextareaAutosize>
+        </div>
+        <div className="recipe-edit fav-btn new-recipe">
+          {favourite ? (
+            <img src={Fav} alt="fav-btn" onClick={() => setFav()}></img>
+          ) : (
+            <img src={UnFav} alt="fav-btn" onClick={() => setFav()}></img>
+          )}
         </div>
       </div>
 

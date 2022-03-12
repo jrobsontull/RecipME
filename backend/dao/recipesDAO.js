@@ -47,8 +47,16 @@ export default class RecipesDAO {
           // Do something
         }
       } else if ('user_id' in filters) {
-        console.log('Search by user_id');
-        query = { user_id: filters['user_id'] };
+        if ('favourite' in filters) {
+          console.log('Search for favourites');
+          query = {
+            user_id: filters['user_id'],
+            favourite: filters['favourite'],
+          };
+        } else {
+          console.log('Search by user_id');
+          query = { user_id: filters['user_id'] };
+        }
       }
     }
 
@@ -108,7 +116,8 @@ export default class RecipesDAO {
     steps,
     photos,
     notes,
-    tags
+    tags,
+    favourite
   ) {
     try {
       /* Generate unique ID for all arrays */
@@ -129,6 +138,7 @@ export default class RecipesDAO {
         photos: UUIDphotos,
         notes: notes,
         tags: UUIDtags,
+        favourite: favourite,
       };
 
       return await recipes.insertOne(recipeDoc);
@@ -149,7 +159,8 @@ export default class RecipesDAO {
     steps,
     photos,
     notes,
-    tags
+    tags,
+    favourite
   ) {
     try {
       const updateResponse = await recipes.findOneAndUpdate(
@@ -164,6 +175,7 @@ export default class RecipesDAO {
             photos: photos,
             notes: notes,
             tags: tags,
+            favourite: favourite,
           },
         },
         { returnNewDocument: true }

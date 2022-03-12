@@ -21,6 +21,12 @@ export default class RecipesController {
       filters.tags = req.query.tags.split('+');
     }
 
+    if (req.query.favourite && req.query.user_id) {
+      filters.favourite = true;
+      filters.user_id = req.query.user_id;
+      console.log(filters);
+    }
+
     const { recipesList, totalNumRecipes } = await RecipesDAO.getRecipes({
       filters,
       page,
@@ -73,6 +79,7 @@ export default class RecipesController {
       const photos = req.body.photos;
       const notes = req.body.notes;
       const tags = req.body.tags;
+      const favourite = req.body.favourite;
 
       const recipeResponse = await RecipesDAO.addRecipe(
         userId,
@@ -84,7 +91,8 @@ export default class RecipesController {
         steps,
         photos,
         notes,
-        tags
+        tags,
+        favourite
       );
       res.json(recipeResponse);
     } catch (e) {
@@ -106,6 +114,7 @@ export default class RecipesController {
       const photos = req.body.photos;
       const notes = req.body.notes;
       const tags = req.body.tags;
+      const favourite = req.body.favourite;
 
       const recipeResponse = await RecipesDAO.editRecipe(
         recipeId,
@@ -117,9 +126,10 @@ export default class RecipesController {
         steps,
         photos,
         notes,
-        tags
+        tags,
+        favourite
       );
-
+      console.log(favourite);
       var { error } = recipeResponse;
       if (error) {
         res.status(400).json({ error: error.message });
