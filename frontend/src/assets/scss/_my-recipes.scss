@@ -1,5 +1,40 @@
-.my-recipes-list-title {
+a.my-recipes-link {
   width: 85%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-recipe-btn {
+  width: 85%;
+  display: flex;
+
+  input {
+    width: 65%;
+    padding: 8px 5%;
+    border-style: solid;
+    border-color: $form-border;
+    border-width: 1px 0 1px 1px;
+    background-color: $form-backgrd-lighter;
+  }
+
+  button {
+    width: 35%;
+    padding: 8px 12px;
+    background-color: $form-backgrd;
+    color: $dark-orang;
+    border: 1px solid $dark-orang;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    color: $light-orang;
+    background-color: $dark-orang;
+    cursor: pointer;
+  }
+}
+
+.my-recipes-list-title {
+  width: 100%;
   margin: 15px 0 0 0;
   padding: 10px 0;
   border-radius: 10px 10px 0 0;
@@ -35,4 +70,8 @@
   .arrow {
     border-color: $light-orang;
   }
+}
+
+.list-box.my-recipes ul {
+  border-bottom-width: 0;
 }

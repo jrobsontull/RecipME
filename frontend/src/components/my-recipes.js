@@ -23,6 +23,7 @@ function MyRecipes() {
     RecipesAPI.getFavourites(user.user).then((response) => {
       setFavourites(response);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -31,11 +32,14 @@ function MyRecipes() {
         Welcome back <strong>{user.user.name}</strong>!
       </div>
       <div className="line-br"></div>
-      <div className="my-recipes-list-title" id="first-child">
-        <p className="list-box-info">My recipes</p>
-        <div className="arrow right"></div>
-      </div>
-      <div className="list-box">
+      <Link to={'/my-recipes/list'} className="my-recipes-link">
+        <div className="my-recipes-list-title" id="first-child">
+          <p className="list-box-info">My recipes</p>
+          <div className="arrow right"></div>
+        </div>
+      </Link>
+
+      <div className="list-box my-recipes">
         <ul>
           {recipes.length > 0 ? (
             recipes.map((recipe, index) => (
@@ -50,13 +54,19 @@ function MyRecipes() {
           )}
         </ul>
       </div>
+      <div className="search-recipe-btn">
+        <input placeholder="Recipe name"></input>
+        <button>Search</button>
+      </div>
       <button className="general" onClick={() => navigate('/add-recipe')}>
         Add recipe
       </button>
-      <div className="my-recipes-list-title">
-        <p className="list-box-info">Tags</p>
-        <div className="arrow right"></div>
-      </div>
+      <Link to={'/my-recipes/list'} className="my-recipes-link">
+        <div className="my-recipes-list-title">
+          <p className="list-box-info">Tags</p>
+          <div className="arrow right"></div>
+        </div>
+      </Link>
       <div className="list-box" id="tag-box">
         <ul>
           {tags.length > 0 ? (
@@ -66,10 +76,12 @@ function MyRecipes() {
           )}
         </ul>
       </div>
-      <div className="my-recipes-list-title">
-        <p className="list-box-info">Favourites</p>
-        <div className="arrow right"></div>
-      </div>
+      <Link to={'/my-recipes/list'} className="my-recipes-link">
+        <div className="my-recipes-list-title">
+          <p className="list-box-info">Favourites</p>
+          <div className="arrow right"></div>
+        </div>
+      </Link>
       <div className="list-box">
         <ul>
           {favourites.length > 0 ? (

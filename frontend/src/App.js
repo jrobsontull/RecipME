@@ -13,6 +13,8 @@ import MyRecipes from './components/my-recipes';
 import Settings from './components/settings';
 import Recipe from './components/recipe';
 import AddRecipe from './components/add-recipe';
+import RecipeListExtended from './components/recipe-list-extended';
+import NotFound from './components/not-found';
 
 import ProtectedRoute from './components/protected.route.js';
 
@@ -24,6 +26,7 @@ function App() {
           <Navbar />
           <div className="content">
             <Routes>
+              <Route path={'*'} element={<NotFound />} />
               <Route path={'/'} element={<Home />} />
               <Route path={'/login'} element={<Login />} />
               <Route path={'/register'} element={<Register />} />
@@ -33,6 +36,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <MyRecipes />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={'/my-recipes/list'}
+                element={
+                  <ProtectedRoute>
+                    <RecipeListExtended />
                   </ProtectedRoute>
                 }
               />
