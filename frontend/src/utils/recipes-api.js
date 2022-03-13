@@ -1,10 +1,13 @@
 import http from './http-common';
 
 export default class RecipesAPI {
-  static async getUserRecipes(user) {
-    const response = await getRequest('api/v1/recipes?user_id=' + user._id);
+  static async getUserRecipes(user, urlParams) {
+    const url =
+      'api/v1/recipes?user_id=' + user._id + '&' + urlParams ||
+      'api/v1/recipes?user_id=' + user._id;
+    const response = await getRequest(url);
     if (response) {
-      const recipes = response.data.recipes;
+      const recipes = response.data;
       return recipes;
     }
   }
@@ -67,7 +70,7 @@ async function postRequest(body, url) {
     const response = await http.post(url, payload);
 
     if (response.status === 200) {
-      console.log('Posted: ' + body + ' to ' + url + ' and got good response.');
+      //console.log('Posted: ' + body + ' to ' + url + ' and got good response.');
       return response;
     } else {
       return null;
@@ -84,7 +87,7 @@ async function putRequest(body, url) {
     const response = await http.put(url, payload);
 
     if (response.status === 200) {
-      console.log('Put: ' + body + ' to ' + url + ' and got good response.');
+      //console.log('Put: ' + body + ' to ' + url + ' and got good response.');
       return response;
     } else {
       return null;
@@ -100,7 +103,7 @@ async function getRequest(url) {
     const response = await http.get(url);
 
     if (response.status === 200) {
-      console.log('Get request to ' + url + ' successful.');
+      //console.log('Get request to ' + url + ' successful.');
       return response;
     } else {
       return null;
@@ -117,7 +120,7 @@ async function deleteRequest(body, url) {
     const response = await http.delete(url, { data: payload });
 
     if (response.status === 200) {
-      console.log('Delete: ' + body + ' to ' + url + ' and got good response.');
+      //console.log('Delete: ' + body + ' to ' + url + ' and got good response.');
       return response;
     } else {
       return null;

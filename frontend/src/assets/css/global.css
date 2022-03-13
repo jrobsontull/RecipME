@@ -87,6 +87,48 @@ a.my-recipes-link {
 .list-box.my-recipes ul {
   border-bottom-width: 0; }
 
+.page-nav {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fcfaf1; }
+  .page-nav .arrow-btn {
+    padding: 8px 5%;
+    width: 10%;
+    background-color: #fcfaf1;
+    border: 1px solid #e07a5f;
+    text-align: center;
+    transition: background-color 0.3s ease; }
+    .page-nav .arrow-btn .arrow {
+      border-color: #e07a5f;
+      transition: border-color 0.3s ease; }
+    .page-nav .arrow-btn .arrow.right {
+      margin-right: 8px; }
+  .page-nav .arrow-btn:hover {
+    background-color: #e07a5f;
+    cursor: pointer; }
+    .page-nav .arrow-btn:hover .arrow {
+      border-color: #fcfaf1; }
+  .page-nav .current-page,
+  .page-nav .out-pages {
+    padding: 8px 5%;
+    border: 1px solid #d2ceb0;
+    background-color: #fffefa;
+    text-align: center; }
+  .page-nav .current-page {
+    width: 15%;
+    border-width: 1px 0; }
+  .page-nav .out-pages {
+    width: 30%;
+    border-width: 1px 0 1px 1px; }
+  .page-nav .arrow-btn.disabled {
+    border-color: #d2ceb0; }
+    .page-nav .arrow-btn.disabled .arrow {
+      border-color: #d2ceb0; }
+  .page-nav .arrow-btn.disabled:hover {
+    cursor: default;
+    background-color: #fcfaf1; }
+
 .recipe-title {
   width: 85%;
   display: flex;
@@ -406,41 +448,6 @@ div.list-box.recipe.edit-tags .delete-item:hover {
 
 .list-box.extended ul {
   border-bottom-width: 0; }
-
-.page-nav {
-  width: 85%;
-  display: flex;
-  justify-content: space-between;
-  background-color: #fcfaf1; }
-  .page-nav .arrow-btn {
-    padding: 8px 5%;
-    width: 10%;
-    background-color: #fcfaf1;
-    border: 1px solid #e07a5f;
-    text-align: center;
-    transition: background-color 0.3s ease; }
-    .page-nav .arrow-btn .arrow {
-      border-color: #e07a5f;
-      transition: border-color 0.3s ease; }
-    .page-nav .arrow-btn .arrow.right {
-      margin-right: 8px; }
-  .page-nav .arrow-btn:hover {
-    background-color: #e07a5f;
-    cursor: pointer; }
-    .page-nav .arrow-btn:hover .arrow {
-      border-color: #fcfaf1; }
-  .page-nav .current-page,
-  .page-nav .out-pages {
-    padding: 8px 5%;
-    border: 1px solid #d2ceb0;
-    background-color: #fffefa;
-    text-align: center; }
-  .page-nav .current-page {
-    width: 15%;
-    border-width: 1px 0; }
-  .page-nav .out-pages {
-    width: 30%;
-    border-width: 1px 0 1px 1px; }
 
 @font-face {
   font-family: 'Raleway Flex';

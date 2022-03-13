@@ -164,6 +164,18 @@ function Recipe() {
     setIsFavourite((setInverse) => !setInverse);
   }
 
+  // Strikethrough ingredient/step text on click
+  function setIngredStepChecked(target) {
+    const currentStyle = target.style.textDecoration;
+    if (currentStyle === 'none') {
+      target.style.textDecoration = 'line-through';
+    } else {
+      target.style.textDecoration = 'none';
+    }
+  }
+
+  // Strikethrough ingredient if line clicked on
+
   useEffect(() => {
     RecipesAPI.getRecipe(params.id).then((response) => {
       setRecipe(response);
@@ -210,7 +222,10 @@ function Recipe() {
         <ul>
           {recipe.ingredients ? (
             recipe.ingredients.map((ingredient) => (
-              <li key={ingredient.id}>
+              <li
+                key={ingredient.id}
+                onClick={(e) => setIngredStepChecked(e.target)}
+              >
                 {ingredient.quantity} {ingredient.unit} {ingredient.name}
               </li>
             ))
@@ -227,7 +242,9 @@ function Recipe() {
         {recipe.steps ? (
           <ol>
             {recipe.steps.map((step) => (
-              <li key={step.id}>{step.description}</li>
+              <li key={step.id} onClick={(e) => setIngredStepChecked(e.target)}>
+                {step.description}
+              </li>
             ))}
           </ol>
         ) : (

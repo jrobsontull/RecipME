@@ -1,12 +1,15 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import AuthContext from '../utils/auth.context';
 
 import Logo from '../assets/img/pie_logo_orange.svg';
 
 function RecipeListExtended() {
+  const location = useLocation();
+  const listBoxTitle = location.state.searchParamTitle;
   const { user } = useContext(AuthContext);
   const [recipesSearch, setRecipesSearch] = useState([]);
+  console.log(location.state.searchParam);
 
   return (
     <div className="react-container">
@@ -14,7 +17,7 @@ function RecipeListExtended() {
         <Link to={'/my-recipes'}>
           <div className="arrow left" />
         </Link>
-        <h3>Search param name here</h3>
+        <h3>{listBoxTitle ? listBoxTitle : 'Generic recipe search'}</h3>
       </div>
       <div className="list-box extended">
         <ul>
