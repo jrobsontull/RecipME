@@ -24,7 +24,6 @@ export default class RecipesController {
     if (req.query.favourite && req.query.user_id) {
       filters.favourite = true;
       filters.user_id = req.query.user_id;
-      console.log(filters);
     }
 
     const { recipesList, totalNumRecipes } = await RecipesDAO.getRecipes({

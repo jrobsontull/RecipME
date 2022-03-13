@@ -1,10 +1,11 @@
 import http from './http-common';
 
 export default class RecipesAPI {
-  static async getUserRecipes(user, urlParams) {
+  static async getUserRecipes(user, urlParams = null) {
     const url =
       'api/v1/recipes?user_id=' + user._id + '&' + urlParams ||
       'api/v1/recipes?user_id=' + user._id;
+    console.log(url);
     const response = await getRequest(url);
     if (response) {
       const recipes = response.data;

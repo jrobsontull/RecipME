@@ -94,7 +94,6 @@ function MyRecipes() {
         to={'/my-recipes/list'}
         state={{
           searchParamTitle: 'All my recipes',
-          searchParam: 'api/v1/recipes?user_id=' + user.user._id,
         }}
         className="my-recipes-link"
       >
@@ -169,7 +168,7 @@ function MyRecipes() {
       </button>
       <Link
         to={'/my-recipes/list'}
-        state={{ searchParamTitle: 'All my tags' }}
+        state={{ searchParamTitle: 'All my tags', searchParam: '' }}
         className="my-recipes-link"
       >
         <div className="my-recipes-list-title">
@@ -180,7 +179,19 @@ function MyRecipes() {
       <div className="list-box" id="tag-box">
         <ul>
           {tags.length > 0 ? (
-            tags.map((tag) => <li key={tag.id}>{tag.name}</li>)
+            tags.map((tag) => (
+              <li key={tag.id}>
+                <Link
+                  to={'/my-recipes/list'}
+                  state={{
+                    searchParamTitle: 'Recipes tagged with ' + tag.name,
+                    searchParam: 'tags=' + tag.name,
+                  }}
+                >
+                  {tag.name}
+                </Link>
+              </li>
+            ))
           ) : (
             <li key={'0'}>No tags yet.</li>
           )}
@@ -188,7 +199,10 @@ function MyRecipes() {
       </div>
       <Link
         to={'/my-recipes/list'}
-        state={{ searchParamTitle: 'All my favourites' }}
+        state={{
+          searchParamTitle: 'All my favourites',
+          searchParam: 'favourite=true',
+        }}
         className="my-recipes-link"
       >
         <div className="my-recipes-list-title">

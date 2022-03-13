@@ -38,13 +38,15 @@ export default class RecipesDAO {
         query = { $text: { $search: filters['name'] } };
       } else if ('tags' in filters) {
         console.log('Search for user-specific tags');
-        console.log(filters);
         if (filters['tags'][0].toLowerCase() === 'all') {
           // Get all recipe tags
           query = {};
         } else {
           // Get recipes by tag
-          // Do something
+          query = {
+            'tags.name': { $eq: filters.tags[0] },
+            user_id: filters['user_id'],
+          };
         }
       } else if ('user_id' in filters) {
         if ('favourite' in filters) {
@@ -59,7 +61,7 @@ export default class RecipesDAO {
         }
       }
     }
-
+    console.log(query);
     let cursor;
 
     try {
