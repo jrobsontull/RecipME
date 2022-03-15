@@ -51,7 +51,7 @@ function RecipeListExtended() {
         setRecipesData({
           totalRecipes: response.total_results,
           currentPage: 0,
-          totalPages: calculateTotalPageNums(10, response.total_results),
+          totalPages: calculateTotalPageNums(15, response.total_results),
         });
       });
     } else {
@@ -61,7 +61,7 @@ function RecipeListExtended() {
           setRecipesData({
             totalRecipes: response.total_results,
             currentPage: 0,
-            totalPages: calculateTotalPageNums(10, response.total_results),
+            totalPages: calculateTotalPageNums(15, response.total_results),
           });
         }
       );
@@ -92,7 +92,7 @@ function RecipeListExtended() {
         </ul>
       </div>
 
-      {recipesData.totalRecipes > 10 ? (
+      {recipesData.totalRecipes > 15 ? (
         <div className="page-nav">
           {recipesData.currentPage === 0 ? (
             <div className="arrow-btn disabled" onClick={() => prevPage()}>
